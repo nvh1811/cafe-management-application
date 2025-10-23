@@ -1,0 +1,28 @@
+C:\Users\5560\source\C#\formm\formm\bin\Debug\formm.exe.config
+C:\Users\5560\source\C#\formm\formm\bin\Debug\formm.exe
+C:\Users\5560\source\C#\formm\formm\bin\Debug\formm.pdb
+C:\Users\5560\source\C#\formm\formm\obj\Debug\formm.csproj.AssemblyReference.cache
+C:\Users\5560\source\C#\formm\formm\obj\Debug\formm.flogin.resources
+C:\Users\5560\source\C#\formm\formm\obj\Debug\formm.Properties.Resources.resources
+C:\Users\5560\source\C#\formm\formm\obj\Debug\formm.csproj.GenerateResource.cache
+C:\Users\5560\source\C#\formm\formm\obj\Debug\formm.csproj.CoreCompileInputs.cache
+C:\Users\5560\source\C#\formm\formm\obj\Debug\formm.exe
+C:\Users\5560\source\C#\formm\formm\obj\Debug\formm.pdb
+C:\Users\5560\source\C#\formm\formm\obj\Debug\formm.exe.config
+C:\Users\5560\source\C#\formm\formm\obj\Debug\formm.ftablemanager.resources
+C:\Users\5560\source\C#\formm\formm\obj\Debug\formm.accountprofile.resources
+C:\Users\5560\source\C#\formm\formm\obj\Debug\formm.fAdmin.resources
+C:\Users\5560\source\C#\quản lý quán cà phơ\formm\bin\Debug\formm.exe.config
+C:\Users\5560\source\C#\quản lý quán cà phơ\formm\bin\Debug\formm.exe
+C:\Users\5560\source\C#\quản lý quán cà phơ\formm\bin\Debug\formm.pdb
+C:\Users\5560\source\C#\quản lý quán cà phơ\formm\obj\Debug\formm.csproj.AssemblyReference.cache
+C:\Users\5560\source\C#\quản lý quán cà phơ\formm\obj\Debug\formm.exe.config
+C:\Users\5560\source\C#\quản lý quán cà phơ\formm\obj\Debug\formm.accountprofile.resources
+C:\Users\5560\source\C#\quản lý quán cà phơ\formm\obj\Debug\formm.fAdmin.resources
+C:\Users\5560\source\C#\quản lý quán cà phơ\formm\obj\Debug\formm.flogin.resources
+C:\Users\5560\source\C#\quản lý quán cà phơ\formm\obj\Debug\formm.ftablemanager.resources
+C:\Users\5560\source\C#\quản lý quán cà phơ\formm\obj\Debug\formm.Properties.Resources.resources
+C:\Users\5560\source\C#\quản lý quán cà phơ\formm\obj\Debug\formm.csproj.GenerateResource.cache
+C:\Users\5560\source\C#\quản lý quán cà phơ\formm\obj\Debug\formm.csproj.CoreCompileInputs.cache
+C:\Users\5560\source\C#\quản lý quán cà phơ\formm\obj\Debug\formm.exe
+C:\Users\5560\source\C#\quản lý quán cà phơ\formm\obj\Debug\formm.pdb
