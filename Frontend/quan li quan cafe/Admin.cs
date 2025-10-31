@@ -61,10 +61,13 @@ namespace quan_li_quan_cafe
         {
 
         }
+<<<<<<< HEAD
 
         private void dtpFromDate_ValueChanged(object sender, EventArgs e)
         {
 
         }
+=======
+>>>>>>> parent of 42f2031 (Revert "add frontend")
     }
 }

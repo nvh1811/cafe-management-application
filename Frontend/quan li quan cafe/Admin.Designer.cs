@@ -28,11 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+<<<<<<< HEAD
             this.TabAdminControl = new System.Windows.Forms.TabControl();
             this.tabBill = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btStatistic = new System.Windows.Forms.Button();
             this.lbDate = new System.Windows.Forms.Label();
+=======
+            this.TabControlAdmin = new System.Windows.Forms.TabControl();
+            this.tabBill = new System.Windows.Forms.TabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btStatistic = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+>>>>>>> parent of 42f2031 (Revert "add frontend")
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -113,7 +121,11 @@
             this.btEditAccount = new System.Windows.Forms.Button();
             this.btDeleteAccount = new System.Windows.Forms.Button();
             this.btAddAccount = new System.Windows.Forms.Button();
+<<<<<<< HEAD
             this.TabAdminControl.SuspendLayout();
+=======
+            this.TabControlAdmin.SuspendLayout();
+>>>>>>> parent of 42f2031 (Revert "add frontend")
             this.tabBill.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -154,6 +166,7 @@
             this.panel22.SuspendLayout();
             this.SuspendLayout();
             // 
+<<<<<<< HEAD
             // TabAdminControl
             // 
             this.TabAdminControl.Controls.Add(this.tabBill);
@@ -166,6 +179,20 @@
             this.TabAdminControl.SelectedIndex = 0;
             this.TabAdminControl.Size = new System.Drawing.Size(779, 427);
             this.TabAdminControl.TabIndex = 0;
+=======
+            // TabControlAdmin
+            // 
+            this.TabControlAdmin.Controls.Add(this.tabBill);
+            this.TabControlAdmin.Controls.Add(this.tabFood);
+            this.TabControlAdmin.Controls.Add(this.tabFoodCategory);
+            this.TabControlAdmin.Controls.Add(this.tabTable);
+            this.TabControlAdmin.Controls.Add(this.tabAccount);
+            this.TabControlAdmin.Location = new System.Drawing.Point(11, 12);
+            this.TabControlAdmin.Name = "TabControlAdmin";
+            this.TabControlAdmin.SelectedIndex = 0;
+            this.TabControlAdmin.Size = new System.Drawing.Size(779, 427);
+            this.TabControlAdmin.TabIndex = 0;
+>>>>>>> parent of 42f2031 (Revert "add frontend")
             // 
             // tabBill
             // 
@@ -182,7 +209,11 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.btStatistic);
+<<<<<<< HEAD
             this.panel2.Controls.Add(this.lbDate);
+=======
+            this.panel2.Controls.Add(this.label1);
+>>>>>>> parent of 42f2031 (Revert "add frontend")
             this.panel2.Controls.Add(this.dtpToDate);
             this.panel2.Controls.Add(this.dtpFromDate);
             this.panel2.Location = new System.Drawing.Point(3, 3);
@@ -199,6 +230,7 @@
             this.btStatistic.Text = "Thống kê";
             this.btStatistic.UseVisualStyleBackColor = true;
             // 
+<<<<<<< HEAD
             // lbDate
             // 
             this.lbDate.AutoSize = true;
@@ -207,6 +239,16 @@
             this.lbDate.Size = new System.Drawing.Size(29, 25);
             this.lbDate.TabIndex = 2;
             this.lbDate.Text = "to";
+=======
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(306, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 25);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "to";
+>>>>>>> parent of 42f2031 (Revert "add frontend")
             // 
             // dtpToDate
             // 
@@ -222,7 +264,10 @@
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(297, 31);
             this.dtpFromDate.TabIndex = 0;
+<<<<<<< HEAD
             this.dtpFromDate.ValueChanged += new System.EventHandler(this.dtpFromDate_ValueChanged);
+=======
+>>>>>>> parent of 42f2031 (Revert "add frontend")
             // 
             // panel1
             // 
@@ -966,11 +1011,19 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+<<<<<<< HEAD
             this.Controls.Add(this.TabAdminControl);
             this.Name = "Admin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin";
             this.TabAdminControl.ResumeLayout(false);
+=======
+            this.Controls.Add(this.TabControlAdmin);
+            this.Name = "Admin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Admin";
+            this.TabControlAdmin.ResumeLayout(false);
+>>>>>>> parent of 42f2031 (Revert "add frontend")
             this.tabBill.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -1029,10 +1082,17 @@
 
         #endregion
 
+<<<<<<< HEAD
         private TabControl TabAdminControl;
         private TabPage tabBill;
         private Panel panel2;
         private Label lbDate;
+=======
+        private TabControl TabControlAdmin;
+        private TabPage tabBill;
+        private Panel panel2;
+        private Label label1;
+>>>>>>> parent of 42f2031 (Revert "add frontend")
         private DateTimePicker dtpToDate;
         private DateTimePicker dtpFromDate;
         private Panel panel1;
