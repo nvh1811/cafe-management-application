@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.TabControlAdmin = new System.Windows.Forms.TabControl();
+            this.TabAdminControl = new System.Windows.Forms.TabControl();
             this.tabBill = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btStatistic = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbDate = new System.Windows.Forms.Label();
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
             this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -113,7 +113,7 @@
             this.btEditAccount = new System.Windows.Forms.Button();
             this.btDeleteAccount = new System.Windows.Forms.Button();
             this.btAddAccount = new System.Windows.Forms.Button();
-            this.TabControlAdmin.SuspendLayout();
+            this.TabAdminControl.SuspendLayout();
             this.tabBill.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -154,18 +154,18 @@
             this.panel22.SuspendLayout();
             this.SuspendLayout();
             // 
-            // TabControlAdmin
+            // TabAdminControl
             // 
-            this.TabControlAdmin.Controls.Add(this.tabBill);
-            this.TabControlAdmin.Controls.Add(this.tabFood);
-            this.TabControlAdmin.Controls.Add(this.tabFoodCategory);
-            this.TabControlAdmin.Controls.Add(this.tabTable);
-            this.TabControlAdmin.Controls.Add(this.tabAccount);
-            this.TabControlAdmin.Location = new System.Drawing.Point(11, 12);
-            this.TabControlAdmin.Name = "TabControlAdmin";
-            this.TabControlAdmin.SelectedIndex = 0;
-            this.TabControlAdmin.Size = new System.Drawing.Size(779, 427);
-            this.TabControlAdmin.TabIndex = 0;
+            this.TabAdminControl.Controls.Add(this.tabBill);
+            this.TabAdminControl.Controls.Add(this.tabFood);
+            this.TabAdminControl.Controls.Add(this.tabFoodCategory);
+            this.TabAdminControl.Controls.Add(this.tabTable);
+            this.TabAdminControl.Controls.Add(this.tabAccount);
+            this.TabAdminControl.Location = new System.Drawing.Point(11, 12);
+            this.TabAdminControl.Name = "TabAdminControl";
+            this.TabAdminControl.SelectedIndex = 0;
+            this.TabAdminControl.Size = new System.Drawing.Size(779, 427);
+            this.TabAdminControl.TabIndex = 0;
             // 
             // tabBill
             // 
@@ -182,7 +182,7 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.btStatistic);
-            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.lbDate);
             this.panel2.Controls.Add(this.dtpToDate);
             this.panel2.Controls.Add(this.dtpFromDate);
             this.panel2.Location = new System.Drawing.Point(3, 3);
@@ -199,14 +199,14 @@
             this.btStatistic.Text = "Thống kê";
             this.btStatistic.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // lbDate
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(306, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 25);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "to";
+            this.lbDate.AutoSize = true;
+            this.lbDate.Location = new System.Drawing.Point(306, 9);
+            this.lbDate.Name = "lbDate";
+            this.lbDate.Size = new System.Drawing.Size(29, 25);
+            this.lbDate.TabIndex = 2;
+            this.lbDate.Text = "to";
             // 
             // dtpToDate
             // 
@@ -222,6 +222,7 @@
             this.dtpFromDate.Name = "dtpFromDate";
             this.dtpFromDate.Size = new System.Drawing.Size(297, 31);
             this.dtpFromDate.TabIndex = 0;
+            this.dtpFromDate.ValueChanged += new System.EventHandler(this.dtpFromDate_ValueChanged);
             // 
             // panel1
             // 
@@ -965,11 +966,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.TabControlAdmin);
+            this.Controls.Add(this.TabAdminControl);
             this.Name = "Admin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin";
-            this.TabControlAdmin.ResumeLayout(false);
+            this.TabAdminControl.ResumeLayout(false);
             this.tabBill.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -1028,10 +1029,10 @@
 
         #endregion
 
-        private TabControl TabControlAdmin;
+        private TabControl TabAdminControl;
         private TabPage tabBill;
         private Panel panel2;
-        private Label label1;
+        private Label lbDate;
         private DateTimePicker dtpToDate;
         private DateTimePicker dtpFromDate;
         private Panel panel1;

@@ -61,5 +61,10 @@ namespace quan_li_quan_cafe
         {
 
         }
+
+        private void dtpFromDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
