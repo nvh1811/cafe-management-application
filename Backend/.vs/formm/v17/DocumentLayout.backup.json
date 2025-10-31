@@ -1,0 +1,106 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\HUST\\KTPM\\Project\\Backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5154BE28-595F-4125-8F0A-FA58458162F6}|formm\\formm.csproj|d:\\hust\\ktpm\\project\\backend\\formm\\flogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5154BE28-595F-4125-8F0A-FA58458162F6}|formm\\formm.csproj|solutionrelative:formm\\flogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5154BE28-595F-4125-8F0A-FA58458162F6}|formm\\formm.csproj|d:\\hust\\ktpm\\project\\backend\\formm\\ftablemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5154BE28-595F-4125-8F0A-FA58458162F6}|formm\\formm.csproj|solutionrelative:formm\\ftablemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5154BE28-595F-4125-8F0A-FA58458162F6}|formm\\formm.csproj|d:\\hust\\ktpm\\project\\backend\\formm\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5154BE28-595F-4125-8F0A-FA58458162F6}|formm\\formm.csproj|solutionrelative:formm\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5154BE28-595F-4125-8F0A-FA58458162F6}|formm\\formm.csproj|d:\\hust\\ktpm\\project\\backend\\formm\\ftablemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5154BE28-595F-4125-8F0A-FA58458162F6}|formm\\formm.csproj|solutionrelative:formm\\ftablemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5154BE28-595F-4125-8F0A-FA58458162F6}|formm\\formm.csproj|D:\\HUST\\KTPM\\Project\\Backend\\formm\\accountprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5154BE28-595F-4125-8F0A-FA58458162F6}|formm\\formm.csproj|solutionrelative:formm\\accountprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "flogin.cs",
+              "DocumentMoniker": "D:\\HUST\\KTPM\\Project\\Backend\\formm\\flogin.cs",
+              "RelativeDocumentMoniker": "formm\\flogin.cs",
+              "ToolTip": "D:\\HUST\\KTPM\\Project\\Backend\\formm\\flogin.cs",
+              "RelativeToolTip": "formm\\flogin.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-25T12:52:15.733Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ftablemanager.cs",
+              "DocumentMoniker": "D:\\HUST\\KTPM\\Project\\Backend\\formm\\ftablemanager.cs",
+              "RelativeDocumentMoniker": "formm\\ftablemanager.cs",
+              "ToolTip": "D:\\HUST\\KTPM\\Project\\Backend\\formm\\ftablemanager.cs",
+              "RelativeToolTip": "formm\\ftablemanager.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-25T12:51:51.419Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\HUST\\KTPM\\Project\\Backend\\formm\\Program.cs",
+              "RelativeDocumentMoniker": "formm\\Program.cs",
+              "ToolTip": "D:\\HUST\\KTPM\\Project\\Backend\\formm\\Program.cs",
+              "RelativeToolTip": "formm\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-25T12:51:16.745Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ftablemanager.cs [Design]",
+              "DocumentMoniker": "D:\\HUST\\KTPM\\Project\\Backend\\formm\\ftablemanager.cs",
+              "RelativeDocumentMoniker": "formm\\ftablemanager.cs",
+              "ToolTip": "D:\\HUST\\KTPM\\Project\\Backend\\formm\\ftablemanager.cs [Design]",
+              "RelativeToolTip": "formm\\ftablemanager.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-25T12:11:51.608Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "accountprofile.cs [Design]",
+              "DocumentMoniker": "D:\\HUST\\KTPM\\Project\\Backend\\formm\\accountprofile.cs",
+              "RelativeDocumentMoniker": "formm\\accountprofile.cs",
+              "ToolTip": "D:\\HUST\\KTPM\\Project\\Backend\\formm\\accountprofile.cs [Design]",
+              "RelativeToolTip": "formm\\accountprofile.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-25T12:11:48.987Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
