@@ -5,27 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:cafe_management"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <StackPanel>
-            <StackPanel>
-                <Label Width="194">
-                    Tai khoan:
-                </Label>
-                <TextBox x:Name ="unBox" Width="183"/>
-            </StackPanel>
-
-            <StackPanel >
-                <Label Width="194">
-                    Mat khau:
-                </Label>
-                <TextBox x:Name="pwBox" Width="183" />
-            </StackPanel>
-
-            <Button Click="Button_Click" Width="73">
-                Dang nhap
-            </Button>
-
-        </StackPanel>
+        WindowState="Maximized"
+        Title="Cafe-management" d:DesignHeight="412.073" d:DesignWidth="813.39">
+    <Grid x:Name="MainGrid">
     </Grid>
 </Window>

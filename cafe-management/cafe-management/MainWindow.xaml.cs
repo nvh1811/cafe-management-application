@@ -9,7 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using cafe_management.UI;
 namespace cafe_management
 {
     /// <summary>
@@ -20,19 +20,15 @@ namespace cafe_management
         public MainWindow()
         {
             InitializeComponent();
-        }
+            // Hiển thị trang đăng nhập
+            MainGrid.Children.Clear();
+            MainGrid.Children.Add(new LoginLayout());
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        }
+        public void LoadHomeLayout()
         {
-            var un = unBox.Text;
-            var pw = pwBox.Text;
-            // Tìm tài khoản trong cơ sở dữ liệu
-            if (AccountController.Instance.login(un, pw))
-            {
-                MessageBox.Show("To ADMIN GUI");
-                return;
-            }
-            MessageBox.Show("Sai tài khoản hoặc mật khẩu!!!");
+            MainGrid.Children.Clear();
+            MainGrid.Children.Add(new HomeLayout());
         }
     }
 }
