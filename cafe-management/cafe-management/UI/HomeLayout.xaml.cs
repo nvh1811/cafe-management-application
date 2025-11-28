@@ -24,5 +24,24 @@ namespace cafe_management.UI
         {
             InitializeComponent();
         }
+        private void AccountButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.ContentTemplate = (DataTemplate)FindResource("AccountTemplate");
+        }
+
+        private void TableButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.ContentTemplate = (DataTemplate)FindResource("TableTemplate");
+        }
+
+        private void MenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.ContentTemplate = (DataTemplate)FindResource("MenuTemplate");
+        }
+
+        private void BillButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.ContentTemplate = (DataTemplate)FindResource("BillTemplate");
+        }
     }
 }
