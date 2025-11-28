@@ -11,7 +11,7 @@
 
     <Border CornerRadius="12">
         <Border.Background>
-            <ImageBrush ImageSource="/Images/Coffee drinks.jpg"
+            <ImageBrush ImageSource="/Images/CoffeeDrinks.jpg"
                         Stretch="None"/>
         </Border.Background>
         <Border CornerRadius="10"
@@ -88,7 +88,7 @@
                         FontFamily="Montserrat"
                         Cursor="Hand"
                         Grid.Column="2"
-                        Click="buttonClose_Click">
+                        Click="buttonClose_Click" Height="30" VerticalAlignment="Top">
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Setter Property="Background" Value="#743014"/>

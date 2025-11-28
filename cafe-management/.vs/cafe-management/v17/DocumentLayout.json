@@ -7,24 +7,24 @@
       "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\ui\\loginlayout.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\ui\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\ui\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\cafe-management.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\cafe-management.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\ui\\loginlayout.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\ui\\loginlayout.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\ui\\homelayout.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\ui\\homelayout.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\cafe-management.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\cafe-management.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\dao\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -45,11 +45,61 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "App.xaml",
+              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\App.xaml",
+              "RelativeDocumentMoniker": "cafe-management\\App.xaml",
+              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\App.xaml",
+              "RelativeToolTip": "cafe-management\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-28T02:30:51.77Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LoginLayout.xaml.cs",
+              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\UI\\LoginLayout.xaml.cs",
+              "RelativeDocumentMoniker": "cafe-management\\UI\\LoginLayout.xaml.cs",
+              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\UI\\LoginLayout.xaml.cs",
+              "RelativeToolTip": "cafe-management\\UI\\LoginLayout.xaml.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAcwBkAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T09:44:18.085Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "cafe-management\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\MainWindow.xaml.cs",
+              "RelativeToolTip": "cafe-management\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T08:32:55.611Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HomeLayout.xaml",
+              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\UI\\HomeLayout.xaml",
+              "RelativeDocumentMoniker": "cafe-management\\UI\\HomeLayout.xaml",
+              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\UI\\HomeLayout.xaml",
+              "RelativeToolTip": "cafe-management\\UI\\HomeLayout.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-26T11:16:10.976Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -65,45 +115,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LoginView.xaml",
-              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\UI\\LoginView.xaml",
-              "RelativeDocumentMoniker": "cafe-management\\UI\\LoginView.xaml",
-              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\UI\\LoginView.xaml",
-              "RelativeToolTip": "cafe-management\\UI\\LoginView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-27T16:51:26.518Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "LoginLayout.xaml.cs",
-              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\UI\\LoginLayout.xaml.cs",
-              "RelativeDocumentMoniker": "cafe-management\\UI\\LoginLayout.xaml.cs",
-              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\UI\\LoginLayout.xaml.cs",
-              "RelativeToolTip": "cafe-management\\UI\\LoginLayout.xaml.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAADwvyMAAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T09:44:18.085Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "cafe-management\\MainWindow.xaml.cs",
-              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\MainWindow.xaml.cs",
-              "RelativeToolTip": "cafe-management\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-26T08:32:55.611Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "cafe-management.csproj",
               "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\cafe-management.csproj",
               "RelativeDocumentMoniker": "cafe-management\\cafe-management.csproj",
@@ -111,20 +123,7 @@
               "RelativeToolTip": "cafe-management\\cafe-management.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-11-26T08:39:16.273Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "HomeLayout.xaml",
-              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\UI\\HomeLayout.xaml",
-              "RelativeDocumentMoniker": "cafe-management\\UI\\HomeLayout.xaml",
-              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\UI\\HomeLayout.xaml",
-              "RelativeToolTip": "cafe-management\\UI\\HomeLayout.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-26T11:16:10.976Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-26T08:39:16.273Z"
             },
             {
               "$type": "Document",

@@ -25,11 +25,12 @@ namespace cafe_management.UI
         {
             InitializeComponent();
         }
-        private void Login_Click(object sender, RoutedEventArgs e)
+
+        private void buttonLogin_Click(object sender, RoutedEventArgs e)
         {
             string user = txtUser.Text;
-            string pass = txtPass.Password;
-            if(AccountController.Instance.login(user, pass))
+            string pass = txtPassWord.Password;
+            if (AccountController.Instance.login(user, pass))
             {
                 // Đăng nhập thành công
                 // Chuyển đến giao diện chính của ứng dụng
@@ -41,6 +42,21 @@ namespace cafe_management.UI
                 // Đăng nhập thất bại
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng.", "Lỗi đăng nhập", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+        private void buttonMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            // Thu nhỏ cửa sổ cha (MainWindow)
+            Window parent = Window.GetWindow(this);
+            if (parent != null)
+            {
+                parent.WindowState = WindowState.Minimized;
+            }
+        }
+
+        private void buttonClose_Click(object sender, RoutedEventArgs e)
+        {
+            // Đóng ứng dụng
+            Application.Current.Shutdown();
         }
     }
 }

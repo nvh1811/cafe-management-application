@@ -226,4 +226,3 @@ D:\HUST\KTPM\BigAss\cafe-management\cafe-management\obj\Debug\net8.0-windows\caf
 D:\HUST\KTPM\BigAss\cafe-management\cafe-management\obj\Debug\net8.0-windows\ref\cafe-management.dll
 D:\HUST\KTPM\BigAss\cafe-management\cafe-management\obj\Debug\net8.0-windows\UI\HomeLayout.g.cs
 D:\HUST\KTPM\BigAss\cafe-management\cafe-management\obj\Debug\net8.0-windows\UI\HomeLayout.baml
-D:\HUST\KTPM\BigAss\cafe-management\cafe-management\obj\Debug\net8.0-windows\UI\LoginView.g.cs
