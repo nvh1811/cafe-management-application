@@ -102,7 +102,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="BmIWuTtaKr5qAmGuj40l-101" parent="1" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;" value="KhachHang" vertex="1">
-          <mxGeometry height="150" width="170" x="329" y="820" as="geometry">
+          <mxGeometry height="150" width="170" x="610" y="600" as="geometry">
             <mxRectangle height="30" width="100" x="70" y="520" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -406,6 +406,10 @@
         </mxCell>
         <mxCell id="BmIWuTtaKr5qAmGuj40l-176" edge="1" parent="1" source="BmIWuTtaKr5qAmGuj40l-102" style="edgeStyle=orthogonalEdgeStyle;fontSize=12;html=1;endArrow=ERoneToMany;rounded=0;" target="BmIWuTtaKr5qAmGuj40l-153" value="">
           <mxGeometry height="100" relative="1" width="100" as="geometry">
+            <Array as="points">
+              <mxPoint x="590" y="645" />
+              <mxPoint x="590" y="505" />
+            </Array>
             <mxPoint x="660" y="880" as="sourcePoint" />
             <mxPoint x="630" y="880" as="targetPoint" />
           </mxGeometry>

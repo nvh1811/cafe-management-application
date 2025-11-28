@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\ui\\homelayout.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\ui\\homelayout.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\ui\\loginlayout.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\ui\\loginlayout.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\ui\\loginlayout.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\ui\\loginlayout.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\ui\\homelayout.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\ui\\homelayout.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -45,7 +45,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -65,7 +65,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "LoginLayout.xaml.cs",
               "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\UI\\LoginLayout.xaml.cs",
               "RelativeDocumentMoniker": "cafe-management\\UI\\LoginLayout.xaml.cs",
@@ -89,19 +89,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "HomeLayout.xaml",
               "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\UI\\HomeLayout.xaml",
               "RelativeDocumentMoniker": "cafe-management\\UI\\HomeLayout.xaml",
               "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\UI\\HomeLayout.xaml",
               "RelativeToolTip": "cafe-management\\UI\\HomeLayout.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-26T11:16:10.976Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-26T11:16:10.976Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "LoginLayout.xaml",
               "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\UI\\LoginLayout.xaml",
               "RelativeDocumentMoniker": "cafe-management\\UI\\LoginLayout.xaml",
