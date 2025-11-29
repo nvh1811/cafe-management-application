@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\nguye\Source\Repos\cafe-management-application\cafe-management\cafe-management\App.xaml
-3-1745651435
+4-1496724861
 
-10471832860
+11-1852268007
 218920994060
-MainWindow.xaml;UI\HomeLayout.xaml;UI\LoginLayout.xaml;
+MainWindow.xaml;UI\ChangePasswordLayout.xaml;UI\HomeLayout.xaml;UI\LoginLayout.xaml;
 
-True
+False
 
