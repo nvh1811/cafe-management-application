@@ -43,20 +43,10 @@ namespace cafe_management.UI
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng.", "Lỗi đăng nhập", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        private void buttonMinimize_Click(object sender, RoutedEventArgs e)
+                                       
+        private void TextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            // Thu nhỏ cửa sổ cha (MainWindow)
-            Window parent = Window.GetWindow(this);
-            if (parent != null)
-            {
-                parent.WindowState = WindowState.Minimized;
-            }
-        }
 
-        private void buttonClose_Click(object sender, RoutedEventArgs e)
-        {
-            // Đóng ứng dụng
-            Application.Current.Shutdown();
         }
     }
 }

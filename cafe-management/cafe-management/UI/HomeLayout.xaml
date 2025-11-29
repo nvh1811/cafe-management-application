@@ -9,8 +9,8 @@
 
         <UserControl.Resources>
         <!-- Account Template -->
-        <DataTemplate x:Key="AccountTemplate">
-            <Grid Background="#35371e">
+        <DataTemplate x:Key="AccountTemplate"                      >
+            <Grid Background="#35371e"                  >
                 <TextBlock Text="ACCOUNT MANAGEMENT" 
                            FontSize="24" FontWeight="Bold"
                            HorizontalAlignment="Center" 
@@ -61,7 +61,8 @@
                          Background="Transparent"/>
                     <Button Content="Exit" 
                             Width="120" Height="35" 
-                            Margin="10" FontWeight="Bold"/>
+                            Margin="0,30,0,0" FontWeight="Bold"
+                            Click="ButtonExitAcc_Click"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -74,16 +75,16 @@
                            HorizontalAlignment="Center" 
                            VerticalAlignment="Top" 
                            Margin="20"/>
-                <WrapPanel HorizontalAlignment="Center" 
-                           VerticalAlignment="Center" 
-                           Margin="20">
+                <WrapPanel HorizontalAlignment="Left" 
+                           VerticalAlignment="Top" 
+                           Margin="10,70,0,0">
                     <!-- Danh sách bàn -->
                     <Border Width="80" Height="80" 
                             Background="#4f772d" 
                             Margin="10" CornerRadius="10"
                             Cursor="Hand">
-                        <TextBlock Text="Bàn 1" 
-                                   Foreground="White" 
+                        <TextBlock Text="Table 1" 
+                                   Foreground="Black" 
                                    HorizontalAlignment="Center" 
                                    VerticalAlignment="Center"
                                    FontWeight="Bold"/>
@@ -92,8 +93,8 @@
                             Background="#90a955" 
                             Margin="10" CornerRadius="10"
                             Cursor="Hand">
-                        <TextBlock Text="Bàn 2" 
-                                   Foreground="White" 
+                        <TextBlock Text="Table 2" 
+                                   Foreground="Black" 
                                    HorizontalAlignment="Center" 
                                    VerticalAlignment="Center"
                                    FontWeight="Bold"/>
@@ -102,7 +103,7 @@
                             Background="#ecf39e" 
                             Margin="10" CornerRadius="10"
                             Cursor="Hand">
-                        <TextBlock Text="Bàn 3" 
+                        <TextBlock Text="Table 3" 
                                    Foreground="Black" 
                                    HorizontalAlignment="Center" 
                                    VerticalAlignment="Center"
@@ -113,12 +114,18 @@
                             HorizontalAlignment="Center" 
                             VerticalAlignment="Bottom" 
                             Margin="20">
-                    <Button Content="Thêm bàn" 
+                    <Button Content="Add Table" 
                             Width="100" Height="35" 
-                            Margin="5"/>
-                    <Button Content="Xóa bàn" 
+                            Margin="5"
+                            Click="ButtonAddTable_Click"/>
+                    <Button Content="Delete Table" 
                             Width="100" Height="35" 
-                            Margin="5"/>
+                            Margin="5"
+                            Click="ButtonDeleteTable_Click"/>
+                    <Button Content="Edit Table" 
+                            Width="100" Height="35" 
+                            Margin="5"
+                            Click="ButtonEditTable_Click"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -160,6 +167,19 @@
                         </StackPanel>
                     </ListViewItem>
                 </ListView>
+                <StackPanel Orientation="Horizontal" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Bottom" 
+                            Margin="20">
+                    <Button Content="Add Food" 
+                            Width="100" Height="35"                             
+                            Margin="15"
+                            Click="ButtonAddFood_Click"/>
+                    <Button Content="Delete Food" 
+                            Width="100" Height="35"                             
+                            Margin="15"
+                            Click="ButtonDeleteFood_Click"/>
+                </StackPanel>
             </Grid>
         </DataTemplate>
 
@@ -183,7 +203,7 @@
                     <TextBlock Text="Tổng tiền: 75.000đ" 
                                FontSize="16" FontWeight="Bold" 
                                Foreground="#3e000c" Margin="10"/>
-                    <Button Content="In hóa đơn" 
+                    <Button Content="Print Bill" 
                             Width="120" Height="35" 
                             Margin="10" FontWeight="Bold"/>
                 </StackPanel>
@@ -194,12 +214,9 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <!-- Hàng 1: Header -->
-            <RowDefinition Height="*"/>
-            <!-- Hàng 2: Content -->
+            <RowDefinition Height="*"/>          
         </Grid.RowDefinitions>
-
-        <!-- Hàng 1: Header -->
+        
         <Border Grid.Row="0" Background="#3e080c" Padding="15">
             <TextBlock Text="CAFE MANAGEMENT SYSTEM" 
                        Foreground="White" 
@@ -214,11 +231,11 @@
                 <ColumnDefinition Width="*"/>                
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0" Background="#f5f5f5" Margin="10">
+            <StackPanel Grid.Column="0" Background="Transparent" Margin="10">
                 <Button x:Name="AccountButton" Content="👤 Account" 
                         Height="40" Margin="5" FontSize="14" FontWeight="Bold"
                         Background="#35371e"
-                        Foreground="#ffead8"
+                        Foreground="#ffead8"                        
                         Click="AccountButton_Click"/>
                 <Button x:Name="TableButton" Content="📊 Table" 
                         Height="40" Margin="5" FontSize="14" FontWeight="Bold"

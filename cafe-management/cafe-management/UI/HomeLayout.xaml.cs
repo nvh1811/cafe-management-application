@@ -43,5 +43,35 @@ namespace cafe_management.UI
         {
             MainContent.ContentTemplate = (DataTemplate)FindResource("BillTemplate");
         }
+
+        private void ButtonExitAcc_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonAddTable_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonDeleteTable_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonEditTable_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonAddFood_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonDeleteFood_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

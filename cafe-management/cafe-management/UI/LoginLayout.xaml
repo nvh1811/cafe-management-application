@@ -168,14 +168,15 @@
                            Foreground="#3e000c"
                            FontSize="12"
                            FontWeight="Medium"
-                           FontFamily="Montserrat"                           />
-                        <TextBlock Text="Reset"
+                           FontFamily="Montserrat"/>
+                        <TextBlock Text="Change Passord"
                            Foreground="#743014"
                            FontSize="12"
                            FontWeight="Medium"
                            FontFamily="Montserrat"
                            Cursor="Hand"
-                           Margin="8,0,0,0"/>
+                           Margin="8,0,0,0"
+                           MouseLeftButtonUp="TextBlock_MouseLeftButtonUp"/>
                     </StackPanel>
                 </StackPanel>
             </Grid>
