@@ -21,14 +21,23 @@ namespace cafe_management
         {
             InitializeComponent();
             // Hiển thị trang đăng nhập
-            MainGrid.Children.Clear();
-            MainGrid.Children.Add(new LoginLayout());
 
+            LoadLoginLayout();
         }
         public void LoadHomeLayout()
         {
             MainGrid.Children.Clear();
             MainGrid.Children.Add(new HomeLayout());
+        }
+        public void LoadLoginLayout()
+        {
+            MainGrid.Children.Clear();
+            MainGrid.Children.Add(new LoginLayout());
+        }
+        public void LoadChangePassLayout()
+        {
+            MainGrid.Children.Clear();
+            MainGrid.Children.Add(new ChangePasswordLayout());
         }
     }
 }

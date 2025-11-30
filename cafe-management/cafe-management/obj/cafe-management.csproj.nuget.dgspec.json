@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nguye\\Source\\Repos\\cafe-management-application\\cafe-management\\cafe-management\\cafe-management.csproj": {}
+    "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\cafe-management.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nguye\\Source\\Repos\\cafe-management-application\\cafe-management\\cafe-management\\cafe-management.csproj": {
+    "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\cafe-management.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nguye\\Source\\Repos\\cafe-management-application\\cafe-management\\cafe-management\\cafe-management.csproj",
+        "projectUniqueName": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\cafe-management.csproj",
         "projectName": "cafe-management",
-        "projectPath": "C:\\Users\\nguye\\Source\\Repos\\cafe-management-application\\cafe-management\\cafe-management\\cafe-management.csproj",
-        "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nguye\\Source\\Repos\\cafe-management-application\\cafe-management\\cafe-management\\obj\\",
+        "projectPath": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\cafe-management.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -78,7 +74,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

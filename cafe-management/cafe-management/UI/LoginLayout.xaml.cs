@@ -28,8 +28,8 @@ namespace cafe_management.UI
 
         private void buttonLogin_Click(object sender, RoutedEventArgs e)
         {
-            string user = txtUser.Text;
-            string pass = txtPassWord.Password;
+            string user = "admin";// txtUser.Text;
+            string pass = "1234"; // txtPassWord.Password;
             if (AccountController.Instance.login(user, pass))
             {
                 // Đăng nhập thành công
@@ -46,7 +46,8 @@ namespace cafe_management.UI
        
         private void buttonChangepassword_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow main = (MainWindow)Window.GetWindow(this);
+            main.LoadChangePassLayout();
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Windows.Media;
 using System.Linq;
 using System;
 using System.Collections.Generic;
+using cafe_management.DAO;
 
 namespace cafe_management.UI
 {
@@ -28,73 +29,8 @@ namespace cafe_management.UI
         public HomeLayout()
         {
             InitializeComponent();
-            InitializeTables();
-            InitializeBills();
-            InitializeMenu();
-
-            // Đảm bảo hiển thị TableTemplate khi khởi động
-            MainContent.ContentTemplate = (DataTemplate)Resources["TableTemplate"];
         }
 
-        private void InitializeTables()
-        {
-            // Khởi tạo thông tin 6 bàn
-            _tables.Clear();
-            _tables.Add(1, new TableInfo { TableId = 1, TableName = "Bàn 1", Status = "Trống", Seats = 4, StatusColor = Colors.Green });
-            _tables.Add(2, new TableInfo { TableId = 2, TableName = "Bàn 2", Status = "Có khách", Seats = 2, StatusColor = Colors.Orange });
-            _tables.Add(3, new TableInfo { TableId = 3, TableName = "Bàn 3", Status = "Trống", Seats = 6, StatusColor = Colors.Green });
-            _tables.Add(4, new TableInfo { TableId = 4, TableName = "Bàn 4", Status = "Đặt trước", Seats = 4, StatusColor = Colors.Yellow });
-            _tables.Add(5, new TableInfo { TableId = 5, TableName = "Bàn 5", Status = "Có khách", Seats = 8, StatusColor = Colors.Orange });
-            _tables.Add(6, new TableInfo { TableId = 6, TableName = "Bàn 6", Status = "Trống", Seats = 4, StatusColor = Colors.Green });
-        }
-
-        private void InitializeMenu()
-        {
-            MenuItems.Clear();
-
-            // Thêm các món đồ uống
-            MenuItems.Add(new FoodItem { Id = 1, Name = "Cà phê đen", Price = 20000, Category = "Đồ uống" });
-            MenuItems.Add(new FoodItem { Id = 2, Name = "Cà phê sữa", Price = 25000, Category = "Đồ uống" });
-            MenuItems.Add(new FoodItem { Id = 3, Name = "Trà đá", Price = 10000, Category = "Đồ uống" });
-            MenuItems.Add(new FoodItem { Id = 4, Name = "Trà sữa", Price = 30000, Category = "Đồ uống" });
-            MenuItems.Add(new FoodItem { Id = 5, Name = "Nước cam", Price = 25000, Category = "Đồ uống" });
-            MenuItems.Add(new FoodItem { Id = 6, Name = "Sinh tố xoài", Price = 35000, Category = "Đồ uống" });
-
-            // Thêm các món đồ ăn            
-            MenuItems.Add(new FoodItem { Id = 9, Name = "Bánh ngọt", Price = 12000, Category = "Đồ ăn" });
-            MenuItems.Add(new FoodItem { Id = 10, Name = "Bim bim", Price = 10000, Category = "Đồ ăn" });
-            MenuItems.Add(new FoodItem { Id = 11, Name = "Mì tôm", Price = 15000, Category = "Đồ ăn" });
-            MenuItems.Add(new FoodItem { Id = 12, Name = "Xôi", Price = 20000, Category = "Đồ ăn" });
-        }
-
-        private void InitializeBills()
-        {
-            Bills.Clear();
-            // Bill cho bàn 2
-            Bills.Add(new Bill
-            {
-                BillId = "HD001",
-                TableId = 2,
-                StartTime = DateTime.Now.AddHours(-1),
-                Items = new ObservableCollection<BillItem>
-                {
-                    new BillItem { ItemName = "Cà phê đen", Quantity = 2, Price = 20000 },
-                    new BillItem { ItemName = "Bánh ngọt", Quantity = 1, Price = 15000 }
-                }
-            });
-            // Bill cho bàn 5
-            Bills.Add(new Bill
-            {
-                BillId = "HD002",
-                TableId = 5,
-                StartTime = DateTime.Now.AddMinutes(-30),
-                Items = new ObservableCollection<BillItem>
-                {
-                    new BillItem { ItemName = "Cà phê sữa", Quantity = 3, Price = 25000 },
-                    new BillItem { ItemName = "Bánh ngọt", Quantity = 2, Price = 12000 }
-                }
-            });
-        }
 
         #region Table Template Methods
         // Sự kiện khi click vào nút bàn
@@ -320,22 +256,8 @@ namespace cafe_management.UI
 
         private void BtnAddMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            if (ValidateMenuForm())
-            {
-                var newId = MenuItems.Any() ? MenuItems.Max(item => item.Id) + 1 : 1;
 
-                var newMenuItem = new FoodItem
-                {
-                    Id = newId,
-                    Name = GetTextBoxText("txtMenuItemName"),
-                    Price = decimal.Parse(GetTextBoxText("txtMenuItemPrice")),
-                    Category = GetComboBoxText("cmbMenuCategory")
-                };
 
-                MenuItems.Add(newMenuItem);
-                ResetMenuForm();
-                MessageBox.Show("Đã thêm món mới thành công!");
-            }
         }
 
         private void BtnEditMenuItem_Click(object sender, RoutedEventArgs e)
@@ -797,52 +719,59 @@ namespace cafe_management.UI
             MessageBox.Show("Xóa món ăn - Sử dụng Menu Management để xóa món");
         }
         #endregion
-    }
 
-    #region Support Classes
-    // Class lưu thông tin bàn
-    public class TableInfo
-    {
-        public int TableId { get; set; }
-        public string TableName { get; set; } = string.Empty;
-        public string Status { get; set; } = "Trống";
-        public int Seats { get; set; } = 4;
-        public Color StatusColor { get; set; } = Colors.Green;
-    }
+        private void OrderButton_Click(object sender, RoutedEventArgs e)
+        {
 
-    public class Bill
-    {
-        public string BillId { get; set; } = string.Empty;
-        public int TableId { get; set; }
-        public DateTime StartTime { get; set; } = DateTime.Now;
-        public ObservableCollection<BillItem> Items { get; set; } = new ObservableCollection<BillItem>();
+        }
 
-        public decimal TotalAmount => Items.Sum(item => item.Price * item.Quantity);
-    }
 
-    public class BillItem
-    {
-        public string ItemName { get; set; } = string.Empty;
-        public int Quantity { get; set; } = 1;
-        public decimal Price { get; set; }
-    }
+        #region Support Classes
+        // Class lưu thông tin bàn
+        public class TableInfo
+        {
+            public int TableId { get; set; }
+            public string TableName { get; set; } = string.Empty;
+            public string Status { get; set; } = "Trống";
+            public int Seats { get; set; } = 4;
+            public Color StatusColor { get; set; } = Colors.Green;
+        }
 
-    // ĐỔI TÊN từ MenuItem thành FoodItem để tránh xung đột
-    public class FoodItem
-    {
-        public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public decimal Price { get; set; }
-        public string Category { get; set; } = string.Empty;
-    }
+        public class Bill
+        {
+            public string BillId { get; set; } = string.Empty;
+            public int TableId { get; set; }
+            public DateTime StartTime { get; set; } = DateTime.Now;
+            public ObservableCollection<BillItem> Items { get; set; } = new ObservableCollection<BillItem>();
 
-    // Class mới cho Order Item
-    public class OrderItem
-    {
-        public int ItemId { get; set; }
-        public string ItemName { get; set; } = string.Empty;
-        public decimal Price { get; set; }
-        public int Quantity { get; set; }
+            public decimal TotalAmount => Items.Sum(item => item.Price * item.Quantity);
+        }
+
+        public class BillItem
+        {
+            public string ItemName { get; set; } = string.Empty;
+            public int Quantity { get; set; } = 1;
+            public decimal Price { get; set; }
+        }
+
+        // ĐỔI TÊN từ MenuItem thành FoodItem để tránh xung đột
+        public class FoodItem
+        {
+            public int Id { get; set; }
+            public string Name { get; set; } = string.Empty;
+            public decimal Price { get; set; }
+            public string Category { get; set; } = string.Empty;
+        }
+
+        // Class mới cho Order Item
+        public class OrderItem
+        {
+            public int ItemId { get; set; }
+            public string ItemName { get; set; } = string.Empty;
+            public decimal Price { get; set; }
+            public int Quantity { get; set; }
+        }
+        #endregion
+
     }
-    #endregion
 }

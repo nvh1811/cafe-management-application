@@ -531,11 +531,7 @@
                                   Height="30" 
                                   Background="#b0b17a"
                                   Foreground="#ffead8"
-                                  BorderBrush="#ffead8">
-                                    <ComboBoxItem Content="Đồ uống"/>
-                                    <ComboBoxItem Content="Đồ ăn"/>
-                                    <ComboBoxItem Content="Tráng miệng"/>
-                                    <ComboBoxItem Content="Khác"/>
+                                  BorderBrush="#ffead8">                                   
                                 </ComboBox>
                             </StackPanel>
 
