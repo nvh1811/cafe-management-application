@@ -7,10 +7,10 @@
              d:DesignHeight="600" d:DesignWidth="800"
              Background="#cec1a8">
 
-        <UserControl.Resources>
+    <UserControl.Resources>
         <!-- Account Template -->
-        <DataTemplate x:Key="AccountTemplate"                      >
-            <Grid Background="#35371e"                  >
+        <DataTemplate x:Key="AccountTemplate">
+            <Grid Background="#35371e" RenderTransformOrigin="0.486,0.862">
                 <TextBlock Text="ACCOUNT MANAGEMENT" 
                            FontSize="24" FontWeight="Bold"
                            HorizontalAlignment="Center" 
@@ -19,8 +19,7 @@
                            Foreground="#ffead8"/>
                 <StackPanel HorizontalAlignment="Center" 
                             VerticalAlignment="Center" 
-                            Width="300"
-                            >
+                            Width="300">
                     <TextBlock Text="UserName"
                                Foreground="#ffead8"
                                FontSize="12"
@@ -59,154 +58,738 @@
                          Margin="0,5,0,0"
                          Padding="25,5,0,0"
                          Background="Transparent"/>
-                    <Button Content="Exit" 
-                            Width="120" Height="35" 
-                            Margin="0,30,0,0" FontWeight="Bold"
-                            Click="ButtonExitAcc_Click"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Grid Margin="0,20,0,0" Width="300">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Button Content="Đổi mật khẩu" 
+                                    Width="120" Height="35" 
+                                    Margin="0,30,0,0" FontWeight="Bold"
+                                    Click="ButtonChangePass_Click"
+                                    Grid.Column="1"/>
+                            <Button Content="Đăng xuất" 
+                                    Width="120" Height="35" 
+                                    Margin="0,30,0,0" FontWeight="Bold"
+                                    Click="ButtonExitAcc_Click"/>
+                        </Grid>
+                    </StackPanel>
                 </StackPanel>
             </Grid>
         </DataTemplate>
 
-        <!-- Table Template -->
+        <!-- Table Template-->        
         <DataTemplate x:Key="TableTemplate">
             <Grid Background="#4d502c">
                 <TextBlock Text="TABLE MANAGEMENT" 
-                           FontSize="24" FontWeight="Bold" Foreground="#ffeda8"
-                           HorizontalAlignment="Center" 
-                           VerticalAlignment="Top" 
-                           Margin="20"/>
-                <WrapPanel HorizontalAlignment="Left" 
-                           VerticalAlignment="Top" 
-                           Margin="10,70,0,0">
-                    <!-- Danh sách bàn -->
-                    <Border Width="80" Height="80" 
-                            Background="#4f772d" 
-                            Margin="10" CornerRadius="10"
-                            Cursor="Hand">
-                        <TextBlock Text="Table 1" 
-                                   Foreground="Black" 
-                                   HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center"
-                                   FontWeight="Bold"/>
+           FontSize="24" FontWeight="Bold" Foreground="#ffeda8"
+           HorizontalAlignment="Center" 
+           VerticalAlignment="Top" 
+           Margin="20"/>
+
+                <!-- Panel chính chứa danh sách bàn và thông tin chi tiết -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="350"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- 6 nút bàn cố định bên trái -->
+                    <StackPanel Grid.Column="0" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Top" 
+                        Margin="20,70,20,100">
+
+                        <!-- Hàng 1-->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
+                            <Button x:Name="btnTable1" Width="80" Height="80" Margin="10"
+                            Click="TableButton_Click" Tag="1"                            
+                            Background="#4f772d">
+                                <StackPanel>
+                                    <TextBlock Text="Bàn 1" 
+                                       Foreground="Black" 
+                                       HorizontalAlignment="Center"
+                                       FontWeight="Bold"
+                                       FontSize="14"/>
+                                    <TextBlock x:Name="txtStatus1" Text="Trống" 
+                                       Foreground="Black" 
+                                       HorizontalAlignment="Center"
+                                       FontSize="10"
+                                       Margin="0,5,0,0"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="btnTable2" Width="80" Height="80" Margin="10"
+                            Click="TableButton_Click" Tag="2"                            
+                            Background="#90a955">
+                                <StackPanel>
+                                    <TextBlock Text="Bàn 2" 
+                                       Foreground="Black" 
+                                       HorizontalAlignment="Center"
+                                       FontWeight="Bold"
+                                       FontSize="14"/>
+                                    <TextBlock x:Name="txtStatus2" Text="Có khách" 
+                                       Foreground="Black" 
+                                       HorizontalAlignment="Center"
+                                       FontSize="10"
+                                       Margin="0,5,0,0"/>
+                                </StackPanel>
+                            </Button>                            
+                        </StackPanel>
+
+                        <!-- Hàng 2-->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button x:Name="btnTable3" Width="80" Height="80" Margin="10"
+                                    Click="TableButton_Click" Tag="3"                            
+                                    Background="#4f772d">
+                                <StackPanel>
+                                    <TextBlock Text="Bàn 3" 
+                                               Foreground="Black" 
+                                               HorizontalAlignment="Center"
+                                               FontWeight="Bold"
+                                               FontSize="14"/>
+                                    <TextBlock x:Name="txtStatus3" Text="Trống" 
+                                               Foreground="Black" 
+                                               HorizontalAlignment="Center"
+                                               FontSize="10"
+                                               Margin="0,5,0,0"/>
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="btnTable4" Width="80" Height="80" Margin="10"
+                                    Click="TableButton_Click" Tag="4"                            
+                                    Background="#ecf39e">
+                                <StackPanel>
+                                    <TextBlock Text="Bàn 4" 
+                                               Foreground="Black" 
+                                               HorizontalAlignment="Center"
+                                               FontWeight="Bold"
+                                               FontSize="14"/>
+                                    <TextBlock x:Name="txtStatus4" Text="Đặt trước" 
+                                               Foreground="Black" 
+                                               HorizontalAlignment="Center"
+                                               FontSize="10"
+                                               Margin="0,5,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+
+                        <!-- Hàng 3-->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            
+                            <Button x:Name="btnTable5" Width="80" Height="80" Margin="10"
+                            Click="TableButton_Click" Tag="5"                            
+                            Background="#90a955">
+                                <StackPanel>
+                                    <TextBlock Text="Bàn 5" 
+                                       Foreground="Black" 
+                                       HorizontalAlignment="Center"
+                                       FontWeight="Bold"
+                                       FontSize="14"/>
+                                    <TextBlock x:Name="txtStatus5" Text="Có khách" 
+                                       Foreground="Black" 
+                                       HorizontalAlignment="Center"
+                                       FontSize="10"
+                                       Margin="0,5,0,0"/>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="btnTable6" Width="80" Height="80" Margin="10"
+                            Click="TableButton_Click" Tag="6"                            
+                            Background="#4f772d">
+                                <StackPanel>
+                                    <TextBlock Text="Bàn 6" 
+                                       Foreground="Black" 
+                                       HorizontalAlignment="Center"
+                                       FontWeight="Bold"
+                                       FontSize="14"/>
+                                    <TextBlock x:Name="txtStatus6" Text="Trống" 
+                                       Foreground="Black" 
+                                       HorizontalAlignment="Center"
+                                       FontSize="10"
+                                       Margin="0,5,0,0"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Panel thông tin chi tiết bên phải -->
+                    <Border Grid.Column="1" 
+                    Background="#5a5d34" 
+                    Margin="10,70,20,100" 
+                    CornerRadius="10" 
+                    BorderBrush="#ffeda8" 
+                    BorderThickness="2"
+                    Padding="15">
+                        <StackPanel>
+                            <TextBlock Text="THÔNG TIN BÀN" 
+                               Foreground="#ffeda8" 
+                               FontSize="18" 
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,15"/>
+
+                            <!-- Hiển thị khi chưa chọn bàn -->
+                            <TextBlock x:Name="txtNoTableSelected" 
+                               Text="Chọn một bàn để xem chi tiết" 
+                               Foreground="#ffeda8" 
+                               FontSize="14"
+                               HorizontalAlignment="Center"
+                               Margin="0,50,0,0"
+                               Visibility="Visible"/>
+
+                            <!-- Thông tin bàn chi tiết -->
+                            <StackPanel x:Name="TableDetailPanel" Visibility="Collapsed">
+                                <Border Background="#6a6d3c" CornerRadius="8" Padding="15">
+                                    <StackPanel>
+                                        <TextBlock x:Name="txtTableName" 
+                                           Foreground="#ffeda8" 
+                                           FontSize="16" 
+                                           FontWeight="Bold"
+                                           TextAlignment="Center"/>
+                                        <Rectangle Height="1" Fill="#ffeda8" Margin="0,8,0,12" Opacity="0.3"/>
+
+                                        <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
+                                            <TextBlock Text="Trạng thái: " 
+                                               Foreground="#ffeda8" 
+                                               FontSize="12"
+                                               FontWeight="SemiBold"/>
+                                            <TextBlock x:Name="txtTableStatus" 
+                                               Foreground="#ffeda8" 
+                                               FontSize="12"/>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
+                                            <TextBlock Text="Số ghế: " 
+                                               Foreground="#ffeda8" 
+                                               FontSize="12"
+                                               FontWeight="SemiBold"/>
+                                            <TextBlock x:Name="txtTableSeats" 
+                                               Foreground="#ffeda8" 
+                                               FontSize="12"/>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
+                                            <TextBlock Text="Mã bàn: " 
+                                               Foreground="#ffeda8" 
+                                               FontSize="12"
+                                               FontWeight="SemiBold"/>
+                                            <TextBlock x:Name="txtTableId" 
+                                               Foreground="#ffeda8" 
+                                               FontSize="12"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Thông tin Bill -->
+                                <Border Background="#6a6d3c" 
+                                CornerRadius="8" 
+                                Padding="15" 
+                                Margin="0,15,0,0">
+                                    <StackPanel>
+                                        <TextBlock Text="THÔNG TIN HÓA ĐƠN" 
+                                           Foreground="#ffeda8" 
+                                           FontSize="14" 
+                                           FontWeight="Bold"
+                                           HorizontalAlignment="Center"/>
+                                        <Rectangle Height="1" Fill="#ffeda8" Margin="0,8,0,12" Opacity="0.3"/>
+
+                                        <StackPanel x:Name="NoBillPanel">
+                                            <TextBlock Text="Bàn trống" 
+                                               Foreground="#ffeda8" 
+                                               FontSize="12"
+                                               HorizontalAlignment="Center"/>
+                                            <Button x:Name="btnCreateBill" 
+                                            Content="Tạo hóa đơn" 
+                                            Width="120" Height="30" 
+                                            Click="BtnCreateBill_Click"
+                                            Background="#4f772d"
+                                            Foreground="White"
+                                            FontWeight="Bold"
+                                            Margin="0,10,0,0"/>
+                                        </StackPanel>
+
+                                        <StackPanel x:Name="BillDetailPanel" Visibility="Collapsed">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Mã HD: " 
+                                                   Foreground="#ffeda8" 
+                                                   FontSize="12"
+                                                   FontWeight="SemiBold"/>
+                                                <TextBlock x:Name="txtBillId" 
+                                                   Foreground="#ffeda8" 
+                                                   FontSize="12"/>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
+                                                <TextBlock Text="Thời gian: " 
+                                                   Foreground="#ffeda8" 
+                                                   FontSize="12"
+                                                   FontWeight="SemiBold"/>
+                                                <TextBlock x:Name="txtBillTime" 
+                                                   Foreground="#ffeda8" 
+                                                   FontSize="12"/>
+                                            </StackPanel>
+
+                                            <TextBlock x:Name="txtBillTotal" 
+                                               Foreground="#ffeda8" 
+                                               FontSize="14" 
+                                               FontWeight="Bold"
+                                               HorizontalAlignment="Center"
+                                               Margin="0,10,0,5"/>
+
+                                            <Button x:Name="btnCloseBill" 
+                                            Content="Thanh toán" 
+                                            Width="120" Height="30" 
+                                            Click="BtnCloseBill_Click"
+                                            Background="#90a955"
+                                            Foreground="White"
+                                            FontWeight="Bold"
+                                            HorizontalAlignment="Center"
+                                            Margin="0,5,0,0"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
                     </Border>
-                    <Border Width="80" Height="80" 
-                            Background="#90a955" 
-                            Margin="10" CornerRadius="10"
-                            Cursor="Hand">
-                        <TextBlock Text="Table 2" 
-                                   Foreground="Black" 
-                                   HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center"
-                                   FontWeight="Bold"/>
-                    </Border>
-                    <Border Width="80" Height="80" 
-                            Background="#ecf39e" 
-                            Margin="10" CornerRadius="10"
-                            Cursor="Hand">
-                        <TextBlock Text="Table 3" 
-                                   Foreground="Black" 
-                                   HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center"
-                                   FontWeight="Bold"/>
-                    </Border>
-                </WrapPanel>
+                </Grid>
+
+                <!-- Legend trạng thái bàn -->
+                <StackPanel Orientation="Horizontal" 
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Bottom" 
+                            Margin="0,0,0,70">
+                    <Border Width="20" Height="20" Background="#4f772d" Margin="5,0" CornerRadius="3"/>
+                    <TextBlock Text="Trống" Foreground="#ffeda8" VerticalAlignment="Center" Margin="0,0,15,0"/>
+
+                    <Border Width="20" Height="20" Background="#90a955" Margin="5,0" CornerRadius="3"/>
+                    <TextBlock Text="Có khách" Foreground="#ffeda8" VerticalAlignment="Center" Margin="0,0,15,0"/>
+
+                    <Border Width="20" Height="20" Background="#ecf39e" Margin="5,0" CornerRadius="3"/>
+                    <TextBlock Text="Đặt trước" Foreground="#ffeda8" VerticalAlignment="Center"/>
+                </StackPanel>
+
                 <StackPanel Orientation="Horizontal" 
                             HorizontalAlignment="Center" 
                             VerticalAlignment="Bottom" 
                             Margin="20">
-                    <Button Content="Add Table" 
+                    <Button Content="Thêm bàn" 
                             Width="100" Height="35" 
                             Margin="5"
-                            Click="ButtonAddTable_Click"/>
-                    <Button Content="Delete Table" 
+                            Click="ButtonAddTable_Click"
+                            Background="#4f772d"
+                            Foreground="White"/>
+                    <Button Content="Xóa bàn" 
                             Width="100" Height="35" 
                             Margin="5"
-                            Click="ButtonDeleteTable_Click"/>
-                    <Button Content="Edit Table" 
+                            Click="ButtonDeleteTable_Click"
+                            Background="#bc4749"
+                            Foreground="White"/>
+                    <Button Content="Sửa bàn" 
                             Width="100" Height="35" 
                             Margin="5"
-                            Click="ButtonEditTable_Click"/>
+                            Click="ButtonEditTable_Click"
+                            Background="#90a955"
+                            Foreground="White"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
 
-        <!-- Menu Template -->
+        <!-- Menu Template với chức năng CRUD -->
         <DataTemplate x:Key="MenuTemplate">
             <Grid Background="#707143">
                 <TextBlock Text="MENU MANAGEMENT" 
-                           FontSize="24" FontWeight="Bold"
-                           HorizontalAlignment="Center" 
-                           VerticalAlignment="Top" 
-                           Margin="20"
-                           Foreground="#ffead8"/>
-                <ListView Width="400" Height="300" 
-                          HorizontalAlignment="Center" 
-                          VerticalAlignment="Center">
-                    <ListViewItem>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Cà phê đen" 
-                                       Width="200"/>
-                            <TextBlock Text="20.000đ" 
-                                       FontWeight="Bold"/>
+                   FontSize="24" FontWeight="Bold"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Top" 
+                   Margin="20"
+                   Foreground="#ffead8"/>
+
+                <Grid Margin="20,70,20,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="250"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Danh sách menu bên trái -->
+                    <StackPanel Grid.Column="0" Margin="0,0,20,0">
+                        <TextBlock Text="DANH SÁCH MÓN ĂN" 
+                           Foreground="#ffead8" 
+                           FontSize="16" 
+                           FontWeight="Bold"
+                           Margin="0,0,0,10"/>
+
+                        <!-- Thanh tìm kiếm -->
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                            <TextBox x:Name="txtSearchMenu" 
+                             Width="200" Height="30" 
+                             Padding="5"
+                             TextChanged="TxtSearchMenu_TextChanged"
+                             Background="#8a8c5d"
+                             Foreground="#ffead8"
+                             BorderBrush="#ffead8"/>
                         </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Cà phê sữa" 
-                                       Width="200"/>
-                            <TextBlock Text="25.000đ" 
-                                       FontWeight="Bold"/>
+
+                        <!-- DataGrid danh sách món ăn -->
+                        <DataGrid x:Name="dgMenuItems" 
+                         AutoGenerateColumns="False"
+                         Height="300" 
+                         Background="#8a8c5d"
+                         BorderBrush="#ffead8"
+                         Foreground="#3e000c"
+                         HeadersVisibility="Column"
+                         CanUserAddRows="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Tên món" 
+                                          Binding="{Binding Name}" 
+                                          Width="60"
+                                          Foreground="#ffead8"/>
+                                <DataGridTextColumn Header="Giá" 
+                                          Binding="{Binding Price, StringFormat={}{0:N0}đ}" 
+                                          Width="40"
+                                          Foreground="#ffead8"/>
+                                <DataGridTextColumn Header="Danh mục" 
+                                          Binding="{Binding Category}" 
+                                          Width="90"
+                                          Foreground="#ffead8"/>
+                                <DataGridTemplateColumn Header="Thao tác" Width="90">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button Content="Sửa" 
+                                                Width="50" Height="25" 
+                                                Margin="2"
+                                                Background="#90a955"
+                                                Foreground="White"
+                                                FontSize="10"
+                                                Click="BtnEditMenuItem_Click"
+                                                Tag="{Binding Id}"/>
+                                                <Button Content="Xóa" 
+                                                Width="50" Height="25" 
+                                                Margin="2"
+                                                Background="#bc4749"
+                                                Foreground="White"
+                                                FontSize="10"
+                                                Click="BtnDeleteMenuItem_Click"
+                                                Tag="{Binding Id}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+
+                    <!-- Form thêm/sửa món ăn bên phải -->
+                    <Border Grid.Column="1" 
+                    Background="#8a8c5d" 
+                    CornerRadius="10" 
+                    Padding="15">
+                        <StackPanel>
+                            <TextBlock Text="THÊM/CHỈNH SỬA MÓN ĂN" 
+                               Foreground="#ffead8" 
+                               FontSize="16" 
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,15"/>
+
+                            <StackPanel>
+                                <TextBlock Text="Tên món:" 
+                                   Foreground="#ffead8" 
+                                   FontSize="12"
+                                   FontWeight="SemiBold"
+                                   Margin="0,0,0,5"/>
+                                <TextBox x:Name="txtMenuItemName" 
+                                 Height="30" 
+                                 Background="#b0b17a"
+                                 Foreground="#ffead8"
+                                 BorderBrush="#ffead8"
+                                 Padding="5"/>
+                            </StackPanel>
+
+                            <StackPanel Margin="0,10,0,0">
+                                <TextBlock Text="Giá:" 
+                                   Foreground="#ffead8" 
+                                   FontSize="12"
+                                   FontWeight="SemiBold"
+                                   Margin="0,0,0,5"/>
+                                <TextBox x:Name="txtMenuItemPrice" 
+                                 Height="30" 
+                                 Background="#b0b17a"
+                                 Foreground="#ffead8"
+                                 BorderBrush="#ffead8"
+                                 Padding="5"/>
+                            </StackPanel>
+
+                            <StackPanel Margin="0,10,0,0">
+                                <TextBlock Text="Danh mục:" 
+                                   Foreground="#ffead8" 
+                                   FontSize="12"
+                                   FontWeight="SemiBold"
+                                   Margin="0,0,0,5"/>
+                                <ComboBox x:Name="cmbMenuCategory" 
+                                  Height="30" 
+                                  Background="#b0b17a"
+                                  Foreground="#ffead8"
+                                  BorderBrush="#ffead8">
+                                    <ComboBoxItem Content="Đồ uống"/>
+                                    <ComboBoxItem Content="Đồ ăn"/>
+                                    <ComboBoxItem Content="Tráng miệng"/>
+                                    <ComboBoxItem Content="Khác"/>
+                                </ComboBox>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" 
+                                HorizontalAlignment="Center" 
+                                Margin="0,20,0,0">
+                                <Button x:Name="btnAddMenuItem" 
+                                Content="Thêm món" 
+                                Width="100" Height="35" 
+                                Margin="0,0,10,0"
+                                Background="#4f772d"
+                                Foreground="White"
+                                FontWeight="Bold"
+                                Click="BtnAddMenuItem_Click"/>
+                                <Button x:Name="btnUpdateMenuItem" 
+                                Content="Cập nhật" 
+                                Width="100" Height="35" 
+                                Background="#90a955"
+                                Foreground="White"
+                                FontWeight="Bold"
+                                Click="BtnUpdateMenuItem_Click"
+                                Visibility="Collapsed"/>
+                                <Button x:Name="btnCancelEdit" 
+                                Content="Hủy" 
+                                Width="60" Height="35" 
+                                Margin="10,0,0,0"
+                                Background="#bc4749"
+                                Foreground="White"
+                                FontWeight="Bold"
+                                Click="BtnCancelEdit_Click"
+                                Visibility="Collapsed"/>
+                            </StackPanel>
                         </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Trà đá" 
-                                       Width="200"/>
-                            <TextBlock Text="10.000đ" 
-                                       FontWeight="Bold"/>
-                        </StackPanel>
-                    </ListViewItem>
-                </ListView>
-                <StackPanel Orientation="Horizontal" 
-                            HorizontalAlignment="Center" 
-                            VerticalAlignment="Bottom" 
-                            Margin="20">
-                    <Button Content="Add Food" 
-                            Width="100" Height="35"                             
-                            Margin="15"
-                            Click="ButtonAddFood_Click"/>
-                    <Button Content="Delete Food" 
-                            Width="100" Height="35"                             
-                            Margin="15"
-                            Click="ButtonDeleteFood_Click"/>
-                </StackPanel>
+                    </Border>
+                </Grid>
             </Grid>
         </DataTemplate>
 
-        <!-- Bill Template -->
-        <DataTemplate x:Key="BillTemplate">
+        <!-- Order Template -->
+        <DataTemplate x:Key="OrderTemplate">
             <Grid Background="#98995a">
-                <TextBlock Text="BILL MANAGEMENT" 
-                           FontSize="24" FontWeight="Bold"
-                           HorizontalAlignment="Center" 
-                           VerticalAlignment="Top" 
-                           Margin="20"
-                           Foreground="#ffead8"/>
-                <StackPanel HorizontalAlignment="Center" 
-                            VerticalAlignment="Center" 
-                            Width="400">
-                    <TextBlock Text="Hóa đơn #001" 
-                               FontSize="18" FontWeight="Bold" 
-                               Margin="10"/>
-                    <TextBlock Text="Bàn 1 - 2 người" 
-                               FontSize="14" Margin="10"/>
-                    <TextBlock Text="Tổng tiền: 75.000đ" 
-                               FontSize="16" FontWeight="Bold" 
-                               Foreground="#3e000c" Margin="10"/>
-                    <Button Content="Print Bill" 
-                            Width="120" Height="35" 
-                            Margin="10" FontWeight="Bold"/>
-                </StackPanel>
+                <TextBlock Text="ORDER" 
+                   FontSize="24" FontWeight="Bold"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Top" 
+                   Margin="20"
+                   Foreground="#ffead8"/>
+
+                <Grid Margin="20,70,20,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="300"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Danh sách món ăn bên trái -->
+                    <StackPanel Grid.Column="0" Margin="0,0,20,0">
+                        <TextBlock Text="MENU ĐỒ ĂN/THỨC UỐNG" 
+                           Foreground="#ffead8" 
+                           FontSize="16" 
+                           FontWeight="Bold"
+                           Margin="0,0,0,10"/>
+
+                        <!-- Thanh tìm kiếm -->
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                            <TextBox x:Name="txtSearchFood" 
+                             Width="170" Height="30" 
+                             Padding="5"                             
+                             Background="#b0b17a"
+                             Foreground="#ffead8"
+                             BorderBrush="#ffead8"/>
+                            <Button Content="Tìm" 
+                            Width="40" Height="30" 
+                            Margin="10,0,0,0"
+                            Background="#4f772d"
+                            Foreground="White"
+                            Click="BtnSearchFood_Click"/>
+                        </StackPanel>
+
+                        <!-- ListBox danh sách món ăn -->
+                        <ListBox x:Name="lstMenuItems" 
+                         Height="300" 
+                         Background="#b0b17a"
+                         BorderBrush="#ffead8"
+                         Foreground="#ffead8">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="#8a8c5d" 
+                                    CornerRadius="5" 
+                                    Margin="2" 
+                                    Padding="10">
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding Name}" 
+                                               FontSize="14" 
+                                               FontWeight="Bold"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Price, StringFormat={}{0:N0}đ}" 
+                                                   FontSize="12"
+                                                   Foreground="#ffeda8"/>
+                                                <TextBlock Text=" • " 
+                                                   FontSize="12"
+                                                   Foreground="#ffeda8"/>
+                                                <TextBlock Text="{Binding Category}" 
+                                                   FontSize="12"
+                                                   Foreground="#ffeda8"/>
+                                            </StackPanel>
+                                            <Button Content="Thêm vào order" 
+                                            Width="100" Height="25" 
+                                            Margin="0,5,0,0"
+                                            Background="#90a955"
+                                            Foreground="White"
+                                            FontSize="10"
+                                            Click="BtnAddToOrder_Click"
+                                            Tag="{Binding Id}"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+
+                    <!-- Order hiện tại bên phải -->
+                    <Border Grid.Column="1" 
+                    Background="#8a8c5d" 
+                    CornerRadius="10" 
+                    Padding="15">
+                        <StackPanel>
+                            <TextBlock Text="ORDER HIỆN TẠI" 
+                               Foreground="#ffead8" 
+                               FontSize="16" 
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,15"/>
+
+                            <!-- Chọn bàn -->
+                            <StackPanel Margin="0,0,0,10">
+                                <TextBlock Text="Chọn bàn:" 
+                                   Foreground="#ffead8" 
+                                   FontSize="12"
+                                   FontWeight="SemiBold"/>
+                                <ComboBox x:Name="cmbTables" 
+                                  Height="30" 
+                                  Background="#b0b17a"
+                                  Foreground="#ffead8"
+                                  BorderBrush="#ffead8"
+                                  DisplayMemberPath="TableName"
+                                  SelectionChanged="CmbTables_SelectionChanged"/>
+                            </StackPanel>
+
+                            <!-- Danh sách món đã order -->
+                            <TextBlock Text="Danh sách món đã order:" 
+                               Foreground="#ffead8" 
+                               FontSize="12"
+                               FontWeight="SemiBold"
+                               Margin="0,10,0,5"/>
+
+                            <ListView x:Name="lstCurrentOrder" 
+                              Height="150" 
+                              Background="#b0b17a"
+                              BorderBrush="#ffead8">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Background="#98995a" 
+                                        CornerRadius="3" 
+                                        Margin="1" 
+                                        Padding="5">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="80"/>
+                                                    <ColumnDefinition Width="30"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackPanel Grid.Column="0">
+                                                    <TextBlock Text="{Binding ItemName}" 
+                                                       Foreground="#ffead8" 
+                                                       FontSize="11"
+                                                       FontWeight="SemiBold"/>
+                                                    <TextBlock Text="{Binding Price, StringFormat={}{0:N0}đ}" 
+                                                       Foreground="#ffeda8" 
+                                                       FontSize="10"/>
+                                                </StackPanel>
+
+                                                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                                                    <Button Content="-" 
+                                                    Width="20" Height="20" 
+                                                    FontSize="8"
+                                                    Background="#bc4749"
+                                                    Foreground="White"
+                                                    Click="BtnDecreaseQuantity_Click"
+                                                    Tag="{Binding ItemId}"/>
+                                                    <TextBlock Text="{Binding Quantity}" 
+                                                       Foreground="#ffead8" 
+                                                       FontSize="11"
+                                                       HorizontalAlignment="Center"
+                                                       VerticalAlignment="Center"
+                                                       Margin="5,0"
+                                                       Width="20"
+                                                       TextAlignment="Center"/>
+                                                    <Button Content="+" 
+                                                    Width="20" Height="20" 
+                                                    FontSize="8"
+                                                    Background="#4f772d"
+                                                    Foreground="White"
+                                                    Click="BtnIncreaseQuantity_Click"
+                                                    Tag="{Binding ItemId}"/>
+                                                </StackPanel>
+
+                                                <Button Grid.Column="2" 
+                                                Content="×" 
+                                                Width="20" Height="20" 
+                                                FontSize="10"
+                                                Background="#bc4749"
+                                                Foreground="White"
+                                                Click="BtnRemoveItem_Click"
+                                                Tag="{Binding ItemId}"/>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+
+                            <!-- Tổng tiền và nút xác nhận -->
+                            <StackPanel Margin="0,15,0,0">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <TextBlock Text="Tổng tiền: " 
+                                       Foreground="#ffead8" 
+                                       FontSize="14"
+                                       FontWeight="SemiBold"/>
+                                    <TextBlock x:Name="txtOrderTotal" 
+                                       Text="0đ" 
+                                       Foreground="#ffeda8" 
+                                       FontSize="14"
+                                       FontWeight="Bold"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                                    <Button Content="Xóa order" 
+                                    Width="100" Height="30" 
+                                    Margin="0,0,10,0"
+                                    Background="#bc4749"
+                                    Foreground="White"
+                                    FontWeight="Bold"
+                                    Click="BtnClearOrder_Click"/>
+                                    <Button Content="Xác nhận order" 
+                                    Width="120" Height="30" 
+                                    Background="#4f772d"
+                                    Foreground="White"
+                                    FontWeight="Bold"
+                                    Click="BtnConfirmOrder_Click"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </Grid>
             </Grid>
         </DataTemplate>
     </UserControl.Resources>
@@ -214,9 +797,9 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>          
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
+
         <Border Grid.Row="0" Background="#3e080c" Padding="15">
             <TextBlock Text="CAFE MANAGEMENT SYSTEM" 
                        Foreground="White" 
@@ -224,11 +807,11 @@
                        FontWeight="Bold" 
                        HorizontalAlignment="Center"/>
         </Border>
-        
+
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>                
-                <ColumnDefinition Width="*"/>                
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Column="0" Background="Transparent" Margin="10">
@@ -241,23 +824,23 @@
                         Height="40" Margin="5" FontSize="14" FontWeight="Bold"
                         Background="#4d502c"
                         Foreground="#ffead8"
-                        Click="TableButton_Click"/>
+                        Click="TableNavButton_Click"/>
                 <Button x:Name="MenuButton" Content="📋 Menu" 
                         Height="40" Margin="5" FontSize="14" FontWeight="Bold"
                         Background="#707143"
                         Foreground="#ffead8"
                         Click="MenuButton_Click"/>
-                <Button x:Name="BillButton" Content="🧾 Bill" 
+                <Button x:Name="OrderButton" Content="🧾 Order" 
                         Height="40" Margin="5" FontSize="14" FontWeight="Bold"
                         Background="#98995a"
                         Foreground="#ffead8"
-                        Click="BillButton_Click"/>
+                        Click="OrderButton_Click"/>
             </StackPanel>
 
             <Border Grid.Column="1" Background="White" Margin="10">
                 <!-- ContentControl để hiển thị nội dung -->
                 <ContentControl x:Name="MainContent" 
-                                ContentTemplate="{StaticResource BillTemplate}"/>
+                                ContentTemplate="{StaticResource MenuTemplate}"/>
             </Border>
         </Grid>
     </Grid>

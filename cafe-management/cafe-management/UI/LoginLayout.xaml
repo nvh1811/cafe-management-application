@@ -10,6 +10,7 @@
 
 
     <Border CornerRadius="12">
+        
         <Border.Background>
             <ImageBrush ImageSource="/Images/CoffeeDrinks.jpg"
                         Stretch="UniformToFill"/>
@@ -52,10 +53,10 @@
                            Margin="10,0,0,0"/>
                     
                 </Grid>
-                <StackPanel Width="250"
+                <StackPanel Width="350"
                         Grid.Row="2"
                         Orientation="Vertical"
-                        Margin="0,35,0,0">
+                        Margin="0,5,0,0">
 
                     <Image Source="/Images/Cat1.png"
                        Width="100" Height="100"
@@ -72,7 +73,7 @@
                            FontFamily="Montserrat"
                            HorizontalAlignment="Center"/>
 
-                    <TextBlock Text="User Name"
+                    <TextBlock Text="Tên đăng nhập "
                            Foreground="#3e000c"
                            FontSize="12"
                            FontWeight="Medium"
@@ -101,7 +102,7 @@
                                     TileMode="None"/>
                         </TextBox.Background>
                     </TextBox>
-                    <TextBlock Text="Password"
+                    <TextBlock Text="Mật khẩu"
                            Foreground="#3e000c"
                            FontSize="12"
                            FontWeight="Medium"
@@ -132,9 +133,9 @@
                     </PasswordBox>
                     <Button x:Name="buttonLogin"
                         BorderThickness="0"
-                        Content="LOG IN"
+                        Content="Đăng Nhập"
                         Foreground="#f1eada"
-                        FontSize="12"
+                        FontSize="15"
                         FontFamily="Montserrat"
                         Cursor="Hand"
                         Grid.Column="2"
@@ -142,10 +143,10 @@
                         Margin="0,50,0,0">
                         <Button.Style>
                             <Style TargetType="Button">
-                                <Setter Property="Background" Value="#743014"/>
+                                <Setter Property="Background" Value="#3e000c"/>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#3e000c"/>
+                                        <Setter Property="Background" Value="#743014"/>
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
@@ -164,19 +165,37 @@
                     <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Center"
                             Margin="0,15,0,0">
-                        <TextBlock Text="Forgot Password?"
-                           Foreground="#3e000c"
-                           FontSize="12"
-                           FontWeight="Medium"
-                           FontFamily="Montserrat"/>
-                        <TextBlock Text="Change Password"
-                           Foreground="#743014"
-                           FontSize="12"
-                           FontWeight="Medium"
-                           FontFamily="Montserrat"
-                           Cursor="Hand"
-                           Margin="8,0,0,0"
-                           MouseLeftButtonUp="TextBlock_MouseLeftButtonUp"/>
+                        
+                        <Button x:Name="buttonChangepassword"
+                                BorderThickness="0"
+                                Content="Quên mật khẩu"
+                                Foreground="#f1eada"
+                                FontSize="12"
+                                FontFamily="Montserrat"
+                                Cursor="Hand"                                
+                                Click="buttonChangepassword_Click"
+                                >
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#3e000c"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#743014"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="100" Height="20"
+                                            CornerRadius="15"
+                                            Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                        HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>                       
                     </StackPanel>
                 </StackPanel>
             </Grid>

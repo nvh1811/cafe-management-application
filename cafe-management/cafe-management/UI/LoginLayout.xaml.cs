@@ -42,9 +42,9 @@ namespace cafe_management.UI
                 // Đăng nhập thất bại
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng.", "Lỗi đăng nhập", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        }
-                                       
-        private void TextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        }                                     
+       
+        private void buttonChangepassword_Click(object sender, RoutedEventArgs e)
         {
 
         }
