@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\nguye\Source\Repos\cafe-management-application\cafe-management\cafe-management\obj\Debug\net8.0-windows\
+D:\HUST\KTPM\BigAss\cafe-management\cafe-management\obj\Debug\net8.0-windows\
 cafe_management
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
-C:\Users\nguye\Source\Repos\cafe-management-application\cafe-management\cafe-management\App.xaml
+D:\HUST\KTPM\BigAss\cafe-management\cafe-management\App.xaml
 4-1496724861
 
 11-1852268007
-218920994060
+21895443580
 MainWindow.xaml;UI\ChangePasswordLayout.xaml;UI\HomeLayout.xaml;UI\LoginLayout.xaml;
 
-False
+True
 

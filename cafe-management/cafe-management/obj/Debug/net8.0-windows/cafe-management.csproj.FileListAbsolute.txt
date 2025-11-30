@@ -305,3 +305,5 @@ C:\Users\nguye\source\repos\cafe-management-application\cafe-management\cafe-man
 C:\Users\nguye\source\repos\cafe-management-application\cafe-management\cafe-management\obj\Debug\net8.0-windows\cafe-management.pdb
 C:\Users\nguye\source\repos\cafe-management-application\cafe-management\cafe-management\obj\Debug\net8.0-windows\cafe-management.genruntimeconfig.cache
 C:\Users\nguye\source\repos\cafe-management-application\cafe-management\cafe-management\obj\Debug\net8.0-windows\ref\cafe-management.dll
+D:\HUST\KTPM\BigAss\cafe-management\cafe-management\obj\Debug\net8.0-windows\UI\ChangePasswordLayout.g.cs
+D:\HUST\KTPM\BigAss\cafe-management\cafe-management\obj\Debug\net8.0-windows\UI\ChangePasswordLayout.baml

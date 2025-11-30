@@ -29,5 +29,11 @@ namespace cafe_management.UI
         {
 
         }
+
+        private void buttonBack_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = (MainWindow)Window.GetWindow(this);
+            main.LoadLoginLayout();
+        }
     }
 }
