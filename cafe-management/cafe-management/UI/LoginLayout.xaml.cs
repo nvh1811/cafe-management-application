@@ -28,9 +28,8 @@ namespace cafe_management.UI
 
         private void buttonLogin_Click(object sender, RoutedEventArgs e)
         {
-
-            string user = "k9"; // txtUser.Text;
-            string pass = "1"; // txtPassWord.Password;
+            string user = txtUser.Text;
+            string pass = txtPassWord.Password;
             if (AccountController.Instance.login(user, pass))
             {
                 // Đăng nhập thành công
@@ -47,8 +46,7 @@ namespace cafe_management.UI
                                        
         private void TextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            MainWindow main = (MainWindow)Window.GetWindow(this);
-            main.LoadChangePassLayout();
+
         }
     }
 }

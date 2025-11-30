@@ -46,13 +46,12 @@ namespace cafe_management.UI
 
         private void ButtonExitAcc_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow main = (MainWindow)Window.GetWindow(this);
-            main.LoadLoginLayout();
+
         }
 
         private void ButtonAddTable_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void ButtonDeleteTable_Click(object sender, RoutedEventArgs e)
