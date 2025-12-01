@@ -6,6 +6,7 @@ using System.Linq;
 using System;
 using System.Collections.Generic;
 using cafe_management.DAO;
+using cafe_management.DTO;  
 
 namespace cafe_management.UI
 {
@@ -648,6 +649,8 @@ namespace cafe_management.UI
         private void TableNavButton_Click(object sender, RoutedEventArgs e)
         {
             MainContent.ContentTemplate = (DataTemplate)Resources["TableTemplate"];
+            LoadTableDataToUI(); // Load dữ liệu khi chuyển sang Table
+            MainContent.Content = null;
         }
 
         private void MenuButton_Click(object sender, RoutedEventArgs e)
@@ -666,7 +669,29 @@ namespace cafe_management.UI
         #region Other Events
         private void ButtonAddTable_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Chức năng thêm bàn");
+            int TableNumber = TableDAO.Instance.GetTableCount() + 1;
+            string newTableName = $"Bàn {TableNumber}";
+            try
+            {
+                // 1. Gọi DAO để thêm bàn mới vào Database
+                bool success = TableDAO.Instance.InsertTable(newTableName, "Trống");
+
+                if (success)
+                {
+                    MessageBox.Show("Thêm bàn mới thành công!", "Thành công");
+
+                    // 2. ⭐ CẬP NHẬT UI: Tải lại toàn bộ dữ liệu bàn
+                    LoadTableDataToUI();
+                }
+                else
+                {
+                    MessageBox.Show("Thêm bàn thất bại. Vui lòng kiểm tra lại!", "Lỗi");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi hệ thống khi thêm bàn: {ex.Message}", "Lỗi");
+            }
         }
 
         private void ButtonDeleteTable_Click(object sender, RoutedEventArgs e)
@@ -701,12 +726,14 @@ namespace cafe_management.UI
 
         private void ButtonChangePass_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Chức năng đổi mật khẩu");
+            MainWindow main = (MainWindow)Window.GetWindow(this);
+            main.LoadChangePassLayout();
         }
 
         private void ButtonExitAcc_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Đăng xuất");
+            MainWindow main = (MainWindow)Window.GetWindow(this);
+            main.LoadLoginLayout();
         }
 
         private void ButtonAddFood_Click(object sender, RoutedEventArgs e)
@@ -726,52 +753,80 @@ namespace cafe_management.UI
         }
 
 
-        #region Support Classes
-        // Class lưu thông tin bàn
-        public class TableInfo
+        private void LoadTableDataToUI()
         {
-            public int TableId { get; set; }
-            public string TableName { get; set; } = string.Empty;
-            public string Status { get; set; } = "Trống";
-            public int Seats { get; set; } = 4;
-            public Color StatusColor { get; set; } = Colors.Green;
+            // 1. Tìm container đã khai báo trong XAML
+            WrapPanel container = FindTableButtonsContainer("TableButtonsContainer");
+
+            if (container != null)
+            {
+                // Xóa các nút cũ trước khi vẽ lại (quan trọng khi thêm/sửa/xóa bàn)
+                container.Children.Clear();
+
+                try
+                {
+                    // 2. Lấy danh sách bàn từ DAO (Sử dụng TableFoodDAO.GetListTable() đã tạo trước đó)
+                    List<TableInfo> tableList = TableDAO.Instance.GetListTable();
+
+                    // 3. Lặp qua danh sách và tạo Button
+                    foreach (var table in tableList)
+                    {
+                        Button tableButton = new Button();
+
+                        // 4. Thiết lập thuộc tính Button
+                        tableButton.Width = 80;
+                        tableButton.Height = 80;
+                        tableButton.Margin = new Thickness(10);
+
+                        // Gán màu nền dựa trên trạng thái (StatusColor là thuộc tính tính toán trong DTO)
+                        tableButton.Background = new SolidColorBrush(table.StatusColor);
+                        tableButton.Foreground = Brushes.Black;
+
+                        // Gán ID bàn vào Tag để sử dụng trong sự kiện Click
+                        tableButton.Tag = table.TableId;
+                        tableButton.Click += TableButton_Click; // Liên kết với hàm xử lý click
+
+                        // 5. Thiết lập Content (Tên bàn và Trạng thái)
+                        StackPanel contentPanel = new StackPanel();
+                        contentPanel.Children.Add(new TextBlock
+                        {
+                            Text = table.TableName,
+                            FontWeight = FontWeights.Bold,
+                            FontSize = 14,
+                            HorizontalAlignment = HorizontalAlignment.Center
+                        });
+                        contentPanel.Children.Add(new TextBlock
+                        {
+                            Text = table.Status,
+                            FontSize = 10,
+                            Margin = new Thickness(0, 5, 0, 0),
+                            HorizontalAlignment = HorizontalAlignment.Center
+                        });
+
+                        tableButton.Content = contentPanel;
+
+                        // 6. Thêm Button vào Container
+                        container.Children.Add(tableButton);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Lỗi khi vẽ bàn: {ex.Message}", "Lỗi UI");
+                }
+            }
         }
 
-        public class Bill
+        // Hàm hỗ trợ tìm kiếm ItemsControl bên trong ContentControl
+        private WrapPanel FindTableButtonsContainer(string name)
         {
-            public string BillId { get; set; } = string.Empty;
-            public int TableId { get; set; }
-            public DateTime StartTime { get; set; } = DateTime.Now;
-            public ObservableCollection<BillItem> Items { get; set; } = new ObservableCollection<BillItem>();
-
-            public decimal TotalAmount => Items.Sum(item => item.Price * item.Quantity);
+            // Giả định MainContent là ContentControl chứa TableTemplate
+            if (this.MainContent.Content is Grid mainGrid)
+            {
+                // Tìm WrapPanel trong Grid con
+                return mainGrid.FindName(name) as WrapPanel;
+            }
+            return null;
         }
-
-        public class BillItem
-        {
-            public string ItemName { get; set; } = string.Empty;
-            public int Quantity { get; set; } = 1;
-            public decimal Price { get; set; }
-        }
-
-        // ĐỔI TÊN từ MenuItem thành FoodItem để tránh xung đột
-        public class FoodItem
-        {
-            public int Id { get; set; }
-            public string Name { get; set; } = string.Empty;
-            public decimal Price { get; set; }
-            public string Category { get; set; } = string.Empty;
-        }
-
-        // Class mới cho Order Item
-        public class OrderItem
-        {
-            public int ItemId { get; set; }
-            public string ItemName { get; set; } = string.Empty;
-            public decimal Price { get; set; }
-            public int Quantity { get; set; }
-        }
-        #endregion
 
     }
 }

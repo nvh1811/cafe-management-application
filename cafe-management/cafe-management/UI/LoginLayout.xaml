@@ -166,14 +166,14 @@
                             HorizontalAlignment="Center"
                             Margin="0,15,0,0">
                         
-                        <Button x:Name="buttonChangepassword"
+                        <Button x:Name="buttonForgotpassword"
                                 BorderThickness="0"
                                 Content="Quên mật khẩu"
                                 Foreground="#f1eada"
                                 FontSize="12"
                                 FontFamily="Montserrat"
                                 Cursor="Hand"                                
-                                Click="buttonChangepassword_Click"
+                                Click="buttonForgotpassword_Click"
                                 >
                             <Button.Style>
                                 <Style TargetType="Button">

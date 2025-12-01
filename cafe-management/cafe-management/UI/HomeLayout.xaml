@@ -95,123 +95,36 @@
                         <ColumnDefinition Width="350"/>
                     </Grid.ColumnDefinitions>
 
-                    <!-- 6 nút bàn cố định bên trái -->
-                    <StackPanel Grid.Column="0" 
-                        HorizontalAlignment="Center" 
-                        VerticalAlignment="Top" 
-                        Margin="20,70,20,100">
+                    <ItemsControl x:Name="TableButtonsContainer" 
+                          Grid.Column="0" 
+                          HorizontalAlignment="Center" 
+                          VerticalAlignment="Top" 
+                          Margin="20,70,20,100">
 
-                        <!-- Hàng 1-->
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
-                            <Button x:Name="btnTable1" Width="80" Height="80" Margin="10"
-                            Click="TableButton_Click" Tag="1"                            
-                            Background="#4f772d">
-                                <StackPanel>
-                                    <TextBlock Text="Bàn 1" 
-                                       Foreground="Black" 
-                                       HorizontalAlignment="Center"
-                                       FontWeight="Bold"
-                                       FontSize="14"/>
-                                    <TextBlock x:Name="txtStatus1" Text="Trống" 
-                                       Foreground="Black" 
-                                       HorizontalAlignment="Center"
-                                       FontSize="10"
-                                       Margin="0,5,0,0"/>
-                                </StackPanel>
-                            </Button>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel IsItemsHost="True" Orientation="Horizontal" HorizontalAlignment="Center"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
 
-                            <Button x:Name="btnTable2" Width="80" Height="80" Margin="10"
-                            Click="TableButton_Click" Tag="2"                            
-                            Background="#90a955">
-                                <StackPanel>
-                                    <TextBlock Text="Bàn 2" 
-                                       Foreground="Black" 
-                                       HorizontalAlignment="Center"
-                                       FontWeight="Bold"
-                                       FontSize="14"/>
-                                    <TextBlock x:Name="txtStatus2" Text="Có khách" 
-                                       Foreground="Black" 
-                                       HorizontalAlignment="Center"
-                                       FontSize="10"
-                                       Margin="0,5,0,0"/>
-                                </StackPanel>
-                            </Button>                            
-                        </StackPanel>
-
-                        <!-- Hàng 2-->
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Button x:Name="btnTable3" Width="80" Height="80" Margin="10"
-                                    Click="TableButton_Click" Tag="3"                            
-                                    Background="#4f772d">
-                                <StackPanel>
-                                    <TextBlock Text="Bàn 3" 
-                                               Foreground="Black" 
-                                               HorizontalAlignment="Center"
-                                               FontWeight="Bold"
-                                               FontSize="14"/>
-                                    <TextBlock x:Name="txtStatus3" Text="Trống" 
-                                               Foreground="Black" 
-                                               HorizontalAlignment="Center"
-                                               FontSize="10"
-                                               Margin="0,5,0,0"/>
-                                </StackPanel>
-                            </Button>
-                            <Button x:Name="btnTable4" Width="80" Height="80" Margin="10"
-                                    Click="TableButton_Click" Tag="4"                            
-                                    Background="#ecf39e">
-                                <StackPanel>
-                                    <TextBlock Text="Bàn 4" 
-                                               Foreground="Black" 
-                                               HorizontalAlignment="Center"
-                                               FontWeight="Bold"
-                                               FontSize="14"/>
-                                    <TextBlock x:Name="txtStatus4" Text="Đặt trước" 
-                                               Foreground="Black" 
-                                               HorizontalAlignment="Center"
-                                               FontSize="10"
-                                               Margin="0,5,0,0"/>
-                                </StackPanel>
-                            </Button>
-                        </StackPanel>
-
-                        <!-- Hàng 3-->
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                            
-                            <Button x:Name="btnTable5" Width="80" Height="80" Margin="10"
-                            Click="TableButton_Click" Tag="5"                            
-                            Background="#90a955">
-                                <StackPanel>
-                                    <TextBlock Text="Bàn 5" 
-                                       Foreground="Black" 
-                                       HorizontalAlignment="Center"
-                                       FontWeight="Bold"
-                                       FontSize="14"/>
-                                    <TextBlock x:Name="txtStatus5" Text="Có khách" 
-                                       Foreground="Black" 
-                                       HorizontalAlignment="Center"
-                                       FontSize="10"
-                                       Margin="0,5,0,0"/>
-                                </StackPanel>
-                            </Button>
-
-                            <Button x:Name="btnTable6" Width="80" Height="80" Margin="10"
-                            Click="TableButton_Click" Tag="6"                            
-                            Background="#4f772d">
-                                <StackPanel>
-                                    <TextBlock Text="Bàn 6" 
-                                       Foreground="Black" 
-                                       HorizontalAlignment="Center"
-                                       FontWeight="Bold"
-                                       FontSize="14"/>
-                                    <TextBlock x:Name="txtStatus6" Text="Trống" 
-                                       Foreground="Black" 
-                                       HorizontalAlignment="Center"
-                                       FontSize="10"
-                                       Margin="0,5,0,0"/>
-                                </StackPanel>
-                            </Button>
-                        </StackPanel>
-                    </StackPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button Width="80" Height="80" Margin="10"
+                                Click="TableButton_Click" 
+                                Tag="{Binding Id}" 
+                                Background="{Binding StatusColor}">
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Name}"
+                                           Foreground="Black" FontWeight="Bold" FontSize="14"
+                                           HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{Binding Status}"
+                                           Foreground="Black" FontSize="10" Margin="0,5,0,0"
+                                           HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </Button>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
 
                     <!-- Panel thông tin chi tiết bên phải -->
                     <Border Grid.Column="1" 
