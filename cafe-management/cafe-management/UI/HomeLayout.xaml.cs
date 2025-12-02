@@ -658,7 +658,10 @@ namespace cafe_management.UI
             MainContent.ContentTemplate = (DataTemplate)Resources["MenuTemplate"];
             LoadMenuTemplate(); // Load dữ liệu khi chuyển sang Menu
         }
-
+        private void OrderButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.ContentTemplate = (DataTemplate)Resources["OrderTemplate"];
+        }
         private void BillButton_Click(object sender, RoutedEventArgs e)
         {
             MainContent.ContentTemplate = (DataTemplate)Resources["OrderTemplate"];
@@ -727,13 +730,13 @@ namespace cafe_management.UI
         private void ButtonChangePass_Click(object sender, RoutedEventArgs e)
         {
             MainWindow main = (MainWindow)Window.GetWindow(this);
-            main.LoadChangePassLayout();
+            main.LoadLayout(new ChangePasswordLayout());
         }
 
         private void ButtonExitAcc_Click(object sender, RoutedEventArgs e)
         {
             MainWindow main = (MainWindow)Window.GetWindow(this);
-            main.LoadLoginLayout();
+            main.LoadLayout(new LoginLayout());
         }
 
         private void ButtonAddFood_Click(object sender, RoutedEventArgs e)
@@ -746,87 +749,5 @@ namespace cafe_management.UI
             MessageBox.Show("Xóa món ăn - Sử dụng Menu Management để xóa món");
         }
         #endregion
-
-        private void OrderButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-
-        private void LoadTableDataToUI()
-        {
-            // 1. Tìm container đã khai báo trong XAML
-            WrapPanel container = FindTableButtonsContainer("TableButtonsContainer");
-
-            if (container != null)
-            {
-                // Xóa các nút cũ trước khi vẽ lại (quan trọng khi thêm/sửa/xóa bàn)
-                container.Children.Clear();
-
-                try
-                {
-                    // 2. Lấy danh sách bàn từ DAO (Sử dụng TableFoodDAO.GetListTable() đã tạo trước đó)
-                    List<TableInfo> tableList = TableDAO.Instance.GetListTable();
-
-                    // 3. Lặp qua danh sách và tạo Button
-                    foreach (var table in tableList)
-                    {
-                        Button tableButton = new Button();
-
-                        // 4. Thiết lập thuộc tính Button
-                        tableButton.Width = 80;
-                        tableButton.Height = 80;
-                        tableButton.Margin = new Thickness(10);
-
-                        // Gán màu nền dựa trên trạng thái (StatusColor là thuộc tính tính toán trong DTO)
-                        tableButton.Background = new SolidColorBrush(table.StatusColor);
-                        tableButton.Foreground = Brushes.Black;
-
-                        // Gán ID bàn vào Tag để sử dụng trong sự kiện Click
-                        tableButton.Tag = table.TableId;
-                        tableButton.Click += TableButton_Click; // Liên kết với hàm xử lý click
-
-                        // 5. Thiết lập Content (Tên bàn và Trạng thái)
-                        StackPanel contentPanel = new StackPanel();
-                        contentPanel.Children.Add(new TextBlock
-                        {
-                            Text = table.TableName,
-                            FontWeight = FontWeights.Bold,
-                            FontSize = 14,
-                            HorizontalAlignment = HorizontalAlignment.Center
-                        });
-                        contentPanel.Children.Add(new TextBlock
-                        {
-                            Text = table.Status,
-                            FontSize = 10,
-                            Margin = new Thickness(0, 5, 0, 0),
-                            HorizontalAlignment = HorizontalAlignment.Center
-                        });
-
-                        tableButton.Content = contentPanel;
-
-                        // 6. Thêm Button vào Container
-                        container.Children.Add(tableButton);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Lỗi khi vẽ bàn: {ex.Message}", "Lỗi UI");
-                }
-            }
-        }
-
-        // Hàm hỗ trợ tìm kiếm ItemsControl bên trong ContentControl
-        private WrapPanel FindTableButtonsContainer(string name)
-        {
-            // Giả định MainContent là ContentControl chứa TableTemplate
-            if (this.MainContent.Content is Grid mainGrid)
-            {
-                // Tìm WrapPanel trong Grid con
-                return mainGrid.FindName(name) as WrapPanel;
-            }
-            return null;
-        }
-
     }
 }

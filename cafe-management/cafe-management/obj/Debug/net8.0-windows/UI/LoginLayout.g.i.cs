@@ -85,7 +85,7 @@ namespace cafe_management.UI {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/cafe-management;V1.0.0.0;component/ui/loginlayout.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/cafe-management;component/ui/loginlayout.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\UI\LoginLayout.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

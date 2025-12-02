@@ -35,7 +35,7 @@ namespace cafe_management.UI
                 // Đăng nhập thành công
                 // Chuyển đến giao diện chính của ứng dụng
                 MainWindow main = (MainWindow)Window.GetWindow(this);
-                main.LoadHomeLayout();
+                main.LoadLayout(new HomeLayout());
             }
             else
             {

@@ -27,12 +27,13 @@ namespace cafe_management.UI
 
         private void buttonChangePassword_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Đổi thành công.");
         }
 
         private void buttonBack_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow main = (MainWindow)Window.GetWindow(this);
+            main.LoadLayout(new HomeLayout());
         }
     }
 }
