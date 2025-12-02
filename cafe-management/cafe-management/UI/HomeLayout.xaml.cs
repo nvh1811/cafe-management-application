@@ -649,8 +649,6 @@ namespace cafe_management.UI
         private void TableNavButton_Click(object sender, RoutedEventArgs e)
         {
             MainContent.ContentTemplate = (DataTemplate)Resources["TableTemplate"];
-            LoadTableDataToUI(); // Load dữ liệu khi chuyển sang Table
-            MainContent.Content = null;
         }
 
         private void MenuButton_Click(object sender, RoutedEventArgs e)
@@ -676,15 +674,11 @@ namespace cafe_management.UI
             string newTableName = $"Bàn {TableNumber}";
             try
             {
-                // 1. Gọi DAO để thêm bàn mới vào Database
                 bool success = TableDAO.Instance.InsertTable(newTableName, "Trống");
 
                 if (success)
                 {
                     MessageBox.Show("Thêm bàn mới thành công!", "Thành công");
-
-                    // 2. ⭐ CẬP NHẬT UI: Tải lại toàn bộ dữ liệu bàn
-                    LoadTableDataToUI();
                 }
                 else
                 {
