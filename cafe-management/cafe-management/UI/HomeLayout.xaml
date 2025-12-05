@@ -94,42 +94,12 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="350"/>
                     </Grid.ColumnDefinitions>
-
-                    <ItemsControl x:Name="TableButtonsContainer" 
-                          Grid.Column="0" 
-                          HorizontalAlignment="Center" 
-                          VerticalAlignment="Top" 
-                          Margin="20,70,20,100">
-
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel IsItemsHost="True" Orientation="Horizontal" HorizontalAlignment="Center"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Button Width="80" Height="80" Margin="10"
-                                Click="TableButton_Click" 
-                                Tag="{Binding TableId}" 
-                                Background="{Binding StatusColor}">
-                                    <StackPanel>
-                                        <TextBlock Text="{Binding TableName}"
-                                           Foreground="Black" FontWeight="Bold" FontSize="14"
-                                           HorizontalAlignment="Center"/>
-                                        <TextBlock Text="{Binding Status}"
-                                           Foreground="Black" FontSize="10" Margin="0,5,0,0"
-                                           HorizontalAlignment="Center"/>
-                                    </StackPanel>
-                                </Button>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-
+                    <!-- Danh sách bàn bên trái -->
+                    
                     <!-- Panel thông tin chi tiết bên phải -->
                     <Border Grid.Column="1" 
                     Background="#5a5d34" 
-                    Margin="10,70,20,100" 
+                    Margin="10,70,5,100" 
                     CornerRadius="10" 
                     BorderBrush="#ffeda8" 
                     BorderThickness="2"
@@ -753,7 +723,7 @@
             <Border Grid.Column="1" Background="White" Margin="10">
                 <!-- ContentControl để hiển thị nội dung -->
                 <ContentControl x:Name="MainContent" 
-                                ContentTemplate="{StaticResource MenuTemplate}"/>
+                                ContentTemplate="{StaticResource TableTemplate}"/>
             </Border>
         </Grid>
     </Grid>

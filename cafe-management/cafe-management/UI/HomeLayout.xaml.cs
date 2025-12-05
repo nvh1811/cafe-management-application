@@ -14,6 +14,7 @@ namespace cafe_management.UI
     {
         public ObservableCollection<Bill> Bills { get; set; } = new ObservableCollection<Bill>();
         private int _selectedTableId = 0;
+        public ObservableCollection<TableInfo> TableList { get; set; } = new ObservableCollection<TableInfo>();
 
         // Dictionary để lưu trạng thái các bàn
         private Dictionary<int, TableInfo> _tables = new Dictionary<int, TableInfo>();
@@ -649,6 +650,11 @@ namespace cafe_management.UI
         private void TableNavButton_Click(object sender, RoutedEventArgs e)
         {
             MainContent.ContentTemplate = (DataTemplate)Resources["TableTemplate"];
+
+            // ⭐ QUAN TRỌNG: GÁN DATA CONTEXT CHO TEMPLATE
+            MainContent.DataContext = this;
+
+            
         }
 
         private void MenuButton_Click(object sender, RoutedEventArgs e)
@@ -670,25 +676,37 @@ namespace cafe_management.UI
         #region Other Events
         private void ButtonAddTable_Click(object sender, RoutedEventArgs e)
         {
-            int TableNumber = TableDAO.Instance.GetTableCount() + 1;
-            string newTableName = $"Bàn {TableNumber}";
+            int tablenumber = TableDAO.Instance.GetTableCount() + 1;
+            string newtablename = $"bàn {tablenumber}";
+            Grid? tablepanel = FindName("gridTable") as Grid;
+            Button btn = new Button()
+            {
+                Name = $"btntable{tablenumber}",
+                Tag = tablenumber,
+                Width = 100,
+                Height = 100,
+                Margin = new Thickness(10),
+                Background = new SolidColorBrush(Colors.Green)
+            };
+            tablepanel.Children.Add(btn);
             try
             {
-                bool success = TableDAO.Instance.InsertTable(newTableName, "Trống");
+                bool success = TableDAO.Instance.InsertTable(newtablename, "trống");
 
                 if (success)
                 {
-                    MessageBox.Show("Thêm bàn mới thành công!", "Thành công");
+                    MessageBox.Show("thêm bàn mới thành công!", "thành công");
                 }
                 else
                 {
-                    MessageBox.Show("Thêm bàn thất bại. Vui lòng kiểm tra lại!", "Lỗi");
+                    MessageBox.Show("thêm bàn thất bại. vui lòng kiểm tra lại!", "lỗi");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi hệ thống khi thêm bàn: {ex.Message}", "Lỗi");
+                MessageBox.Show($"lỗi hệ thống khi thêm bàn: {ex.Message}", "lỗi");
             }
+
         }
 
         private void ButtonDeleteTable_Click(object sender, RoutedEventArgs e)
@@ -743,5 +761,24 @@ namespace cafe_management.UI
             MessageBox.Show("Xóa món ăn - Sử dụng Menu Management để xóa món");
         }
         #endregion
+        private Grid? FindGridInTemplate(string gridName)
+        {
+            // BƯỚC 1: Kiểm tra xem ContentControl (MainContent) đã tải nội dung chưa
+            if (this.MainContent.Content == null)
+            {
+                return null;
+            }
+
+            // BƯỚC 2: Nội dung của MainContent (khi TableTemplate được tải) là Grid gốc
+            if (this.MainContent.Content is Grid rootGrid)
+            {
+                // BƯỚC 3: Dùng FindName trên Control gốc của Template để tìm Control con.
+                // Phải trả về đúng kiểu Grid?
+                return rootGrid.FindName(gridName) as Grid;
+            }
+
+            // Trả về null nếu không tìm thấy Grid
+            return null;
+        }
     }
 }
