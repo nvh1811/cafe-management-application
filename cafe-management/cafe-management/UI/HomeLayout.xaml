@@ -83,10 +83,10 @@
         <DataTemplate x:Key="TableTemplate">
             <Grid Background="#4d502c">
                 <TextBlock Text="TABLE MANAGEMENT" 
-           FontSize="24" FontWeight="Bold" Foreground="#ffeda8"
-           HorizontalAlignment="Center" 
-           VerticalAlignment="Top" 
-           Margin="20"/>
+                           FontSize="24" FontWeight="Bold" Foreground="#ffeda8"
+                           HorizontalAlignment="Center" 
+                           VerticalAlignment="Top" 
+                           Margin="20"/>
 
                 <!-- Panel chính chứa danh sách bàn và thông tin chi tiết -->
                 <Grid>
@@ -95,23 +95,29 @@
                         <ColumnDefinition Width="350"/>
                     </Grid.ColumnDefinitions>
                     <!-- Danh sách bàn bên trái -->
-                    
+                    <Border Grid.Column="0"
+                            Background="#5a5d34"  
+                            Margin="10,70,5,100" 
+                            CornerRadius="10" 
+                            BorderBrush="#ffeda8" 
+                            BorderThickness="2">
+
+                        <WrapPanel x:Name="btnGrid" 
+                                   HorizontalAlignment="Center"  
+                                   Orientation="Horizontal" 
+                                   >
+                        </WrapPanel>
+
+                    </Border>
                     <!-- Panel thông tin chi tiết bên phải -->
                     <Border Grid.Column="1" 
                     Background="#5a5d34" 
-                    Margin="10,70,5,100" 
+                    Margin="5,70,5,100" 
                     CornerRadius="10" 
                     BorderBrush="#ffeda8" 
                     BorderThickness="2"
                     Padding="15">
                         <StackPanel>
-                            <TextBlock Text="THÔNG TIN BÀN" 
-                               Foreground="#ffeda8" 
-                               FontSize="18" 
-                               FontWeight="Bold"
-                               HorizontalAlignment="Center"
-                               Margin="0,0,0,15"/>
-
                             <!-- Hiển thị khi chưa chọn bàn -->
                             <TextBlock x:Name="txtNoTableSelected" 
                                Text="Chọn một bàn để xem chi tiết" 
@@ -123,117 +129,77 @@
 
                             <!-- Thông tin bàn chi tiết -->
                             <StackPanel x:Name="TableDetailPanel" Visibility="Collapsed">
-                                <Border Background="#6a6d3c" CornerRadius="8" Padding="15">
-                                    <StackPanel>
-                                        <TextBlock x:Name="txtTableName" 
-                                           Foreground="#ffeda8" 
-                                           FontSize="16" 
-                                           FontWeight="Bold"
-                                           TextAlignment="Center"/>
-                                        <Rectangle Height="1" Fill="#ffeda8" Margin="0,8,0,12" Opacity="0.3"/>
-
-                                        <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
-                                            <TextBlock Text="Trạng thái: " 
-                                               Foreground="#ffeda8" 
-                                               FontSize="12"
-                                               FontWeight="SemiBold"/>
-                                            <TextBlock x:Name="txtTableStatus" 
-                                               Foreground="#ffeda8" 
-                                               FontSize="12"/>
-                                        </StackPanel>
-
-                                        <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
-                                            <TextBlock Text="Số ghế: " 
-                                               Foreground="#ffeda8" 
-                                               FontSize="12"
-                                               FontWeight="SemiBold"/>
-                                            <TextBlock x:Name="txtTableSeats" 
-                                               Foreground="#ffeda8" 
-                                               FontSize="12"/>
-                                        </StackPanel>
-
-                                        <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
-                                            <TextBlock Text="Mã bàn: " 
-                                               Foreground="#ffeda8" 
-                                               FontSize="12"
-                                               FontWeight="SemiBold"/>
-                                            <TextBlock x:Name="txtTableId" 
-                                               Foreground="#ffeda8" 
-                                               FontSize="12"/>
-                                        </StackPanel>
-                                    </StackPanel>
-                                </Border>
-
                                 <!-- Thông tin Bill -->
                                 <Border Background="#6a6d3c" 
-                                CornerRadius="8" 
-                                Padding="15" 
-                                Margin="0,15,0,0">
+                                        CornerRadius="8" 
+                                        Padding="15" 
+                                        Margin="0,15,0,0">  
                                     <StackPanel>
-                                        <TextBlock Text="THÔNG TIN HÓA ĐƠN" 
-                                           Foreground="#ffeda8" 
-                                           FontSize="14" 
-                                           FontWeight="Bold"
-                                           HorizontalAlignment="Center"/>
-                                        <Rectangle Height="1" Fill="#ffeda8" Margin="0,8,0,12" Opacity="0.3"/>
-
-                                        <StackPanel x:Name="NoBillPanel">
-                                            <TextBlock Text="Bàn trống" 
-                                               Foreground="#ffeda8" 
-                                               FontSize="12"
-                                               HorizontalAlignment="Center"/>
-                                            <Button x:Name="btnCreateBill" 
-                                            Content="Tạo hóa đơn" 
-                                            Width="120" Height="30" 
-                                            Click="BtnCreateBill_Click"
-                                            Background="#4f772d"
-                                            Foreground="White"
-                                            FontWeight="Bold"
-                                            Margin="0,10,0,0"/>
+                                        <TextBlock x:Name="txtTableName" 
+                                                   Foreground="#ffeda8" 
+                                                   FontSize="16" 
+                                                   FontWeight="Bold"
+                                                   TextAlignment="Center"/>
+                                        <Rectangle Height="1" Fill="#ffeda8" Margin="0,8,0,12" Opacity="0.3" VerticalAlignment="Center"/>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Mã HD: " 
+                                                       Foreground="#ffeda8" 
+                                                       FontSize="12"
+                                                       FontWeight="SemiBold"/>
+                                            <TextBlock x:Name="txtBillId" 
+                                                       Foreground="#ffeda8" 
+                                                       FontSize="12"/>
                                         </StackPanel>
 
-                                        <StackPanel x:Name="BillDetailPanel" Visibility="Collapsed">
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="Mã HD: " 
-                                                   Foreground="#ffeda8" 
-                                                   FontSize="12"
-                                                   FontWeight="SemiBold"/>
-                                                <TextBlock x:Name="txtBillId" 
-                                                   Foreground="#ffeda8" 
-                                                   FontSize="12"/>
-                                            </StackPanel>
-
-                                            <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
-                                                <TextBlock Text="Thời gian: " 
-                                                   Foreground="#ffeda8" 
-                                                   FontSize="12"
-                                                   FontWeight="SemiBold"/>
-                                                <TextBlock x:Name="txtBillTime" 
-                                                   Foreground="#ffeda8" 
-                                                   FontSize="12"/>
-                                            </StackPanel>
-
-                                            <TextBlock x:Name="txtBillTotal" 
-                                               Foreground="#ffeda8" 
-                                               FontSize="14" 
-                                               FontWeight="Bold"
-                                               HorizontalAlignment="Center"
-                                               Margin="0,10,0,5"/>
-
-                                            <Button x:Name="btnCloseBill" 
-                                            Content="Thanh toán" 
-                                            Width="120" Height="30" 
-                                            Click="BtnCloseBill_Click"
-                                            Background="#90a955"
-                                            Foreground="White"
-                                            FontWeight="Bold"
-                                            HorizontalAlignment="Center"
-                                            Margin="0,5,0,0"/>
+                                        <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
+                                            <TextBlock Text="Thời gian vào: " 
+                                                       Foreground="#ffeda8" 
+                                                       FontSize="12"
+                                                       FontWeight="SemiBold"/>
+                                            <TextBlock x:Name="txtBillTime" 
+                                                       Foreground="#ffeda8" 
+                                                       FontSize="12"/>
+                                        </StackPanel>
+                                        <DataGrid x:Name="dgOrderItems" 
+                                                  Margin="0,10,0,0"
+                                                  AutoGenerateColumns="False"
+                                                  Height="300" 
+                                                  Background="#8a8c5d"
+                                                  BorderBrush="#ffead8"
+                                                  Foreground="#3e000c"
+                                                  HeadersVisibility="Column"
+                                                  CanUserAddRows="False">
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Header="Tên món" 
+                                                                    Binding="{Binding Name}" 
+                                                                    Width="60"
+                                                                    Foreground="Black"/>
+                                                <DataGridTextColumn Header="Số lượng" 
+                                                                    Binding="{Binding Quantity}" 
+                                                                    Width="40"
+                                                                    Foreground="Black"/>
+                                                <DataGridTextColumn Header="Đơn giá" 
+                                                                    Binding="{Binding Price, StringFormat={}{0:N0}đ}" 
+                                                                    Width="90"
+                                                                    Foreground="Black"/>
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                                            <TextBlock Text="Tổng tiền: " 
+                                                       Foreground="#ffead8" 
+                                                       FontSize="14"
+                                                       FontWeight="SemiBold"/>
+                                            <TextBlock x:Name="txtTotalAmount" 
+                                                       Text="0đ" 
+                                                       Foreground="#ffeda8" 
+                                                       FontSize="14"
+                                                       FontWeight="Bold"/>
                                         </StackPanel>
                                     </StackPanel>
                                 </Border>
                             </StackPanel>
                         </StackPanel>
+                        
                     </Border>
                 </Grid>
 
@@ -326,15 +292,15 @@
                                 <DataGridTextColumn Header="Tên món" 
                                           Binding="{Binding Name}" 
                                           Width="60"
-                                          Foreground="#ffead8"/>
+                                          Foreground="Black"/>
                                 <DataGridTextColumn Header="Giá" 
                                           Binding="{Binding Price, StringFormat={}{0:N0}đ}" 
                                           Width="40"
-                                          Foreground="#ffead8"/>
+                                          Foreground="Black"/>
                                 <DataGridTextColumn Header="Danh mục" 
                                           Binding="{Binding Category}" 
                                           Width="90"
-                                          Foreground="#ffead8"/>
+                                          Foreground="Black"/>
                                 <DataGridTemplateColumn Header="Thao tác" Width="90">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
@@ -413,12 +379,8 @@
                                 <ComboBox x:Name="cmbMenuCategory" 
                                   Height="30" 
                                   Background="#b0b17a"
-                                  Foreground="#ffead8"
+                                  Foreground="Black"
                                   BorderBrush="#ffead8">
-                                    <ComboBoxItem Content="Đồ uống"/>
-                                    <ComboBoxItem Content="Đồ ăn"/>
-                                    <ComboBoxItem Content="Tráng miệng"/>
-                                    <ComboBoxItem Content="Khác"/>
                                 </ComboBox>
                             </StackPanel>
 
@@ -470,7 +432,7 @@
                 <Grid Margin="20,70,20,20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="400"/>
                     </Grid.ColumnDefinitions>
 
                     <!-- Danh sách món ăn bên trái -->
@@ -496,47 +458,19 @@
                             Foreground="White"
                             Click="BtnSearchFood_Click"/>
                         </StackPanel>
+                        <Border
+                                Background="#8a8c5d" 
+                                CornerRadius="10" 
+                                BorderBrush="#ffeda8" 
+                                BorderThickness="2" Height="360">
+
+                            <WrapPanel x:Name="foodGrid" 
+                                       HorizontalAlignment="Center"  
+                                       Orientation="Horizontal"/>
+
+                        </Border>
 
                         <!-- ListBox danh sách món ăn -->
-                        <ListBox x:Name="lstMenuItems" 
-                         Height="300" 
-                         Background="#b0b17a"
-                         BorderBrush="#ffead8"
-                         Foreground="#ffead8">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <Border Background="#8a8c5d" 
-                                    CornerRadius="5" 
-                                    Margin="2" 
-                                    Padding="10">
-                                        <StackPanel>
-                                            <TextBlock Text="{Binding Name}" 
-                                               FontSize="14" 
-                                               FontWeight="Bold"/>
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="{Binding Price, StringFormat={}{0:N0}đ}" 
-                                                   FontSize="12"
-                                                   Foreground="#ffeda8"/>
-                                                <TextBlock Text=" • " 
-                                                   FontSize="12"
-                                                   Foreground="#ffeda8"/>
-                                                <TextBlock Text="{Binding Category}" 
-                                                   FontSize="12"
-                                                   Foreground="#ffeda8"/>
-                                            </StackPanel>
-                                            <Button Content="Thêm vào order" 
-                                            Width="100" Height="25" 
-                                            Margin="0,5,0,0"
-                                            Background="#90a955"
-                                            Foreground="White"
-                                            FontSize="10"
-                                            Click="BtnAddToOrder_Click"
-                                            Tag="{Binding Id}"/>
-                                        </StackPanel>
-                                    </Border>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
                     </StackPanel>
 
                     <!-- Order hiện tại bên phải -->
@@ -561,9 +495,10 @@
                                 <ComboBox x:Name="cmbTables" 
                                   Height="30" 
                                   Background="#b0b17a"
-                                  Foreground="#ffead8"
+                                  Foreground="Black"
                                   BorderBrush="#ffead8"
                                   DisplayMemberPath="TableName"
+                                  SelectedValuePath="Id"
                                   SelectionChanged="CmbTables_SelectionChanged"/>
                             </StackPanel>
 

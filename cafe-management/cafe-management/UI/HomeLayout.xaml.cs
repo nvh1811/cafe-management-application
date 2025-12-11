@@ -1,12 +1,12 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Collections.ObjectModel;
-using System.Windows.Media;
-using System.Linq;
+﻿using cafe_management.DAO;
+using cafe_management.DTO;  
 using System;
 using System.Collections.Generic;
-using cafe_management.DAO;
-using cafe_management.DTO;  
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace cafe_management.UI
 {
@@ -14,13 +14,13 @@ namespace cafe_management.UI
     {
         public ObservableCollection<Bill> Bills { get; set; } = new ObservableCollection<Bill>();
         private int _selectedTableId = 0;
-        public ObservableCollection<TableInfo> TableList { get; set; } = new ObservableCollection<TableInfo>();
+        public List<TableInfo> tableList { get; set; } = new List<TableInfo>();
 
         // Dictionary để lưu trạng thái các bàn
         private Dictionary<int, TableInfo> _tables = new Dictionary<int, TableInfo>();
 
         // Danh sách menu đồ ăn - DÙNG CHUNG cho cả MenuTemplate và OrderTemplate
-        public ObservableCollection<FoodItem> MenuItems { get; set; } = new ObservableCollection<FoodItem>();
+        public List<FoodItem> MenuItems { get; set; } = new List<FoodItem>();
 
         // Order hiện tại
         private ObservableCollection<OrderItem> _currentOrder = new ObservableCollection<OrderItem>();
@@ -28,9 +28,12 @@ namespace cafe_management.UI
         // Biến tạm để lưu món đang chỉnh sửa
         private FoodItem? _editingMenuItem = null;
 
+        private int _idBill = 0;
+        private int _tableNumber = 1;
         public HomeLayout()
         {
             InitializeComponent();
+            MenuItems = FoodDAO.Instance.GetListFood(); // Lấy danh sách món từ DAO
         }
 
 
@@ -39,11 +42,37 @@ namespace cafe_management.UI
         private void TableButton_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
-            if (button?.Tag != null && int.TryParse(button.Tag.ToString(), out int tableId))
+            if (button == null) return;
+            TableInfo? table = button.Tag as TableInfo;
+            if (table == null) return;
+            _selectedTableId = table.TableId;
+            // Tìm panel thông tin trong Template
+            var txtNoTableSelected = FindVisualChild<TextBlock>(MainContent, "txtNoTableSelected");
+            var TableDetailPanel = FindVisualChild<StackPanel>(MainContent, "TableDetailPanel");
+
+            var txtTableName = FindVisualChild<TextBlock>(MainContent, "txtTableName");
+
+            var txtBillId = FindVisualChild<TextBlock>(MainContent, "txtBillId");
+            var txtBillTime = FindVisualChild<TextBlock>(MainContent, "txtBillTime");
+
+            var txtTotalAmount = FindVisualChild<TextBlock>(MainContent, "txtTotalAmount");
+
+            // Kiểm tra null
+            if (txtTableName == null) return;
+
+            // Ẩn chữ "Chọn một bàn để xem chi tiết"
+            txtNoTableSelected.Visibility = Visibility.Collapsed;
+            TableDetailPanel.Visibility = Visibility.Visible;
+
+            // ---- Gán thông tin bàn ----
+            txtTableName.Text = table.TableName;
+            txtBillTime.Text = BillDAO.Instance.GetTimeCheckin(table.TableId).ToString("g");
+            var dgOrderItems = FindVisualChild<DataGrid>(MainContent, "dgOrderItems");
+            if (dgOrderItems != null)
             {
-                _selectedTableId = tableId;
-                ShowTableDetails(tableId);
+                
             }
+
         }
 
         private void ShowTableDetails(int tableId)
@@ -211,18 +240,89 @@ namespace cafe_management.UI
                 MessageBox.Show("Vui lòng chọn bàn trước khi thanh toán!");
             }
         }
+        private void LoadTableButton()
+        {
+
+            // 1. Lấy danh sách bàn từ SQL
+            tableList = TableDAO.Instance.GetListTable();
+
+            // 2. Tìm WrapPanel "btnGrid" bên trong MainContent
+            var btnGrid = FindVisualChild<WrapPanel>(MainContent, "btnGrid");
+            if (btnGrid == null)
+            {
+                MessageBox.Show("Không tìm thấy btnGrid trong giao diện TableTemplate!");
+                return;
+            }
+
+            // Xóa nút cũ (nếu có)
+            btnGrid.Children.Clear();
+
+            // 3. Tạo button cho từng bàn
+            foreach (TableInfo table in tableList)
+            {
+                // Tạo StackPanel để chứa nội dung nút
+                StackPanel content = new StackPanel()
+                {
+                    Orientation = Orientation.Vertical,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center
+                };
+
+                // Tên bàn
+                TextBlock name = new TextBlock()
+                {
+                    Text = table.TableName,
+                    FontSize = 14,
+                    FontWeight = FontWeights.Bold,
+                    Foreground = Brushes.White,
+                    HorizontalAlignment = HorizontalAlignment.Center
+                };
+
+                // Trạng thái
+                TextBlock status = new TextBlock()
+                {
+                    Text = table.Status,
+                    FontSize = 12,
+                    Foreground = Brushes.White,
+                    HorizontalAlignment = HorizontalAlignment.Center
+                };
+
+                content.Children.Add(name);
+                content.Children.Add(status);
+
+                // Tạo button
+                Button btn = new Button()
+                {
+                    Background = new SolidColorBrush(table.StatusColor),
+                    Width = 120,
+                    Height = 80,
+                    Margin = new Thickness(10),
+                    Tag = table, // lưu dữ liệu bàn vào Tag
+                    Content = content
+                };
+
+                // Màu theo trạng thái bàn
+
+                btn.Click += TableButton_Click;
+
+                // Thêm button vào WrapPanel
+                btnGrid.Children.Add(btn);
+            }
+        }
         #endregion
 
         #region Menu Template Methods
         private void LoadMenuTemplate()
         {
             // Load danh sách món ăn vào DataGrid
-            var dataGrid = FindName("dgMenuItems") as DataGrid;
-            if (dataGrid != null)
+            var dataMenuGrid = FindVisualChild<DataGrid>(MainContent, "dgMenuItems");
+            if (dataMenuGrid != null)
             {
-                dataGrid.ItemsSource = MenuItems;
+                MenuItems = FoodDAO.Instance.GetListFood(); // Lấy danh sách món từ DAO
+                dataMenuGrid.ItemsSource = null;               // Reset nguồn dữ liệu
+                dataMenuGrid.ItemsSource = MenuItems;          // Đổ menu lên DataGrid
             }
-
+            LoadCategoryToComboBox();
             // Reset form
             ResetMenuForm();
         }
@@ -258,8 +358,34 @@ namespace cafe_management.UI
 
         private void BtnAddMenuItem_Click(object sender, RoutedEventArgs e)
         {
-
-
+            var nameItem = GetTextBoxText("txtMenuItemName");
+            var priceText = GetTextBoxText("txtMenuItemPrice");
+            var categoryItem = GetComboBoxText("cmbMenuCategory");
+            if(nameItem == null)
+            {
+                MessageBox.Show("Vui lòng nhập tên món!");
+            }
+            else if(priceText == null)
+            {
+                MessageBox.Show("Vui lòng nhập giá hợp lệ!");
+            }
+            else if(categoryItem == null)
+            {
+                MessageBox.Show("Vui lòng chọn danh mục món!");
+            }
+            else
+            {
+                int idcategory = FoodCategoryDAO.Instance.GetIdCategoryByName(categoryItem);
+                bool error_add = FoodDAO.Instance.InsertFood(nameItem, idcategory, float.Parse(priceText.ToString()));
+                if(error_add)
+                {
+                    // Cập nhật lại danh sách món
+                    LoadMenuTemplate();
+                    MessageBox.Show("Đã thêm món thành công!");
+                }
+                
+            }
+            
         }
 
         private void BtnEditMenuItem_Click(object sender, RoutedEventArgs e)
@@ -332,11 +458,14 @@ namespace cafe_management.UI
                     var result = MessageBox.Show($"Bạn có chắc muốn xóa món '{menuItem.Name}'?",
                                                "Xác nhận xóa",
                                                MessageBoxButton.YesNo);
-
                     if (result == MessageBoxResult.Yes)
                     {
-                        MenuItems.Remove(menuItem);
-                        MessageBox.Show("Đã xóa món thành công!");
+                        bool error_delete = FoodDAO.Instance.DeleteFood(itemId);
+                        if(error_delete)
+                        {
+                            MessageBox.Show("Đã xóa món thành công!");
+                            LoadMenuTemplate();
+                        }
                     }
                 }
             }
@@ -399,35 +528,79 @@ namespace cafe_management.UI
 
             return true;
         }
+        private void LoadCategoryToComboBox()
+        {
+            var list = FoodCategoryDAO.Instance.GetListFoodCategory();
+            var cmbTables = FindVisualChild<ComboBox>(MainContent, "cmbMenuCategory");
+            cmbTables.ItemsSource = list;
+        }
         #endregion
 
         #region Order Template Methods
         private void LoadOrderTemplate()
-        {
-            // Load danh sách món ăn từ MenuItems (DÙNG CHUNG DATA)
-            var listBox = FindName("lstMenuItems") as ListBox;
-            if (listBox != null)
+        { 
+            var foodGrid = FindVisualChild<WrapPanel>(MainContent, "foodGrid");
+            if (foodGrid == null)
             {
-                listBox.ItemsSource = MenuItems;
+                MessageBox.Show("Không tìm thấy btnGrid trong giao diện TableTemplate!");
+                return;
             }
 
-            // Load danh sách bàn trống vào combobox
-            var comboBox = FindName("cmbTables") as ComboBox;
-            if (comboBox != null)
-            {
-                var availableTables = _tables.Values.Where(t => t.Status == "Trống").ToList();
-                comboBox.ItemsSource = availableTables;
+            // Xóa nút cũ (nếu có)
+            foodGrid.Children.Clear();
 
-                if (availableTables.Any())
+            // 3. Tạo button cho từng bàn
+            foreach (FoodItem food in MenuItems)
+            {
+                // Tạo StackPanel để chứa nội dung nút
+                StackPanel content = new StackPanel()
                 {
-                    comboBox.SelectedIndex = 0;
-                }
-            }
+                    Orientation = Orientation.Vertical,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center
+                };
 
-            // Clear order hiện tại
-            _currentOrder.Clear();
-            UpdateOrderDisplay();
+                // Tên bàn
+                TextBlock name = new TextBlock()
+                {
+                    Text = food.Name,
+                    FontSize = 14,
+                    FontWeight = FontWeights.Bold,
+                    Foreground = Brushes.White,
+                    HorizontalAlignment = HorizontalAlignment.Center
+                };
+
+                // Trạng thái
+                TextBlock Price = new TextBlock()
+                {
+                    Text = FoodDAO.Instance.FormatVND(food.Price),
+                    FontSize = 14,
+                    FontWeight = FontWeights.Bold,
+                    Foreground = Brushes.White,
+                    HorizontalAlignment = HorizontalAlignment.Center
+                };
+
+                content.Children.Add(name);
+                content.Children.Add(Price);
+
+                // Tạo button
+                Button btn = new Button()
+                {
+                    Background = new SolidColorBrush(Colors.Green),
+                    Width = 120,
+                    Height = 80,
+                    Margin = new Thickness(10),
+                    Tag = food.Id, // lưu dữ liệu bàn vào Tag
+                    Content = content
+                };
+                btn.Click += FoodBtn_Click;
+
+                // Thêm button vào WrapPanel
+                foodGrid.Children.Add(btn);
+            }
+            LoadTablesToComboBox();
         }
+
 
         private void BtnSearchFood_Click(object sender, RoutedEventArgs e)
         {
@@ -459,37 +632,34 @@ namespace cafe_management.UI
             }
         }
 
-        private void BtnAddToOrder_Click(object sender, RoutedEventArgs e)
+        private void FoodBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button && button.Tag != null)
+            if (sender is Button btn && btn.Tag != null)
             {
-                int itemId = int.Parse(button.Tag.ToString()!);
-                var menuItem = MenuItems.FirstOrDefault(item => item.Id == itemId);
+                int foodId = int.Parse(btn.Tag.ToString());
 
-                if (menuItem != null)
+                // Tìm món trong MenuItems
+                var food = FoodDAO.Instance.GetFoodByID(foodId);
+                if (food == null) return;
+
+                // Kiểm tra xem đã có trong Order chưa
+                var exist = _currentOrder.FirstOrDefault(x => x.ItemId == foodId);
+
+                if (exist != null)
                 {
-                    // Kiểm tra xem món đã có trong order chưa
-                    var existingItem = _currentOrder.FirstOrDefault(item => item.ItemId == itemId);
-
-                    if (existingItem != null)
-                    {
-                        // Tăng số lượng nếu đã có
-                        existingItem.Quantity++;
-                    }
-                    else
-                    {
-                        // Thêm mới vào order
-                        _currentOrder.Add(new OrderItem
-                        {
-                            ItemId = menuItem.Id,
-                            ItemName = menuItem.Name,
-                            Price = menuItem.Price,
-                            Quantity = 1
-                        });
-                    }
-
-                    UpdateOrderDisplay();
+                    exist.Quantity++;  // tăng số lượng
                 }
+                else
+                {
+                    _currentOrder.Add(new OrderItem
+                    {
+                        ItemId = food.Id,
+                        ItemName = food.Name,
+                        Price = food.Price,
+                        Quantity = 1
+                    });
+                }
+                UpdateOrderDisplay();
             }
         }
 
@@ -556,41 +726,23 @@ namespace cafe_management.UI
                 return;
             }
 
-            var comboBox = FindName("cmbTables") as ComboBox;
+            var comboBox = FindVisualChild<ComboBox>(MainContent, "cmbTables");
             if (comboBox != null && comboBox.SelectedItem is TableInfo selectedTable)
             {
-                // Tạo bill mới
-                var newBill = new Bill
-                {
-                    BillId = $"HD{(Bills.Count + 1):D3}",
-                    TableId = selectedTable.TableId,
-                    StartTime = DateTime.Now,
-                    Items = new ObservableCollection<BillItem>()
-                };
-
+                bool error_createBill = BillDAO.Instance.CreateBill(selectedTable.TableId);
+                _idBill = BillDAO.Instance.GetIdBillByTableID(selectedTable.TableId);
                 // Thêm các món từ order vào bill
                 foreach (var orderItem in _currentOrder)
                 {
-                    newBill.Items.Add(new BillItem
-                    {
-                        ItemName = orderItem.ItemName,
-                        Quantity = orderItem.Quantity,
-                        Price = orderItem.Price
-                    });
+                    BillInfoDAO.Instance.AddBillInfo(_idBill, orderItem.ItemId, orderItem.Quantity);
                 }
-
-                Bills.Add(newBill);
-
                 // Chuyển trạng thái bàn sang "Có khách"
-                ChangeToOccupied(selectedTable.TableId);
+                //ChangeToOccupied(selectedTable.TableId);
 
                 // Clear order
                 _currentOrder.Clear();
                 UpdateOrderDisplay();
-
-                MessageBox.Show($"Đã tạo order cho {selectedTable.TableName}\n" +
-                              $"Mã hóa đơn: {newBill.BillId}\n" +
-                              $"Tổng tiền: {newBill.TotalAmount:N0}đ");
+                TableDAO.Instance.UpdateTableStatus(selectedTable.TableId, "có khách");
             }
             else
             {
@@ -600,44 +752,62 @@ namespace cafe_management.UI
 
         private void CmbTables_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // Có thể thêm xử lý khi chọn bàn khác
+            var cmbTables = FindVisualChild<ComboBox>(MainContent, "cmbTables");
+            if (cmbTables.SelectedValue == null) return;
+
+            _selectedTableId = (int)cmbTables.SelectedValue;
         }
 
         private void UpdateOrderDisplay()
         {
-            // Cập nhật ListView order
-            var listView = FindName("lstCurrentOrder") as ListView;
-            if (listView != null)
+            var lstCurrentOrder = FindVisualChild<ListView>(MainContent, "lstCurrentOrder");
+            if (lstCurrentOrder != null)
             {
-                listView.ItemsSource = null;
-                listView.ItemsSource = _currentOrder;
-            }
-
-            // Cập nhật tổng tiền
-            decimal total = _currentOrder.Sum(item => item.Price * item.Quantity);
-            var totalText = FindName("txtOrderTotal") as TextBlock;
-            if (totalText != null)
-            {
-                totalText.Text = $"{total:N0}đ";
+                lstCurrentOrder.ItemsSource = null;
+                lstCurrentOrder.ItemsSource = _currentOrder;
+                var totalPrice = FindVisualChild<TextBlock>(MainContent, "txtOrderTotal");
+                totalPrice.Text = FoodDAO.Instance.FormatVND(_currentOrder.Sum(x => x.Price * x.Quantity));
             }
         }
+        private void LoadTablesToComboBox()
+        {
+            var list = TableDAO.Instance.GetListTable();
+            var cmbTables = FindVisualChild<ComboBox>(MainContent, "cmbTables");
+            cmbTables.ItemsSource = list;
+        }
+        
         #endregion
 
         #region Helper Methods
         private string GetTextBoxText(string textBoxName)
         {
-            var textBox = FindName(textBoxName) as TextBox;
+            var textBox = FindVisualChild<TextBox>(MainContent, textBoxName);
             return textBox?.Text ?? string.Empty;
         }
 
         private string GetComboBoxText(string comboBoxName)
         {
-            var comboBox = FindName(comboBoxName) as ComboBox;
-            if (comboBox?.SelectedItem is ComboBoxItem item)
+            var comboBox = FindVisualChild<ComboBox>(MainContent, comboBoxName);
+            if (comboBox != null && comboBox.SelectedValue != null)
             {
-                return item.Content?.ToString() ?? string.Empty;
+                return comboBox.SelectedValue.ToString()!;
             }
             return string.Empty;
+        }
+        public static T FindVisualChild<T>(DependencyObject parent, string name) where T : FrameworkElement
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+            {
+                var child = VisualTreeHelper.GetChild(parent, i);
+
+                if (child is T fe && fe.Name == name)
+                    return fe;
+
+                var result = FindVisualChild<T>(child, name);
+                if (result != null)
+                    return result;
+            }
+            return null;
         }
         #endregion
 
@@ -651,76 +821,58 @@ namespace cafe_management.UI
         {
             MainContent.ContentTemplate = (DataTemplate)Resources["TableTemplate"];
 
-            // ⭐ QUAN TRỌNG: GÁN DATA CONTEXT CHO TEMPLATE
-            MainContent.DataContext = this;
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                LoadTableButton();
+            }), System.Windows.Threading.DispatcherPriority.Background);
 
-            
         }
 
         private void MenuButton_Click(object sender, RoutedEventArgs e)
         {
             MainContent.ContentTemplate = (DataTemplate)Resources["MenuTemplate"];
-            LoadMenuTemplate(); // Load dữ liệu khi chuyển sang Menu
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                LoadMenuTemplate(); // Load dữ liệu khi chuyển sang Menu
+            }), System.Windows.Threading.DispatcherPriority.Background);
+            
         }
         private void OrderButton_Click(object sender, RoutedEventArgs e)
         {
             MainContent.ContentTemplate = (DataTemplate)Resources["OrderTemplate"];
-        }
-        private void BillButton_Click(object sender, RoutedEventArgs e)
-        {
-            MainContent.ContentTemplate = (DataTemplate)Resources["OrderTemplate"];
-            LoadOrderTemplate(); // Load dữ liệu khi chuyển sang Order
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                LoadOrderTemplate(); // Load dữ liệu khi chuyển sang Order
+            }), System.Windows.Threading.DispatcherPriority.Background);
+            
         }
         #endregion
 
         #region Other Events
         private void ButtonAddTable_Click(object sender, RoutedEventArgs e)
         {
-            int tablenumber = TableDAO.Instance.GetTableCount() + 1;
-            string newtablename = $"bàn {tablenumber}";
-            Grid? tablepanel = FindName("gridTable") as Grid;
-            Button btn = new Button()
+            string newtablename = $"Bàn {_tableNumber}";
+            bool errorInsert = TableDAO.Instance.InsertTable(newtablename, "Trống");
+            if (errorInsert)
             {
-                Name = $"btntable{tablenumber}",
-                Tag = tablenumber,
-                Width = 100,
-                Height = 100,
-                Margin = new Thickness(10),
-                Background = new SolidColorBrush(Colors.Green)
-            };
-            tablepanel.Children.Add(btn);
-            try
-            {
-                bool success = TableDAO.Instance.InsertTable(newtablename, "trống");
-
-                if (success)
-                {
-                    MessageBox.Show("thêm bàn mới thành công!", "thành công");
-                }
-                else
-                {
-                    MessageBox.Show("thêm bàn thất bại. vui lòng kiểm tra lại!", "lỗi");
-                }
+                LoadTableButton();
+                _tableNumber++;
+                return;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"lỗi hệ thống khi thêm bàn: {ex.Message}", "lỗi");
-            }
-
+            MessageBox.Show("Thêm thất bại");
+            return;
         }
 
         private void ButtonDeleteTable_Click(object sender, RoutedEventArgs e)
         {
-            if (_selectedTableId > 0)
+            bool errorDelete = TableDAO.Instance.DeleteTable(_selectedTableId);
+            if (errorDelete)
             {
-                var tableName = _tables.ContainsKey(_selectedTableId) ? _tables[_selectedTableId].TableName : $"Bàn {_selectedTableId}";
-                MessageBox.Show($"Đã xóa {tableName}");
-                _selectedTableId = 0;
+                //MessageBox.Show("Xóa thành công");
+                LoadTableButton();
+                return;
             }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn bàn cần xóa!");
-            }
+            return;
         }
 
         private void ButtonEditTable_Click(object sender, RoutedEventArgs e)
@@ -761,24 +913,7 @@ namespace cafe_management.UI
             MessageBox.Show("Xóa món ăn - Sử dụng Menu Management để xóa món");
         }
         #endregion
-        private Grid? FindGridInTemplate(string gridName)
-        {
-            // BƯỚC 1: Kiểm tra xem ContentControl (MainContent) đã tải nội dung chưa
-            if (this.MainContent.Content == null)
-            {
-                return null;
-            }
-
-            // BƯỚC 2: Nội dung của MainContent (khi TableTemplate được tải) là Grid gốc
-            if (this.MainContent.Content is Grid rootGrid)
-            {
-                // BƯỚC 3: Dùng FindName trên Control gốc của Template để tìm Control con.
-                // Phải trả về đúng kiểu Grid?
-                return rootGrid.FindName(gridName) as Grid;
-            }
-
-            // Trả về null nếu không tìm thấy Grid
-            return null;
-        }
+        
+        
     }
 }
