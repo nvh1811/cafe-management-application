@@ -13,7 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using cafe_management.DTO;
+using cafe_management.Helper;
 namespace cafe_management.UI
 {
     /// <summary>
@@ -28,12 +29,14 @@ namespace cafe_management.UI
 
         private void buttonLogin_Click(object sender, RoutedEventArgs e)
         {
-            string user = "admin";// txtUser.Text;
+            string user = "Admin";// txtUser.Text;
             string pass = "1234"; // txtPassWord.Password;
-            if (AccountController.Instance.login(user, pass))
+            Account account = AccountController.Instance.Login(user, pass);
+            if (account != null)
             {
                 // Đăng nhập thành công
                 // Chuyển đến giao diện chính của ứng dụng
+                UserSession.CurrentUser = account;
                 MainWindow main = (MainWindow)Window.GetWindow(this);
                 main.LoadLayout(new HomeLayout());
             }

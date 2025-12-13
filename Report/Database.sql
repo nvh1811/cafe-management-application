@@ -15,7 +15,7 @@ CREATE TABLE dbo.TableFood
 (
     id INT IDENTITY PRIMARY KEY,
     name NVARCHAR(100) NOT NULL DEFAULT N'chưa đặt tên',
-    status NVARCHAR(100) NOT NULL DEFAULT N'trống' -- trống || có người 
+    status NVARCHAR(100) NOT NULL DEFAULT N'Trống' -- trống || có người 
 );
 GO
 
@@ -24,9 +24,9 @@ GO
 -- =============================
 CREATE TABLE dbo.Account
 (
-    displayname NVARCHAR(100) NOT NULL DEFAULT N'KTPM',
     username NVARCHAR(100) PRIMARY KEY,
     password NVARCHAR(100) NOT NULL DEFAULT 0,
+    role NVARCHAR(20) -- 'admin' hoặc 'staff'
 );
 GO
 
@@ -82,8 +82,8 @@ CREATE TABLE dbo.BillInfo
 GO
 --====================
 -- Thêm tài khoản
-insert into dbo.Account values ('ADMIN', 'admin', '1234')
-insert into dbo.Account values ('Dev', 'dev', '1234')
+insert into dbo.Account values ('Admin', '1234', 'admin')
+insert into dbo.Account values ('Staff', '1234', 'staff')
 -- =============================
 -- KIỂM TRA KẾT QUẢ
 -- =============================
@@ -102,6 +102,9 @@ BEGIN
 END
 GO
 
+select * from Account;
+go
+
 SELECT * FROM dbo.FoodCategory;
 GO
 SELECT * FROM dbo.Food;
@@ -112,3 +115,4 @@ SELECT * FROM dbo.Bill;
 GO
 SELECT * FROM dbo.BillInfo;
 GO
+

@@ -1,5 +1,7 @@
-﻿using cafe_management.DAO;
-using cafe_management.DTO;  
+﻿
+using cafe_management.DAO;
+using cafe_management.DTO;
+using cafe_management.Helper;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -23,19 +25,21 @@ namespace cafe_management.UI
         public List<FoodItem> MenuItems { get; set; } = new List<FoodItem>();
 
         // Order hiện tại
-        private ObservableCollection<OrderItem> _currentOrder = new ObservableCollection<OrderItem>();
+        private List<OrderItem> _currentOrder = new List<OrderItem>();
 
         // Biến tạm để lưu món đang chỉnh sửa
         private FoodItem? _editingMenuItem = null;
 
         private int _idBill = 0;
-        private int _tableNumber = 1;
+
+        private int statusBill = 0;
+
         public HomeLayout()
         {
             InitializeComponent();
             MenuItems = FoodDAO.Instance.GetListFood(); // Lấy danh sách món từ DAO
+            this.DataContext = UserSession.CurrentUser;
         }
-
 
         #region Table Template Methods
         // Sự kiện khi click vào nút bàn
@@ -66,183 +70,97 @@ namespace cafe_management.UI
 
             // ---- Gán thông tin bàn ----
             txtTableName.Text = table.TableName;
-            txtBillTime.Text = BillDAO.Instance.GetTimeCheckin(table.TableId).ToString("g");
+            txtBillTime.Text = BillDAO.Instance.GetTimeCheckin(_selectedTableId).ToString("g");
+            _idBill = BillDAO.Instance.GetIdBillByTableID(_selectedTableId);
+            txtBillId.Text = _idBill == -1 ? "N/A" : _idBill.ToString();
+            statusBill = BillDAO.Instance.GetStatusBillByIdTable(_selectedTableId);
+            if (statusBill == 1)
+            {
+                _currentOrder.Clear();
+            }
+            else
+            {
+                _currentOrder = TableDAO.Instance.GetListFoodOrderByIdTable(_selectedTableId);
+                txtTotalAmount.Text = FoodDAO.Instance.FormatVND(_currentOrder.Sum(x => x.TotalPrice));
+            }
+            ShowTableOrder(_currentOrder);
+            
+        }
+        private void ShowTableOrder(List<OrderItem> od)
+        {
             var dgOrderItems = FindVisualChild<DataGrid>(MainContent, "dgOrderItems");
             if (dgOrderItems != null)
             {
+                dgOrderItems.ItemsSource = null;
+                dgOrderItems.ItemsSource = od;
+            }
+        }
+        private void ButtonCheckout_Click(object sender, RoutedEventArgs e)
+        {
+            string listFoodBill = "Bàn " + _selectedTableId + "\nDanh sách món:\n";
+            foreach (var item in _currentOrder)
+            {
+                listFoodBill += $"{item.ItemName} x{item.Quantity} - {FoodDAO.Instance.FormatVND(item.TotalPrice)}\n";
+            }
+            listFoodBill += $"Thành tiền: {FoodDAO.Instance.FormatVND(_currentOrder.Sum(x => x.TotalPrice))}";
+            if (MessageBox.Show(listFoodBill, "Xác nhận thanh toán", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
                 
+                TableDAO.Instance.UpdateTableStatus(_selectedTableId, "Trống");
+                statusBill = 1;
+                BillDAO.Instance.ChangeStatusBill(_selectedTableId, statusBill);
+                LoadTableButton();
+                var txtNoTableSelected = FindVisualChild<TextBlock>(MainContent, "txtNoTableSelected");
+                var TableDetailPanel = FindVisualChild<StackPanel>(MainContent, "TableDetailPanel");
+                txtNoTableSelected.Visibility = Visibility.Visible;
+                TableDetailPanel.Visibility = Visibility.Collapsed;
+                MessageBox.Show("Thanh toán thành công!");
             }
-
         }
-
-        private void ShowTableDetails(int tableId)
+        private void ButtonAddTable_Click(object sender, RoutedEventArgs e)
         {
-            if (_tables.ContainsKey(tableId))
+            int tablenum = TableDAO.Instance.GetMaxTableID() + 1;
+            string newtablename = $"Bàn {tablenum}";
+            bool errorInsert = TableDAO.Instance.InsertTable(newtablename, "Trống");
+            if (errorInsert)
             {
-                var table = _tables[tableId];
-
-                // Hiển thị thông tin chi tiết
-                MessageBox.Show($"Bàn: {table.TableName}\n" +
-                              $"Trạng thái: {table.Status}\n" +
-                              $"Số ghế: {table.Seats}\n" +
-                              $"ID: {table.TableId}",
-                              "Thông Tin Bàn");
-
-                // Hiển thị menu thay đổi trạng thái
-                ShowStatusChangeMenu(tableId);
+                LoadTableButton();
+                return;
             }
+            MessageBox.Show("Thêm thất bại");
+            return;
         }
 
-        private void ShowStatusChangeMenu(int tableId)
+        private void ButtonDeleteTable_Click(object sender, RoutedEventArgs e)
         {
-            var table = _tables[tableId];
-
-            // Tạo context menu để thay đổi trạng thái
-            ContextMenu menu = new ContextMenu();
-
-            System.Windows.Controls.MenuItem menuItem1 = new System.Windows.Controls.MenuItem();
-            menuItem1.Header = "Chuyển sang TRỐNG";
-            menuItem1.Click += (s, e) => ChangeTableStatus(tableId, "Trống", Colors.Green);
-            menu.Items.Add(menuItem1);
-
-            System.Windows.Controls.MenuItem menuItem2 = new System.Windows.Controls.MenuItem();
-            menuItem2.Header = "Chuyển sang CÓ KHÁCH";
-            menuItem2.Click += (s, e) => ChangeTableStatus(tableId, "Có khách", Colors.Orange);
-            menu.Items.Add(menuItem2);
-
-            System.Windows.Controls.MenuItem menuItem3 = new System.Windows.Controls.MenuItem();
-            menuItem3.Header = "Chuyển sang ĐẶT TRƯỚC";
-            menuItem3.Click += (s, e) => ChangeTableStatus(tableId, "Đặt trước", Colors.Yellow);
-            menu.Items.Add(menuItem3);
-
-            // Hiển thị menu
-            var button = FindName($"btnTable{tableId}") as Button;
-            if (button != null)
+            bool errorDelete = TableDAO.Instance.DeleteTable(_selectedTableId);
+            if (errorDelete)
             {
-                menu.PlacementTarget = button;
-                menu.IsOpen = true;
+                //MessageBox.Show("Xóa thành công");
+                LoadTableButton();
+                return;
             }
+            return;
         }
 
-        private void ChangeTableStatus(int tableId, string newStatus, Color newColor)
-        {
-            if (_tables.ContainsKey(tableId))
-            {
-                // Cập nhật trạng thái
-                _tables[tableId].Status = newStatus;
-                _tables[tableId].StatusColor = newColor;
-
-                // Cập nhật giao diện
-                UpdateTableButton(tableId);
-
-                MessageBox.Show($"Đã chuyển {_tables[tableId].TableName} sang trạng thái: {newStatus}");
-            }
-        }
-
-        private void UpdateTableButton(int tableId)
-        {
-            // Tìm button tương ứng và cập nhật - XỬ LÝ NULL AN TOÀN
-            var table = _tables[tableId];
-            var buttonName = $"btnTable{tableId}";
-            var button = FindName(buttonName) as Button;
-
-            if (button != null)
-            {
-                // Cập nhật màu nền
-                button.Background = new SolidColorBrush(table.StatusColor);
-
-                // Cập nhật text status - XỬ LÝ NULL AN TOÀN
-                if (button.Content is StackPanel stackPanel && stackPanel.Children.Count > 1)
-                {
-                    if (stackPanel.Children[1] is TextBlock statusTextBlock)
-                    {
-                        statusTextBlock.Text = table.Status;
-                    }
-                }
-            }
-        }
-
-        // Các phương thức chuyển trạng thái nhanh
-        private void ChangeToAvailable(int tableId)
-        {
-            ChangeTableStatus(tableId, "Trống", Colors.Green);
-        }
-
-        private void ChangeToOccupied(int tableId)
-        {
-            ChangeTableStatus(tableId, "Có khách", Colors.Orange);
-
-            // Tự động tạo bill nếu chưa có
-            if (!Bills.Any(b => b.TableId == tableId))
-            {
-                var newBill = new Bill
-                {
-                    BillId = $"HD{(Bills.Count + 1):D3}",
-                    TableId = tableId,
-                    StartTime = DateTime.Now,
-                    Items = new ObservableCollection<BillItem>()
-                };
-                Bills.Add(newBill);
-            }
-        }
-
-        private void ChangeToReserved(int tableId)
-        {
-            ChangeTableStatus(tableId, "Đặt trước", Colors.Yellow);
-        }
-
-        private void BtnCreateBill_Click(object sender, RoutedEventArgs e)
+        private void ButtonEditTable_Click(object sender, RoutedEventArgs e)
         {
             if (_selectedTableId > 0)
             {
-                var newBill = new Bill
-                {
-                    BillId = $"HD{(Bills.Count + 1):D3}",
-                    TableId = _selectedTableId,
-                    StartTime = DateTime.Now,
-                    Items = new ObservableCollection<BillItem>()
-                };
-
-                Bills.Add(newBill);
-
-                // Chuyển trạng thái bàn sang "Có khách"
-                ChangeToOccupied(_selectedTableId);
-
-                MessageBox.Show($"Đã tạo hóa đơn {newBill.BillId} cho Bàn {_selectedTableId}");
+                // Hiển thị form chỉnh sửa thông tin bàn
+                var table = tableList.FirstOrDefault(it => it.TableId == _selectedTableId);
+                MessageBox.Show($"Chỉnh sửa thông tin Bàn {_selectedTableId}\n" +
+                              $"Tên: {table.TableName}\n" +
+                              $"Số ghế: {table.Seats}");
             }
             else
             {
-                MessageBox.Show("Vui lòng chọn bàn trước khi tạo hóa đơn!");
-            }
-        }
-
-        private void BtnCloseBill_Click(object sender, RoutedEventArgs e)
-        {
-            if (_selectedTableId > 0)
-            {
-                var currentBill = Bills.FirstOrDefault(b => b.TableId == _selectedTableId);
-                if (currentBill != null)
-                {
-                    Bills.Remove(currentBill);
-
-                    // Chuyển trạng thái bàn sang "Trống"
-                    ChangeToAvailable(_selectedTableId);
-
-                    MessageBox.Show($"Đã thanh toán {currentBill.BillId}\nTổng tiền: {currentBill.TotalAmount:N0}đ");
-                }
-                else
-                {
-                    MessageBox.Show("Bàn này không có hóa đơn để thanh toán!");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn bàn trước khi thanh toán!");
+                MessageBox.Show("Vui lòng chọn bàn cần chỉnh sửa!");
             }
         }
         private void LoadTableButton()
         {
-
+            
             // 1. Lấy danh sách bàn từ SQL
             tableList = TableDAO.Instance.GetListTable();
 
@@ -260,6 +178,7 @@ namespace cafe_management.UI
             // 3. Tạo button cho từng bàn
             foreach (TableInfo table in tableList)
             {
+                _tables[table.TableId] = table; // Lưu trạng thái bàn vào dictionary
                 // Tạo StackPanel để chứa nội dung nút
                 StackPanel content = new StackPanel()
                 {
@@ -289,16 +208,17 @@ namespace cafe_management.UI
 
                 content.Children.Add(name);
                 content.Children.Add(status);
-
+                
                 // Tạo button
                 Button btn = new Button()
                 {
                     Background = new SolidColorBrush(table.StatusColor),
                     Width = 120,
                     Height = 80,
-                    Margin = new Thickness(10),
                     Tag = table, // lưu dữ liệu bàn vào Tag
-                    Content = content
+                    Content = content,
+                    Margin = new Thickness(10)
+
                 };
 
                 // Màu theo trạng thái bàn
@@ -314,6 +234,7 @@ namespace cafe_management.UI
         #region Menu Template Methods
         private void LoadMenuTemplate()
         {
+            
             // Load danh sách món ăn vào DataGrid
             var dataMenuGrid = FindVisualChild<DataGrid>(MainContent, "dgMenuItems");
             if (dataMenuGrid != null)
@@ -390,59 +311,45 @@ namespace cafe_management.UI
 
         private void BtnEditMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button && button.Tag != null)
+            var button = sender as Button;
+            if (button == null) return;
+            int itemId = int.Parse(button.Tag.ToString()!);
+            _editingMenuItem = MenuItems.FirstOrDefault(item => item.Id == itemId);
+            if (_editingMenuItem == null) return;
+            if (_editingMenuItem != null)
             {
-                int itemId = int.Parse(button.Tag.ToString()!);
-                _editingMenuItem = MenuItems.FirstOrDefault(item => item.Id == itemId);
+                // Hiển thị thông tin món lên form
+                var nameBox = FindVisualChild<TextBox>(MainContent, "txtMenuItemName");
+                if (nameBox != null)
+                    nameBox.Text = _editingMenuItem.Name;
 
-                if (_editingMenuItem != null)
+                var priceBox = FindVisualChild<TextBox>(MainContent, "txtMenuItemPrice");
+                if (priceBox != null)
+                    priceBox.Text = _editingMenuItem.Price.ToString();
+
+                var categoryBox = FindVisualChild<ComboBox>(MainContent, "cmbMenuCategory");
+                if (categoryBox != null)
                 {
-                    // Hiển thị thông tin món lên form
-                    var nameBox = FindName("txtMenuItemName") as TextBox;
-                    if (nameBox != null)
-                        nameBox.Text = _editingMenuItem.Name;
-
-                    var priceBox = FindName("txtMenuItemPrice") as TextBox;
-                    if (priceBox != null)
-                        priceBox.Text = _editingMenuItem.Price.ToString();
-
-                    var categoryBox = FindName("cmbMenuCategory") as ComboBox;
-                    if (categoryBox != null)
-                    {
-                        foreach (ComboBoxItem item in categoryBox.Items)
-                        {
-                            if (item.Content?.ToString() == _editingMenuItem.Category)
-                            {
-                                categoryBox.SelectedItem = item;
-                                break;
-                            }
-                        }
-                    }
-
-                    // Chuyển sang chế độ chỉnh sửa
-                    ShowEditMode(true);
+                    categoryBox.SelectedItem = _editingMenuItem.Category;
                 }
+
+                // Chuyển sang chế độ chỉnh sửa
+                ShowEditMode(true);
             }
         }
 
         private void BtnUpdateMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            if (_editingMenuItem != null && ValidateMenuForm())
+            if (FoodDAO.Instance.UpdateFood(_editingMenuItem.Id, GetTextBoxText("txtMenuItemName"), 
+                FoodCategoryDAO.Instance.GetIdCategoryByName(GetComboBoxText("cmbMenuCategory")), 
+                float.Parse( GetTextBoxText("txtMenuItemPrice"))))
             {
-                _editingMenuItem.Name = GetTextBoxText("txtMenuItemName");
-                _editingMenuItem.Price = decimal.Parse(GetTextBoxText("txtMenuItemPrice"));
-                _editingMenuItem.Category = GetComboBoxText("cmbMenuCategory");
-
-                // Refresh DataGrid
-                var dataGrid = FindName("dgMenuItems") as DataGrid;
-                if (dataGrid != null)
-                {
-                    dataGrid.ItemsSource = null;
-                    dataGrid.ItemsSource = MenuItems;
-                }
-
-                ResetMenuForm();
-                MessageBox.Show("Đã cập nhật món thành công!");
+                MessageBox.Show("Cập nhật món thành công!");
+                LoadMenuTemplate();
+            }
+            else
+            {
+                MessageBox.Show("Cập nhật món thất bại!");
             }
         }
 
@@ -478,55 +385,35 @@ namespace cafe_management.UI
 
         private void ShowEditMode(bool isEditing)
         {
-            var addBtn = FindName("btnAddMenuItem") as Button;
+            var addBtn = FindVisualChild<Button>(MainContent, "btnAddMenuItem");
             if (addBtn != null)
                 addBtn.Visibility = isEditing ? Visibility.Collapsed : Visibility.Visible;
 
-            var updateBtn = FindName("btnUpdateMenuItem") as Button;
+            var updateBtn = FindVisualChild<Button>(MainContent, "btnUpdateMenuItem");
             if (updateBtn != null)
                 updateBtn.Visibility = isEditing ? Visibility.Visible : Visibility.Collapsed;
 
-            var cancelBtn = FindName("btnCancelEdit") as Button;
+            var cancelBtn = FindVisualChild<Button>(MainContent, "btnCancelEdit");
             if (cancelBtn != null)
                 cancelBtn.Visibility = isEditing ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void ResetMenuForm()
         {
-            var nameBox = FindName("txtMenuItemName") as TextBox;
+            var nameBox = FindVisualChild<TextBox>(MainContent, "txtMenuItemName");
             if (nameBox != null)
                 nameBox.Text = "";
 
-            var priceBox = FindName("txtMenuItemPrice") as TextBox;
+            var priceBox = FindVisualChild<TextBox>(MainContent, "txtMenuItemPrice");
             if (priceBox != null)
                 priceBox.Text = "";
 
-            var categoryBox = FindName("cmbMenuCategory") as ComboBox;
+            var categoryBox = FindVisualChild<ComboBox>(MainContent, "cmbMenuCategory");
             if (categoryBox != null)
                 categoryBox.SelectedIndex = 0;
 
             _editingMenuItem = null;
             ShowEditMode(false);
-        }
-
-        private bool ValidateMenuForm()
-        {
-            string name = GetTextBoxText("txtMenuItemName");
-            string priceText = GetTextBoxText("txtMenuItemPrice");
-
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                MessageBox.Show("Vui lòng nhập tên món!");
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(priceText) || !decimal.TryParse(priceText, out decimal price) || price <= 0)
-            {
-                MessageBox.Show("Vui lòng nhập giá hợp lệ!");
-                return false;
-            }
-
-            return true;
         }
         private void LoadCategoryToComboBox()
         {
@@ -742,7 +629,7 @@ namespace cafe_management.UI
                 // Clear order
                 _currentOrder.Clear();
                 UpdateOrderDisplay();
-                TableDAO.Instance.UpdateTableStatus(selectedTable.TableId, "có khách");
+                TableDAO.Instance.UpdateTableStatus(selectedTable.TableId, "Có khách");
             }
             else
             {
@@ -825,7 +712,6 @@ namespace cafe_management.UI
             {
                 LoadTableButton();
             }), System.Windows.Threading.DispatcherPriority.Background);
-
         }
 
         private void MenuButton_Click(object sender, RoutedEventArgs e)
@@ -848,49 +734,7 @@ namespace cafe_management.UI
         }
         #endregion
 
-        #region Other Events
-        private void ButtonAddTable_Click(object sender, RoutedEventArgs e)
-        {
-            string newtablename = $"Bàn {_tableNumber}";
-            bool errorInsert = TableDAO.Instance.InsertTable(newtablename, "Trống");
-            if (errorInsert)
-            {
-                LoadTableButton();
-                _tableNumber++;
-                return;
-            }
-            MessageBox.Show("Thêm thất bại");
-            return;
-        }
-
-        private void ButtonDeleteTable_Click(object sender, RoutedEventArgs e)
-        {
-            bool errorDelete = TableDAO.Instance.DeleteTable(_selectedTableId);
-            if (errorDelete)
-            {
-                //MessageBox.Show("Xóa thành công");
-                LoadTableButton();
-                return;
-            }
-            return;
-        }
-
-        private void ButtonEditTable_Click(object sender, RoutedEventArgs e)
-        {
-            if (_selectedTableId > 0 && _tables.ContainsKey(_selectedTableId))
-            {
-                // Hiển thị form chỉnh sửa thông tin bàn
-                var table = _tables[_selectedTableId];
-                MessageBox.Show($"Chỉnh sửa thông tin Bàn {_selectedTableId}\n" +
-                              $"Tên: {table.TableName}\n" +
-                              $"Số ghế: {table.Seats}");
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn bàn cần chỉnh sửa!");
-            }
-        }
-
+        #region Account Template Methods
         private void ButtonChangePass_Click(object sender, RoutedEventArgs e)
         {
             MainWindow main = (MainWindow)Window.GetWindow(this);
@@ -903,17 +747,6 @@ namespace cafe_management.UI
             main.LoadLayout(new LoginLayout());
         }
 
-        private void ButtonAddFood_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Thêm món ăn - Sử dụng Menu Management để thêm món");
-        }
-
-        private void ButtonDeleteFood_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Xóa món ăn - Sử dụng Menu Management để xóa món");
-        }
         #endregion
-        
-        
     }
 }

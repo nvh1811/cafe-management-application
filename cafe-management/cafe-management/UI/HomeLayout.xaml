@@ -3,11 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:helper="clr-namespace:cafe_management.Helper"
+             xmlns:local="clr-namespace:cafe_management"
              mc:Ignorable="d"
              d:DesignHeight="600" d:DesignWidth="800"
              Background="#cec1a8">
 
     <UserControl.Resources>
+        <helper:BoolToVisibilityConverter x:Key="BoolToVisibility"/>
         <!-- Account Template -->
         <DataTemplate x:Key="AccountTemplate">
             <Grid Background="#35371e" RenderTransformOrigin="0.486,0.862">
@@ -133,7 +136,7 @@
                                 <Border Background="#6a6d3c" 
                                         CornerRadius="8" 
                                         Padding="15" 
-                                        Margin="0,15,0,0">  
+                                        Margin="0,15,0,0">
                                     <StackPanel>
                                         <TextBlock x:Name="txtTableName" 
                                                    Foreground="#ffeda8" 
@@ -171,7 +174,7 @@
                                                   CanUserAddRows="False">
                                             <DataGrid.Columns>
                                                 <DataGridTextColumn Header="Tên món" 
-                                                                    Binding="{Binding Name}" 
+                                                                    Binding="{Binding ItemName}" 
                                                                     Width="60"
                                                                     Foreground="Black"/>
                                                 <DataGridTextColumn Header="Số lượng" 
@@ -180,6 +183,10 @@
                                                                     Foreground="Black"/>
                                                 <DataGridTextColumn Header="Đơn giá" 
                                                                     Binding="{Binding Price, StringFormat={}{0:N0}đ}" 
+                                                                    Width="40"
+                                                                    Foreground="Black"/>
+                                                <DataGridTextColumn Header="Thành tiền" 
+                                                                    Binding="{Binding TotalPrice, StringFormat={}{0:N0}đ}" 
                                                                     Width="90"
                                                                     Foreground="Black"/>
                                             </DataGrid.Columns>
@@ -195,6 +202,13 @@
                                                        FontSize="14"
                                                        FontWeight="Bold"/>
                                         </StackPanel>
+                                        <Button Content="Thanh toán" 
+                                                Width="100" Height="35" 
+                                                Margin="0,15,0,0" FontWeight="Bold"
+                                                HorizontalAlignment="Center"
+                                                Background="#4f772d"
+                                                Foreground="White"
+                                                Click="ButtonCheckout_Click"/>
                                     </StackPanel>
                                 </Border>
                             </StackPanel>
@@ -211,14 +225,13 @@
                     <Border Width="20" Height="20" Background="#4f772d" Margin="5,0" CornerRadius="3"/>
                     <TextBlock Text="Trống" Foreground="#ffeda8" VerticalAlignment="Center" Margin="0,0,15,0"/>
 
-                    <Border Width="20" Height="20" Background="#90a955" Margin="5,0" CornerRadius="3"/>
+                    <Border Width="20" Height="20" Background="PaleVioletRed"  Margin="5,0" CornerRadius="3"/>
                     <TextBlock Text="Có khách" Foreground="#ffeda8" VerticalAlignment="Center" Margin="0,0,15,0"/>
-
-                    <Border Width="20" Height="20" Background="#ecf39e" Margin="5,0" CornerRadius="3"/>
-                    <TextBlock Text="Đặt trước" Foreground="#ffeda8" VerticalAlignment="Center"/>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" 
+                <StackPanel Visibility="{Binding Source={x:Static helper:PermissionHelper.isAdmin},
+                                        Converter={StaticResource BoolToVisibility}}" 
+                            Orientation="Horizontal" 
                             HorizontalAlignment="Center" 
                             VerticalAlignment="Bottom" 
                             Margin="20">
@@ -291,17 +304,16 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Tên món" 
                                           Binding="{Binding Name}" 
-                                          Width="60"
                                           Foreground="Black"/>
                                 <DataGridTextColumn Header="Giá" 
                                           Binding="{Binding Price, StringFormat={}{0:N0}đ}" 
-                                          Width="40"
                                           Foreground="Black"/>
                                 <DataGridTextColumn Header="Danh mục" 
                                           Binding="{Binding Category}" 
-                                          Width="90"
                                           Foreground="Black"/>
-                                <DataGridTemplateColumn Header="Thao tác" Width="90">
+                                <DataGridTemplateColumn Header="Thao tác"
+                                                        Visibility="{Binding Source={x:Static helper:PermissionHelper.isAdmin},
+                                                        Converter={StaticResource BoolToVisibility}}">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
@@ -334,7 +346,8 @@
                     Background="#8a8c5d" 
                     CornerRadius="10" 
                     Padding="15">
-                        <StackPanel>
+                        <StackPanel Visibility="{Binding Source={x:Static helper:PermissionHelper.isAdmin},
+                                                 Converter={StaticResource BoolToVisibility}}">
                             <TextBlock Text="THÊM/CHỈNH SỬA MÓN ĂN" 
                                Foreground="#ffead8" 
                                FontSize="16" 
@@ -658,7 +671,7 @@
             <Border Grid.Column="1" Background="White" Margin="10">
                 <!-- ContentControl để hiển thị nội dung -->
                 <ContentControl x:Name="MainContent" 
-                                ContentTemplate="{StaticResource TableTemplate}"/>
+                                ContentTemplate="{StaticResource MenuTemplate}"/>
             </Border>
         </Grid>
     </Grid>

@@ -1,11 +1,12 @@
-﻿using cafe_management.DAO;
+﻿using cafe_management.Helper;
+using cafe_management.DAO;
+using cafe_management.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace cafe_management.DAO
 {
     public class AccountController
@@ -18,11 +19,25 @@ namespace cafe_management.DAO
             private set { instance = value; }
         }
         private AccountController() { }
-        public bool login(string username, string password)
+        public Account Login(string username, string password)
         {
-            string query = "SELECT * FROM dbo.Account WHERE username = N'" + username + "' AND password = N'" + password + "'";
-            DataTable result = DataProvider.Instance.ExecuteQuery(query);
-            return result.Rows.Count > 0;
+            string query = "SELECT * FROM dbo.Account WHERE username = @username AND password = @password";
+
+            DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] { username, password });
+
+            if (result.Rows.Count == 0)
+                return null;
+
+            DataRow row = result.Rows[0];
+
+            Account acc =  new Account
+            {
+                Username = row["username"].ToString(),
+                Role = row["role"].ToString()
+            };
+            UserSession.CurrentUser = acc; // ⭐ QUAN TRỌNG
+            return acc;
         }
+
     }
 }
