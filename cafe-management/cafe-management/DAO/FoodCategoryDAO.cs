@@ -36,15 +36,5 @@ namespace cafe_management.DAO
             }
             return -1; // Not found
         }
-        public string GetNameCategoryById(int id)
-        {
-            string query = "SELECT name FROM dbo.FoodCategory WHERE id = " + id;
-            var data = DataProvider.Instance.ExcuteQuery(query);
-            if (data.Rows.Count > 0)
-            {
-                return Convert.ToString(data.Rows[0]["name"])!;
-            }
-            return string.Empty; // Not found
-        }
     }
 }

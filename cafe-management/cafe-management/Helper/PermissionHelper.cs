@@ -18,11 +18,6 @@ namespace cafe_management.Helper
                        UserSession.CurrentUser.Role == "admin";
             }
         }
-
-        public static bool IsAdmin()
-        {
-            return isAdmin;
-        }
     }
 }
 

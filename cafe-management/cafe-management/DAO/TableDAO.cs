@@ -112,12 +112,6 @@ namespace cafe_management.DAO
             }
             return list;
         }
-        public string GetTableNameById(int id)
-        {
-            string query = "SELECT name FROM dbo.TableFood WHERE id = @id";
-            object[] parameter = new object[] { id };
-            object result = DataProvider.Instance.ExecuteScalar(query, parameter);
-            return Convert.ToString(result) ?? string.Empty;
-        }
+        
     }
 }

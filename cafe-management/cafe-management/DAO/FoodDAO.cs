@@ -35,14 +35,6 @@ namespace cafe_management.DAO
         {
             return price.ToString("#,###", new System.Globalization.CultureInfo("vi-VN")) + "đ";
         }
-        public List<FoodItem> GetFoodByCategory(string category)
-        {
-            return GetListFood().Where(food => food.Category.Equals(category, StringComparison.OrdinalIgnoreCase)).ToList();
-        }
-        public List<FoodItem> SearchFoodByName(string name)
-        {
-            return GetListFood().Where(food => food.Name.IndexOf(name, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
-        }
         public FoodItem? GetFoodByID(int id)
         {
             string query = "SELECT * FROM Food WHERE id = " + id;
