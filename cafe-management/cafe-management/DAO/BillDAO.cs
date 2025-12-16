@@ -1,11 +1,13 @@
-﻿using System;
+﻿using cafe_management.DTO;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
-
+using Microsoft.Data.SqlClient;
+using System.Data.SqlTypes;
 namespace cafe_management.DAO
 {
     public class BillDAO
@@ -21,7 +23,13 @@ namespace cafe_management.DAO
         {
             string query = "INSERT INTO dbo.Bill(idtable, status) VALUES ( @tableID , @status )";
 
-            int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { tableID, status });
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@tableID", SqlDbType.Int) { Value = tableID },
+                new SqlParameter("@status", SqlDbType.Int) { Value = status }
+            };  
+
+            int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
 
             return result > 0;
         }
@@ -49,7 +57,13 @@ namespace cafe_management.DAO
         public void ChangeStatusBill(int idTable, int status)
         {
             string query = "UPDATE dbo.Bill SET status = @status WHERE idtable = @idTable ";
-            DataProvider.Instance.ExecuteNonQuery(query, new object[] { status, idTable });
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@status", SqlDbType.Int) { Value = status },
+                new SqlParameter("@idTable", SqlDbType.Int) { Value = idTable }
+            };
+            DataProvider.Instance.ExecuteNonQuery(query, parameters);
         }
         public int GetStatusBillByIdTable(int idtable)
         {
@@ -67,7 +81,35 @@ namespace cafe_management.DAO
         public bool DeleteBillData()
         {
             string query = "DELETE FROM Bill;\r\nDBCC CHECKIDENT ('Bill', RESEED, 0);\r\n";
+
             return DataProvider.Instance.ExecuteNonQuery(query) > 0;
         }
+        public List<Bill> GetListBillRange(DateTime start, DateTime end)
+        {
+            string query = @"
+                            SELECT b.*, t.name AS TableName
+                            FROM Bill b
+                            JOIN TableFood t ON b.idtable = t.id
+                            WHERE b.datecheckin >= @start
+                            AND b.datecheckin <= @end
+                            AND b.status = 1";
+
+            SqlParameter[] parameters =
+                                       {
+                                            new SqlParameter("@start", SqlDbType.DateTime) { Value = (SqlDateTime)start.Date },
+                                            new SqlParameter("@end",   SqlDbType.DateTime) { Value = (SqlDateTime)end.Date.AddDays(1) }
+                                        };
+            
+            var data = DataProvider.Instance.ExcuteQuery(query, parameters);
+
+            List<Bill> list = new List<Bill>();
+            foreach (DataRow row in data.Rows)
+            {
+                list.Add(new Bill(row));
+            }
+
+            return list;
+        }
+
     }
 }

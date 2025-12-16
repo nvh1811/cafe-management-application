@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using Microsoft.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -29,7 +30,11 @@ namespace cafe_management.DAO
             string query = "INSERT INTO dbo.TableFood (name, status) VALUES ( @name , @status )";
 
             // Mảng tham số phải chứa các giá trị C# tương ứng với @name, @status.
-            object[] parameter = new object[] { name, status };
+            SqlParameter[] parameter = new SqlParameter[]
+            {
+                new SqlParameter("@name", System.Data.SqlDbType.NVarChar) { Value = name },
+                new SqlParameter("@status", System.Data.SqlDbType.NVarChar) { Value = status }
+            };
 
             // Sử dụng ExecuteNonQuery
             int result = DataProvider.Instance.ExecuteNonQuery(query, parameter);
@@ -41,26 +46,11 @@ namespace cafe_management.DAO
         {
             List<TableInfo> list = new List<TableInfo>();
             string query = "SELECT id, name, status FROM dbo.TableFood";
-            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            DataTable data = DataProvider.Instance.ExcuteQuery(query);
 
             foreach (DataRow row in data.Rows)
             {
-                string status = Convert.ToString(row["status"])!;
-                Color color;
-
-                // Gán màu dựa trên trạng thái (Tùy chỉnh)
-                if (status.Contains("khách"))   // chỉ cần chứa chữ "khách"
-                    color = Colors.PaleVioletRed;
-                else
-                    color = Colors.Green;
-
-                list.Add(new TableInfo
-                {
-                    TableId = (int)row["id"],
-                    TableName = Convert.ToString(row["name"])!,
-                    Status = status,
-                    StatusColor = color // Gán Brush đã tính toán
-                });
+                list.Add(new TableInfo(row));
             }
             return list;
         }
@@ -78,7 +68,7 @@ namespace cafe_management.DAO
                 query = "DELETE FROM TableFood;\r\nDBCC CHECKIDENT ('TableFood', RESEED, 0);\r\n";
             }
             else query = "DELETE FROM dbo.TableFood WHERE id = @id";
-            object[] parameter = new object[] { id };
+            SqlParameter[] parameter = new SqlParameter[] { new SqlParameter("@id", System.Data.SqlDbType.Int) { Value = id } };
             return DataProvider.Instance.ExecuteNonQuery(query, parameter) > 0;
         }
         public int GetMaxTableID()
@@ -96,7 +86,11 @@ namespace cafe_management.DAO
         public bool UpdateTableStatus(int id, string status)
         {
             string query = "UPDATE dbo.TableFood SET status = @status WHERE id = @id ";
-            object[] para = new object[] { status, id };
+            SqlParameter[] para = new SqlParameter[]
+            {
+                new SqlParameter("@status", System.Data.SqlDbType.NVarChar) { Value = status },
+                new SqlParameter("@id", System.Data.SqlDbType.Int) { Value = id }
+            };
             return DataProvider.Instance.ExecuteNonQuery(query, para) > 0;
         }
         public List<OrderItem> GetListFoodOrderByIdTable(int idtable)
@@ -107,19 +101,23 @@ namespace cafe_management.DAO
                 "\r\nJOIN dbo.BillInfo od ON f.id = od.idfood" +
                 "\r\nJOIN dbo.Bill o ON od.idbill = o.id" +
                 "\r\nWHERE o.idtable = @idtable AND o.status = 0"; // Chỉ lấy các đơn hàng chưa thanh toán
-            object[] parameter = new object[] { idtable };
-            DataTable data = DataProvider.Instance.ExecuteQuery(query, parameter);
+            SqlParameter[] parameter = new SqlParameter[]
+            {
+                new SqlParameter("@idtable", System.Data.SqlDbType.Int) { Value = idtable }
+            };
+            DataTable data = DataProvider.Instance.ExcuteQuery(query, parameter);
             foreach (DataRow row in data.Rows)
             {
-                list.Add(new OrderItem
-                {
-                    ItemId = (int)row["id"],
-                    ItemName = Convert.ToString(row["name"])!,
-                    Price = Convert.ToDecimal(row["price"]),
-                    Quantity = (int)row["count"]
-                });                
+                list.Add(new OrderItem(row));
             }
             return list;
+        }
+        public string GetTableNameById(int id)
+        {
+            string query = "SELECT name FROM dbo.TableFood WHERE id = @id";
+            object[] parameter = new object[] { id };
+            object result = DataProvider.Instance.ExecuteScalar(query, parameter);
+            return Convert.ToString(result) ?? string.Empty;
         }
     }
 }

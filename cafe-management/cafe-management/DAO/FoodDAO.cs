@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using Microsoft.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,18 +21,13 @@ namespace cafe_management.DAO
         public List<FoodItem> GetListFood()
         {
             List<FoodItem> list = new List<FoodItem>();
-            string query = "SELECT id, name, idcategory, price FROM dbo.Food";
-            var data = DataProvider.Instance.ExecuteQuery(query);
-            foreach (System.Data.DataRow row in data.Rows)
+            string query = "SELECT f.id, f.name, f.price, c.name AS CategoryName\r\n" +
+                "FROM Food f\r\n" +
+                "JOIN FoodCategory c ON f.idcategory = c.id\r\n";
+            var data = DataProvider.Instance.ExcuteQuery(query);
+            foreach (DataRow row in data.Rows)
             {
-                string categoryName = FoodCategoryDAO.Instance.GetNameCategoryById((int)row["idcategory"]);
-                list.Add(new FoodItem
-                {
-                    Id = (int)row["id"],
-                    Name = Convert.ToString(row["name"])!,
-                    Category = categoryName,
-                    Price = Convert.ToDecimal(row["price"])
-                });
+                list.Add(new FoodItem(row));
             }
             return list;
         }
@@ -50,7 +46,7 @@ namespace cafe_management.DAO
         public FoodItem? GetFoodByID(int id)
         {
             string query = "SELECT * FROM Food WHERE id = " + id;
-            DataTable dt = DataProvider.Instance.ExecuteQuery(query);
+            DataTable dt = DataProvider.Instance.ExcuteQuery(query);
 
             if (dt.Rows.Count > 0)
                 return new FoodItem
@@ -66,7 +62,12 @@ namespace cafe_management.DAO
         public bool InsertFood(string nameFood, int category, float price)
         {
             string query = "INSERT INTO Food (name, idcategory, price) VALUES ( @nameFood , @category , @price )";
-            object[] parameter = new object[] { nameFood, category, price };
+            SqlParameter[] parameter = new SqlParameter[]
+            {
+                new SqlParameter("@nameFood", System.Data.SqlDbType.NVarChar) { Value = nameFood },
+                new SqlParameter("@category", System.Data.SqlDbType.Int) { Value = category },
+                new SqlParameter("@price", System.Data.SqlDbType.Float) { Value = price }
+            };
             int result = DataProvider.Instance.ExecuteNonQuery(query, parameter);
             return result > 0;
         }
@@ -86,13 +87,22 @@ namespace cafe_management.DAO
             else query = "DELETE FROM dbo.Food WHERE id = @id";
             BillInfoDAO.Instance.DeleteBillInfoData();
             BillDAO.Instance.DeleteBillData();
-            object[] parameter = new object[] { id };
+            SqlParameter[] parameter = new SqlParameter[]
+            {
+                new SqlParameter("@id", System.Data.SqlDbType.Int) { Value = id }
+            };
             return DataProvider.Instance.ExecuteNonQuery(query, parameter) > 0;
         }
         public bool UpdateFood(int id, string nameFood, int category, float price)
         {
             string query = "UPDATE dbo.Food SET name = @nameFood , idcategory = @category , price = @price WHERE id = @id ";
-            object[] parameter = new object[] { nameFood, category, price, id };
+            SqlParameter[] parameter = new SqlParameter[]
+            {
+                new SqlParameter("@id", System.Data.SqlDbType.Int) { Value = id },
+                new SqlParameter("@nameFood", System.Data.SqlDbType.NVarChar) { Value = nameFood },
+                new SqlParameter("@category", System.Data.SqlDbType.Int) { Value = category },
+                new SqlParameter("@price", System.Data.SqlDbType.Float) { Value = price }
+            };
             return DataProvider.Instance.ExecuteNonQuery(query, parameter) > 0;
         }
     }

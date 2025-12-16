@@ -7,6 +7,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Data.SqlClient;
 namespace cafe_management.DAO
 {
     public class AccountController
@@ -23,7 +24,13 @@ namespace cafe_management.DAO
         {
             string query = "SELECT * FROM dbo.Account WHERE username = @username AND password = @password";
 
-            DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] { username, password });
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@username", SqlDbType.NVarChar) {Value = username },
+                new SqlParameter("@password", SqlDbType.NVarChar) {Value = password }
+            };
+
+            DataTable result = DataProvider.Instance.ExcuteQuery(query, parameters);
 
             if (result.Rows.Count == 0)
                 return null;

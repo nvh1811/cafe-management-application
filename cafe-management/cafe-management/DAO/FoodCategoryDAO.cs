@@ -19,7 +19,7 @@ namespace cafe_management.DAO
         {
             List<string> list = new List<string>();
             string query = "SELECT name FROM dbo.FoodCategory";
-            var data = DataProvider.Instance.ExecuteQuery(query);
+            var data = DataProvider.Instance.ExcuteQuery(query);
             foreach (System.Data.DataRow row in data.Rows)
             {
                 list.Add(Convert.ToString(row["name"])!);
@@ -29,7 +29,7 @@ namespace cafe_management.DAO
         public int GetIdCategoryByName(string name)
         {
             string query = "SELECT id FROM dbo.FoodCategory WHERE name = N'" + name + "'";
-            var data = DataProvider.Instance.ExecuteQuery(query);
+            var data = DataProvider.Instance.ExcuteQuery(query);
             if (data.Rows.Count > 0)
             {
                 return (int)data.Rows[0]["id"];
@@ -39,7 +39,7 @@ namespace cafe_management.DAO
         public string GetNameCategoryById(int id)
         {
             string query = "SELECT name FROM dbo.FoodCategory WHERE id = " + id;
-            var data = DataProvider.Instance.ExecuteQuery(query);
+            var data = DataProvider.Instance.ExcuteQuery(query);
             if (data.Rows.Count > 0)
             {
                 return Convert.ToString(data.Rows[0]["name"])!;

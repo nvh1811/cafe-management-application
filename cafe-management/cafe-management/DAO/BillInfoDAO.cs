@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Data.SqlClient;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
@@ -19,10 +20,16 @@ namespace cafe_management.DAO
         public bool AddBillInfo(int billID, int foodID, int count)
         {
             string query = @"
-        INSERT INTO dbo.BillInfo(idbill, idfood, count)
-        VALUES ( @billID , @foodID , @count )";
+                    INSERT INTO dbo.BillInfo(idbill, idfood, count)
+                    VALUES ( @billID , @foodID , @count )";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@billID", System.Data.SqlDbType.Int) { Value = billID },
+                new SqlParameter("@foodID", System.Data.SqlDbType.Int) { Value = foodID },
+                new SqlParameter("@count", System.Data.SqlDbType.Int) { Value = count }
+            };
 
-            int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { billID, foodID, count });
+            int result = DataProvider.Instance.ExecuteNonQuery(query, parameters);
 
             return result > 0;
         }

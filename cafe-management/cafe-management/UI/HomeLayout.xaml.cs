@@ -14,7 +14,7 @@ namespace cafe_management.UI
 {
     public partial class HomeLayout : UserControl
     {
-        public ObservableCollection<Bill> Bills { get; set; } = new ObservableCollection<Bill>();
+        public List<Bill> ListBillsReport { get; set; } = new List<Bill>();
         private int _selectedTableId = 0;
         public List<TableInfo> tableList { get; set; } = new List<TableInfo>();
 
@@ -665,6 +665,91 @@ namespace cafe_management.UI
         
         #endregion
 
+        #region Account Template Methods
+        private void ButtonChangePass_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = (MainWindow)Window.GetWindow(this);
+            main.LoadLayout(new ChangePasswordLayout());
+        }
+
+        private void ButtonExitAcc_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = (MainWindow)Window.GetWindow(this);
+            main.LoadLayout(new LoginLayout());
+        }
+
+        #endregion
+
+        #region Revenue Template Methods
+
+        private void LoadRevenueTemplate()
+        {
+            var dgRevenue = FindVisualChild<DataGrid>(MainContent, "dgRevenueDetails");
+            if (dgRevenue != null)
+            {
+                dgRevenue.ItemsSource = null;
+                dgRevenue.ItemsSource = ListBillsReport;
+            }
+        }
+        private void GetReport()
+        {
+            var startDatePicker = FindVisualChild<DatePicker>(MainContent, "dpSelectedDateStart");
+            var endDatePicker = FindVisualChild<DatePicker>(MainContent, "dpSelectedDateEnd");
+
+            if (startDatePicker == null || endDatePicker == null)
+            {
+                MessageBox.Show("Không tìm thấy DatePicker!");
+                return;
+            }
+
+            if (!startDatePicker.SelectedDate.HasValue || !endDatePicker.SelectedDate.HasValue)
+            {
+                MessageBox.Show("Vui lòng chọn đầy đủ ngày bắt đầu và kết thúc!");
+                return;
+            }
+
+            DateTime start = startDatePicker.SelectedDate.Value.Date;
+            DateTime end = endDatePicker.SelectedDate.Value.Date;
+    
+
+            if (start > end)
+            {
+                MessageBox.Show("Ngày bắt đầu không được lớn hơn ngày kết thúc!");
+                return;
+            }
+
+            ListBillsReport = BillDAO.Instance.GetListBillRange(start, end);
+        }
+        private void BtnViewReport_Click(object sender, RoutedEventArgs e)
+        {
+            GetReport();
+            LoadRevenueTemplate();
+        }
+
+        private void UpdateRevenueSummary(ObservableCollection<RevenueReport> reports, string period)
+        {
+            
+        }
+
+        private void UpdateSummaryText(string controlName, string text)
+        {
+            var textBlock = FindVisualChild<TextBlock>(MainContent, controlName);
+            if (textBlock != null)
+            {
+                textBlock.Text = text;
+            }
+        }
+
+        private void BtnExportReport_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Chức năng xuất báo cáo Excel sẽ được thực hiện ở phiên bản sau!");
+            // TODO: Implement Excel export functionality
+        }
+
+        // Navigation method for Revenue
+
+        #endregion
+
         #region Helper Methods
         private string GetTextBoxText(string textBoxName)
         {
@@ -721,7 +806,7 @@ namespace cafe_management.UI
             {
                 LoadMenuTemplate(); // Load dữ liệu khi chuyển sang Menu
             }), System.Windows.Threading.DispatcherPriority.Background);
-            
+
         }
         private void OrderButton_Click(object sender, RoutedEventArgs e)
         {
@@ -730,23 +815,15 @@ namespace cafe_management.UI
             {
                 LoadOrderTemplate(); // Load dữ liệu khi chuyển sang Order
             }), System.Windows.Threading.DispatcherPriority.Background);
-            
         }
-        #endregion
-
-        #region Account Template Methods
-        private void ButtonChangePass_Click(object sender, RoutedEventArgs e)
+        private void RevenueButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow main = (MainWindow)Window.GetWindow(this);
-            main.LoadLayout(new ChangePasswordLayout());
+            MainContent.ContentTemplate = (DataTemplate)Resources["RevenueTemplate"];
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                LoadRevenueTemplate(); // Load dữ liệu khi chuyển sang Revenue
+            }), System.Windows.Threading.DispatcherPriority.Background);
         }
-
-        private void ButtonExitAcc_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow main = (MainWindow)Window.GetWindow(this);
-            main.LoadLayout(new LoginLayout());
-        }
-
         #endregion
     }
-}
+}              
