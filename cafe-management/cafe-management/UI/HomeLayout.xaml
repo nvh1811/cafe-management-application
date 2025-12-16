@@ -720,11 +720,14 @@
                                     <DataGridTextColumn Header="Bàn" 
                                       Binding="{Binding TableName}" 
                                       Foreground="Black"/>
-                                    <DataGridTextColumn Header="Thời gian" 
+                                    <DataGridTextColumn Header="Thời gian vào" 
                                       Binding="{Binding StartTime, StringFormat={}{0:HH:mm dd/MM}}" 
                                       Foreground="Black"/>
+                                    <DataGridTextColumn Header="Thời gian ra" 
+                                      Binding="{Binding EndTime, StringFormat={}{0:HH:mm dd/MM}}" 
+                                      Foreground="Black"/>
                                     <DataGridTextColumn Header="Tổng tiền" 
-                                      Binding="{Binding TotalAmount, StringFormat={}{0:N0}đ}" 
+                                      Binding="{Binding TotalBill, StringFormat={}{0:N0}đ}" 
                                       Foreground="Black"/>
                                 </DataGrid.Columns>
                             </DataGrid>

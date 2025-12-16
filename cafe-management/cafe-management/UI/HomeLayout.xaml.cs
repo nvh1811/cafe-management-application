@@ -108,7 +108,8 @@ namespace cafe_management.UI
                 
                 TableDAO.Instance.UpdateTableStatus(_selectedTableId, "Trống");
                 statusBill = 1;
-                BillDAO.Instance.ChangeStatusBill(_selectedTableId, statusBill);
+                //BillDAO.Instance.ChangeStatusBill(_selectedTableId, statusBill);
+                BillDAO.Instance.UpdateBill(_selectedTableId, statusBill, DateTime.Now);
                 LoadTableButton();
                 var txtNoTableSelected = FindVisualChild<TextBlock>(MainContent, "txtNoTableSelected");
                 var TableDetailPanel = FindVisualChild<StackPanel>(MainContent, "TableDetailPanel");

@@ -15,9 +15,9 @@ namespace cafe_management.DTO
         public string TableName { get; set; } = string.Empty;
         public int TableId { get; set; }
         public DateTime StartTime { get; set; } = DateTime.Now;
-        public List<BillItem> Items { get; set; } = new List<BillItem>();
+        public DateTime EndTime { get; set; }
 
-        public decimal TotalAmount => Items.Sum(item => item.Price * item.Quantity);
+        public int TotalBill { get; set; } = 0;
         public Bill() { }
 
         public Bill(DataRow row)
@@ -28,6 +28,8 @@ namespace cafe_management.DTO
                         ? row["TableName"].ToString()!
                         : "";
             StartTime = Convert.ToDateTime(row["datecheckin"]);
+            EndTime = row["datecheckout"] != DBNull.Value ? Convert.ToDateTime(row["datecheckout"]) : DateTime.MinValue;
+            TotalBill = Convert.ToInt32(row["totalprice"]);
         }
     }
 }

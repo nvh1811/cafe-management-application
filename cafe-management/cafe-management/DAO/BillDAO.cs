@@ -54,6 +54,27 @@ namespace cafe_management.DAO
             }
             return (DateTime)result;
         }
+        public DateTime GetTimeCheckout(int tableID) 
+        {
+            string query = "select datecheckout from Bill where idtable =" + tableID;
+            object result = DataProvider.Instance.ExecuteScalar(query);
+            if (result == null)
+            {
+                return DateTime.MinValue; // Hoặc xử lý theo cách khác nếu không có giá trị
+            }
+            return (DateTime)result;
+        }
+        public void UpdateBill(int idTable, int status, DateTime checkoutTime)
+        {
+            string query = "UPDATE dbo.Bill SET datecheckout = @checkoutTime, status = @status WHERE idtable = @idTable ";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@checkoutTime", SqlDbType.DateTime) { Value = checkoutTime },
+                new SqlParameter("@status", SqlDbType.Int) { Value = status },
+                new SqlParameter("@idTable", SqlDbType.Int) { Value = idTable }
+            };
+            DataProvider.Instance.ExecuteNonQuery(query, parameters);
+        }
         public void ChangeStatusBill(int idTable, int status)
         {
             string query = "UPDATE dbo.Bill SET status = @status WHERE idtable = @idTable ";
@@ -87,12 +108,27 @@ namespace cafe_management.DAO
         public List<Bill> GetListBillRange(DateTime start, DateTime end)
         {
             string query = @"
-                            SELECT b.*, t.name AS TableName
+                            SELECT 
+                                b.id,
+                                b.datecheckin,
+                                b.datecheckout,
+                                b.idtable,
+                                t.name AS TableName,
+                                SUM(f.price * bi.count) AS TotalPrice
                             FROM Bill b
-                            JOIN TableFood t ON b.idtable = t.id
+                            JOIN BillInfo bi   ON bi.idbill = b.id
+                            JOIN Food f        ON bi.idfood = f.id
+                            JOIN TableFood t   ON b.idtable = t.id
                             WHERE b.datecheckin >= @start
-                            AND b.datecheckin <= @end
-                            AND b.status = 1";
+                            AND b.datecheckin <  @end
+                            AND b.status = 1
+                            GROUP BY 
+                                b.id,
+                                b.datecheckin,
+                                b.datecheckout,
+                                b.idtable,
+                                t.name;
+                                ";
 
             SqlParameter[] parameters =
                                        {
@@ -110,6 +146,5 @@ namespace cafe_management.DAO
 
             return list;
         }
-
     }
 }

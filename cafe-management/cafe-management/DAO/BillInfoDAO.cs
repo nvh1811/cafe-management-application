@@ -38,5 +38,6 @@ namespace cafe_management.DAO
             string query = "DELETE FROM BillInfo;\r\nDBCC CHECKIDENT ('BillInfo', RESEED, 0);\r\n";
             return DataProvider.Instance.ExecuteNonQuery(query) > 0;
         }
+        
     }
 }

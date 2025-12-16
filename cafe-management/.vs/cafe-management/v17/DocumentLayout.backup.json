@@ -7,36 +7,8 @@
       "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\ui\\homelayout.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\dao\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\dao\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\dao\\tabledao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\dao\\tabledao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\dao\\fooddao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\dao\\fooddao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\dao\\foodcategorydao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\dao\\foodcategorydao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\dao\\billinfodao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\dao\\billinfodao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\dao\\billdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\dao\\billdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\dao\\dataprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\dao\\dataprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\dto\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\dto\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\dto\\bill.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -47,12 +19,56 @@
       "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\dto\\billitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\dto\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\dto\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\dao\\dataprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\dao\\dataprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\dao\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\dao\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\dao\\billinfodao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\dao\\billinfodao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\ui\\homelayout.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\ui\\homelayout.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\dao\\fooddao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\dao\\fooddao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\dao\\foodcategorydao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\dao\\foodcategorydao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\dao\\tabledao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\dao\\tabledao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\dto\\tableinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\dto\\tableinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\dto\\revenuereport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\dto\\revenuereport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\dto\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\dto\\account.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\helper\\permissionhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\helper\\permissionhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\helper\\usersession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\helper\\usersession.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\dto\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\dto\\orderitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\dto\\fooditem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -60,10 +76,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\AppData\\Local\\SourceServer\\636c05ba88729e11144fc98bce517d413a141017c44acf8c6f5668d0f04c9ad7\\src\\coreclr\\System.Private.CoreLib\\src\\System\\Reflection\\RuntimeMethodInfo.CoreCLR.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\dto\\revenuereport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|solutionrelative:cafe-management\\dto\\revenuereport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C99F08B7-49B9-48D9-A418-6FB208E0EFFD}|cafe-management\\cafe-management.csproj|d:\\hust\\ktpm\\bigass\\cafe-management\\cafe-management\\ui\\loginlayout.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -85,56 +97,108 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Account.cs",
-              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DTO\\Account.cs",
-              "RelativeDocumentMoniker": "cafe-management\\DTO\\Account.cs",
-              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DTO\\Account.cs",
-              "RelativeToolTip": "cafe-management\\DTO\\Account.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "HomeLayout.xaml.cs",
+              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\UI\\HomeLayout.xaml.cs",
+              "RelativeDocumentMoniker": "cafe-management\\UI\\HomeLayout.xaml.cs",
+              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\UI\\HomeLayout.xaml.cs*",
+              "RelativeToolTip": "cafe-management\\UI\\HomeLayout.xaml.cs*",
+              "ViewState": "AgIAACsAAAAAAAAAAAArwG4AAABSAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-16T06:36:17.22Z",
+              "WhenOpened": "2025-12-13T05:31:04.615Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
+              "Title": "BillDAO.cs",
+              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\BillDAO.cs",
+              "RelativeDocumentMoniker": "cafe-management\\DAO\\BillDAO.cs",
+              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\BillDAO.cs*",
+              "RelativeToolTip": "cafe-management\\DAO\\BillDAO.cs*",
+              "ViewState": "AgIAABUAAAAAAAAAAAA4wEgAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T13:39:07.778Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\AccountController.cs",
+              "RelativeDocumentMoniker": "cafe-management\\DAO\\AccountController.cs",
+              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\AccountController.cs",
+              "RelativeToolTip": "cafe-management\\DAO\\AccountController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAswC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T15:26:29.026Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Bill.cs",
+              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DTO\\Bill.cs",
+              "RelativeDocumentMoniker": "cafe-management\\DTO\\Bill.cs",
+              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DTO\\Bill.cs*",
+              "RelativeToolTip": "cafe-management\\DTO\\Bill.cs*",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T13:39:55.99Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TableDAO.cs",
+              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\TableDAO.cs",
+              "RelativeDocumentMoniker": "cafe-management\\DAO\\TableDAO.cs",
+              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\TableDAO.cs",
+              "RelativeToolTip": "cafe-management\\DAO\\TableDAO.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAawHIAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T13:55:28.077Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FoodDAO.cs",
+              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\FoodDAO.cs",
+              "RelativeDocumentMoniker": "cafe-management\\DAO\\FoodDAO.cs",
+              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\FoodDAO.cs",
+              "RelativeToolTip": "cafe-management\\DAO\\FoodDAO.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAADwvyQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T15:35:26.165Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "FoodCategoryDAO.cs",
               "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\FoodCategoryDAO.cs",
               "RelativeDocumentMoniker": "cafe-management\\DAO\\FoodCategoryDAO.cs",
-              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\FoodCategoryDAO.cs*",
-              "RelativeToolTip": "cafe-management\\DAO\\FoodCategoryDAO.cs*",
-              "ViewState": "AgIAABcAAAAAAAAAAAAjwCkAAAAvAAAAAAAAAA==",
+              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\FoodCategoryDAO.cs",
+              "RelativeToolTip": "cafe-management\\DAO\\FoodCategoryDAO.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAlwCUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-15T16:17:57.748Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "BillInfoDAO.cs",
-              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\BillInfoDAO.cs",
-              "RelativeDocumentMoniker": "cafe-management\\DAO\\BillInfoDAO.cs",
-              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\BillInfoDAO.cs*",
-              "RelativeToolTip": "cafe-management\\DAO\\BillInfoDAO.cs*",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB0AAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-15T15:54:15.219Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "DataProvider.cs",
               "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\DataProvider.cs",
               "RelativeDocumentMoniker": "cafe-management\\DAO\\DataProvider.cs",
-              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\DataProvider.cs*",
-              "RelativeToolTip": "cafe-management\\DAO\\DataProvider.cs*",
-              "ViewState": "AgIAACMAAAAAAAAAAAAwwBwAAABCAAAAAAAAAA==",
+              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\DataProvider.cs",
+              "RelativeToolTip": "cafe-management\\DAO\\DataProvider.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAwwCgAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-15T14:56:49.204Z",
               "EditorCaption": ""
@@ -142,19 +206,109 @@
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "BillDAO.cs",
-              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\BillDAO.cs",
-              "RelativeDocumentMoniker": "cafe-management\\DAO\\BillDAO.cs",
-              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\BillDAO.cs*",
-              "RelativeToolTip": "cafe-management\\DAO\\BillDAO.cs*",
-              "ViewState": "AgIAADcAAAAAAAAAAAAWwFQAAAApAAAAAAAAAA==",
+              "Title": "BillInfoDAO.cs",
+              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\BillInfoDAO.cs",
+              "RelativeDocumentMoniker": "cafe-management\\DAO\\BillInfoDAO.cs",
+              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\BillInfoDAO.cs",
+              "RelativeToolTip": "cafe-management\\DAO\\BillInfoDAO.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAIwCgAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-15T13:39:07.778Z",
+              "WhenOpened": "2025-12-15T15:54:15.219Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
+              "Title": "TableInfo.cs",
+              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DTO\\TableInfo.cs",
+              "RelativeDocumentMoniker": "cafe-management\\DTO\\TableInfo.cs",
+              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DTO\\TableInfo.cs",
+              "RelativeToolTip": "cafe-management\\DTO\\TableInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T13:49:04.545Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BillItem.cs",
+              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DTO\\BillItem.cs",
+              "RelativeDocumentMoniker": "cafe-management\\DTO\\BillItem.cs",
+              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DTO\\BillItem.cs",
+              "RelativeToolTip": "cafe-management\\DTO\\BillItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T13:39:51.233Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "HomeLayout.xaml",
+              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\UI\\HomeLayout.xaml",
+              "RelativeDocumentMoniker": "cafe-management\\UI\\HomeLayout.xaml",
+              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\UI\\HomeLayout.xaml",
+              "RelativeToolTip": "cafe-management\\UI\\HomeLayout.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-12-16T07:04:26.68Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "RevenueReport.cs",
+              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DTO\\RevenueReport.cs",
+              "RelativeDocumentMoniker": "cafe-management\\DTO\\RevenueReport.cs",
+              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DTO\\RevenueReport.cs",
+              "RelativeToolTip": "cafe-management\\DTO\\RevenueReport.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-15T10:51:09.773Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Account.cs",
+              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DTO\\Account.cs",
+              "RelativeDocumentMoniker": "cafe-management\\DTO\\Account.cs",
+              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DTO\\Account.cs",
+              "RelativeToolTip": "cafe-management\\DTO\\Account.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-16T06:36:17.22Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "PermissionHelper.cs",
+              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\Helper\\PermissionHelper.cs",
+              "RelativeDocumentMoniker": "cafe-management\\Helper\\PermissionHelper.cs",
+              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\Helper\\PermissionHelper.cs",
+              "RelativeToolTip": "cafe-management\\Helper\\PermissionHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-16T06:50:40.268Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "UserSession.cs",
+              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\Helper\\UserSession.cs",
+              "RelativeDocumentMoniker": "cafe-management\\Helper\\UserSession.cs",
+              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\Helper\\UserSession.cs",
+              "RelativeToolTip": "cafe-management\\Helper\\UserSession.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-16T06:51:03.838Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "OrderItem.cs",
               "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DTO\\OrderItem.cs",
               "RelativeDocumentMoniker": "cafe-management\\DTO\\OrderItem.cs",
@@ -166,95 +320,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\AccountController.cs",
-              "RelativeDocumentMoniker": "cafe-management\\DAO\\AccountController.cs",
-              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\AccountController.cs*",
-              "RelativeToolTip": "cafe-management\\DAO\\AccountController.cs*",
-              "ViewState": "AgIAABEAAAAAAAAAAAAjwBYAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-15T15:26:29.026Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FoodDAO.cs",
-              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\FoodDAO.cs",
-              "RelativeDocumentMoniker": "cafe-management\\DAO\\FoodDAO.cs",
-              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\FoodDAO.cs*",
-              "RelativeToolTip": "cafe-management\\DAO\\FoodDAO.cs*",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAowGcAAABZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-15T15:35:26.165Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TableDAO.cs",
-              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\TableDAO.cs",
-              "RelativeDocumentMoniker": "cafe-management\\DAO\\TableDAO.cs",
-              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DAO\\TableDAO.cs*",
-              "RelativeToolTip": "cafe-management\\DAO\\TableDAO.cs*",
-              "ViewState": "AgIAAD4AAAAAAAAAAIAywFwAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-15T13:55:28.077Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HomeLayout.xaml.cs",
-              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\UI\\HomeLayout.xaml.cs",
-              "RelativeDocumentMoniker": "cafe-management\\UI\\HomeLayout.xaml.cs",
-              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\UI\\HomeLayout.xaml.cs",
-              "RelativeToolTip": "cafe-management\\UI\\HomeLayout.xaml.cs",
-              "ViewState": "AgIAAFIAAAAAAAAAAADgv5gAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-13T05:31:04.615Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "BillItem.cs",
-              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DTO\\BillItem.cs",
-              "RelativeDocumentMoniker": "cafe-management\\DTO\\BillItem.cs",
-              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DTO\\BillItem.cs",
-              "RelativeToolTip": "cafe-management\\DTO\\BillItem.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-15T13:39:51.233Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Bill.cs",
-              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DTO\\Bill.cs",
-              "RelativeDocumentMoniker": "cafe-management\\DTO\\Bill.cs",
-              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DTO\\Bill.cs",
-              "RelativeToolTip": "cafe-management\\DTO\\Bill.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB0AAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-15T13:39:55.99Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "TableInfo.cs",
-              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DTO\\TableInfo.cs",
-              "RelativeDocumentMoniker": "cafe-management\\DTO\\TableInfo.cs",
-              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DTO\\TableInfo.cs",
-              "RelativeToolTip": "cafe-management\\DTO\\TableInfo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-15T13:49:04.545Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "FoodItem.cs",
               "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DTO\\FoodItem.cs",
               "RelativeDocumentMoniker": "cafe-management\\DTO\\FoodItem.cs",
@@ -266,7 +332,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "ChangePasswordLayout.xaml.cs",
               "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\UI\\ChangePasswordLayout.xaml.cs",
               "RelativeDocumentMoniker": "cafe-management\\UI\\ChangePasswordLayout.xaml.cs",
@@ -278,19 +344,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "RevenueReport.cs",
-              "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DTO\\RevenueReport.cs",
-              "RelativeDocumentMoniker": "cafe-management\\DTO\\RevenueReport.cs",
-              "ToolTip": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\DTO\\RevenueReport.cs",
-              "RelativeToolTip": "cafe-management\\DTO\\RevenueReport.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-15T10:51:09.773Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "RuntimeMethodInfo.CoreCLR.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\AppData\\Local\\SourceServer\\636c05ba88729e11144fc98bce517d413a141017c44acf8c6f5668d0f04c9ad7\\src\\coreclr\\System.Private.CoreLib\\src\\System\\Reflection\\RuntimeMethodInfo.CoreCLR.cs",
               "ToolTip": "C:\\Users\\Lenovo\\AppData\\Local\\SourceServer\\636c05ba88729e11144fc98bce517d413a141017c44acf8c6f5668d0f04c9ad7\\src\\coreclr\\System.Private.CoreLib\\src\\System\\Reflection\\RuntimeMethodInfo.CoreCLR.cs [Read Only]",
@@ -301,7 +355,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "LoginLayout.xaml.cs",
               "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\UI\\LoginLayout.xaml.cs",
               "RelativeDocumentMoniker": "cafe-management\\UI\\LoginLayout.xaml.cs",
@@ -313,7 +367,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 21,
               "Title": "LoginLayout.xaml",
               "DocumentMoniker": "D:\\HUST\\KTPM\\BigAss\\cafe-management\\cafe-management\\UI\\LoginLayout.xaml",
               "RelativeDocumentMoniker": "cafe-management\\UI\\LoginLayout.xaml",
