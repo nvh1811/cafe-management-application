@@ -1,3 +1,4 @@
 .vs/
-obj/
-bin/
+cafe-management/cafe-management/obj/
+cafe-management/cafe-management/bin/
+cafe-management/.vs/

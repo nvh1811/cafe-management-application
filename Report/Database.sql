@@ -105,24 +105,15 @@ GO
 --select * from Account;
 --go
 
---SELECT * FROM dbo.FoodCategory;
---GO
---SELECT * FROM dbo.Food;
---GO
---SELECT * FROM dbo.TableFood;
---GO
---SELECT * FROM dbo.Bill;
---GO
---SELECT * FROM dbo.BillInfo;
---GO
+SELECT * FROM dbo.FoodCategory;
+GO
+SELECT * FROM dbo.Food;
+GO
+SELECT * FROM dbo.TableFood;
+GO
+SELECT * FROM dbo.Bill;
+GO
+SELECT * FROM dbo.BillInfo;
+GO
 
---SELECT b.*, t.name AS TableName
---                            FROM Bill b
---                            JOIN TableFood t ON b.idtable = t.id
---                            WHERE b.datecheckin >= '2025/12/15 00:00:01'
---                            AND b.datecheckin <= '2025/12/15 23:59:59'
 
-                            SELECT b.*, t.name AS TableName
-                            FROM Bill b
-                            JOIN TableFood t ON b.idtable = t.id
-                            WHERE b.datecheckin >= '15/12/2025 12:00:00'AND b.datecheckin < '16/12/2025 12:00:00'AND b.status = 1
