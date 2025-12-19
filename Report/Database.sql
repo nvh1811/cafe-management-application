@@ -1,6 +1,8 @@
 ﻿-- =============================
 -- TẠO DATABASE VÀ SỬ DỤNG
 -- =============================
+use master
+go
 drop database Quanlycoffe
 go
 CREATE DATABASE Quanlycoffe;
