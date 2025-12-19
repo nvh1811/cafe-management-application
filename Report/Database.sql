@@ -1,11 +1,11 @@
 ﻿-- =============================
 -- TẠO DATABASE VÀ SỬ DỤNG
 -- =============================
-drop database Quanlycoffe
+drop database Quanlycoffee
 go
-CREATE DATABASE Quanlycoffe;
+CREATE DATABASE Quanlycoffee;
 GO
-USE Quanlycoffe;
+USE Quanlycoffee;
 GO
 
 -- =============================
@@ -102,8 +102,8 @@ BEGIN
 END
 GO
 
---select * from Account;
---go
+select * from Account;
+go
 
 SELECT * FROM dbo.FoodCategory;
 GO
