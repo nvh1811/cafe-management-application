@@ -37,8 +37,12 @@ namespace cafe_management.DAO
         }
         public FoodItem? GetFoodByID(int id)
         {
-            string query = "SELECT * FROM Food WHERE id = " + id;
-            DataTable dt = DataProvider.Instance.ExcuteQuery(query);
+            string query = "SELECT * FROM Food WHERE id = @id";
+            SqlParameter[] parameters =
+            {
+                new SqlParameter ("id", SqlDbType.DateTime) { Value = id },
+            };
+            DataTable dt = DataProvider.Instance.ExcuteQuery(query, parameters);
 
             if (dt.Rows.Count > 0)
                 return new FoodItem
@@ -54,7 +58,7 @@ namespace cafe_management.DAO
         public bool InsertFood(string nameFood, int category, float price)
         {
             string query = "INSERT INTO Food (name, idcategory, price) VALUES ( @nameFood , @category , @price )";
-            SqlParameter[] parameter = new SqlParameter[]
+            SqlParameter[] parameter =
             {
                 new SqlParameter("@nameFood", System.Data.SqlDbType.NVarChar) { Value = nameFood },
                 new SqlParameter("@category", System.Data.SqlDbType.Int) { Value = category },
@@ -79,7 +83,7 @@ namespace cafe_management.DAO
             else query = "DELETE FROM dbo.Food WHERE id = @id";
             BillInfoDAO.Instance.DeleteBillInfoData();
             BillDAO.Instance.DeleteBillData();
-            SqlParameter[] parameter = new SqlParameter[]
+            SqlParameter[] parameter =
             {
                 new SqlParameter("@id", System.Data.SqlDbType.Int) { Value = id }
             };
@@ -88,7 +92,7 @@ namespace cafe_management.DAO
         public bool UpdateFood(int id, string nameFood, int category, float price)
         {
             string query = "UPDATE dbo.Food SET name = @nameFood , idcategory = @category , price = @price WHERE id = @id ";
-            SqlParameter[] parameter = new SqlParameter[]
+            SqlParameter[] parameter =
             {
                 new SqlParameter("@id", System.Data.SqlDbType.Int) { Value = id },
                 new SqlParameter("@nameFood", System.Data.SqlDbType.NVarChar) { Value = nameFood },

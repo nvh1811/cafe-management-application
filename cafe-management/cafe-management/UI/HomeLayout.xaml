@@ -214,7 +214,7 @@
                                 </Border>
                             </StackPanel>
                         </StackPanel>
-                        
+
                     </Border>
                 </Grid>
 
@@ -294,52 +294,75 @@
                         </StackPanel>
 
                         <!-- DataGrid danh sách món ăn -->
-                        <DataGrid x:Name="dgMenuItems" 
-                         AutoGenerateColumns="False"
-                         Height="300" 
-                         Background="#8a8c5d"
-                         BorderBrush="#ffead8"
-                         Foreground="#3e000c"
-                         HeadersVisibility="Column"
-                         CanUserAddRows="False">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Tên món" 
-                                          Binding="{Binding Name}" 
-                                          Foreground="Black"/>
-                                <DataGridTextColumn Header="Giá" 
-                                          Binding="{Binding Price, StringFormat={}{0:N0}đ}" 
-                                          Foreground="Black"/>
-                                <DataGridTextColumn Header="Danh mục" 
-                                          Binding="{Binding Category}" 
-                                          Foreground="Black"/>
-                                <DataGridTemplateColumn Header="Thao tác"
+                        <ItemsControl x:Name="dgMenuItems"
+                                      ItemsSource="{Binding MenuItems}">    
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Width="160"
+                                            Height="200"
+                                            Margin="10"
+                                            Padding="8"
+                                            Background="#8a8c5d"
+                                            BorderBrush="#ffead8"
+                                            BorderThickness="2"
+                                            CornerRadius="10">
+
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding Name}"
+                                                       FontWeight="Bold"
+                                                       FontSize="20"
+                                                       Foreground="#3e000c"
+                                                       TextAlignment="Center"/>
+
+                                            <TextBlock Text="{Binding Price, StringFormat={}{0:N0}đ}"
+                                                       FontSize ="20"
+                                                       Margin="0,5,0,0"
+                                                       Foreground="Black"
+                                                       TextAlignment="Center"/>
+
+                                            <TextBlock Text="{Binding Category}"
+                                                       FontSize="20"
+                                                       Foreground="Black"
+                                                       TextAlignment="Center"/>
+
+                                            <!-- Nút thao tác -->
+                                            <StackPanel Orientation="Horizontal"
+                                                        HorizontalAlignment="Center"
+                                                        Margin="0,10,0,0"
                                                         Visibility="{Binding Source={x:Static helper:PermissionHelper.isAdmin},
-                                                        Converter={StaticResource BoolToVisibility}}">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Button Content="Sửa" 
-                                                Width="50" Height="25" 
-                                                Margin="2"
-                                                Background="#90a955"
-                                                Foreground="White"
-                                                FontSize="10"
-                                                Click="BtnEditMenuItem_Click"
-                                                Tag="{Binding Id}"/>
-                                                <Button Content="Xóa" 
-                                                Width="50" Height="25" 
-                                                Margin="2"
-                                                Background="#bc4749"
-                                                Foreground="White"
-                                                FontSize="10"
-                                                Click="BtnDeleteMenuItem_Click"
-                                                Tag="{Binding Id}"/>
+                                                                     Converter={StaticResource BoolToVisibility}}"> 
+                                                <Button Content="Sửa"
+                                                        Width="50"
+                                                        Height="25"
+                                                        Margin="2"
+                                                        Background="#90a955"
+                                                        Foreground="White"
+                                                        FontSize="10"
+                                                        Click="BtnEditMenuItem_Click"
+                                                        Tag="{Binding Id}"/>
+
+                                                <Button Content="Xóa"
+                                                        Width="50"
+                                                        Height="25"
+                                                        Margin="2"
+                                                        Background="#bc4749"
+                                                        Foreground="White"
+                                                        FontSize="10"
+                                                        Click="BtnDeleteMenuItem_Click"
+                                                        Tag="{Binding Id}"/>
                                             </StackPanel>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
                     </StackPanel>
 
                     <!-- Form thêm/sửa món ăn bên phải -->
@@ -365,7 +388,7 @@
                                 <TextBox x:Name="txtMenuItemName" 
                                  Height="30" 
                                  Background="#b0b17a"
-                                 Foreground="#ffead8"
+                                 Foreground="Black"
                                  BorderBrush="#ffead8"
                                  Padding="5"/>
                             </StackPanel>
@@ -379,7 +402,7 @@
                                 <TextBox x:Name="txtMenuItemPrice" 
                                  Height="30" 
                                  Background="#b0b17a"
-                                 Foreground="#ffead8"
+                                 Foreground="Black"
                                  BorderBrush="#ffead8"
                                  Padding="5"/>
                             </StackPanel>
@@ -784,17 +807,6 @@
                                         </StackPanel>
 
                                         <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                            <TextBlock Text="Bàn có doanh thu cao nhất: " 
-                                                       Foreground="#ffead8" 
-                                                       FontSize="12"/>
-                                            <TextBlock x:Name="txtTopTable" 
-                                                       Text="-" 
-                                                       Foreground="#ffeda8" 
-                                                       FontSize="12"
-                                                       FontWeight="SemiBold"/>
-                                        </StackPanel>
-
-                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
                                             <TextBlock Text="Món bán chạy nhất: " 
                                                        Foreground="#ffead8" 
                                                        FontSize="12"/>
@@ -901,13 +913,15 @@
                         Height="40" Margin="5" FontSize="14" FontWeight="Bold"
                         Background="#7d8b6f"
                         Foreground="#ffead8"
+                        Visibility="{Binding Source={x:Static helper:PermissionHelper.isAdmin},
+                        Converter={StaticResource BoolToVisibility}}"
                         Click="RevenueButton_Click"/>
             </StackPanel>
 
             <Border Grid.Column="1" Background="White" Margin="10">
                 <!-- ContentControl để hiển thị nội dung -->
                 <ContentControl x:Name="MainContent" 
-                                ContentTemplate="{StaticResource RevenueTemplate}"/>
+                                ContentTemplate="{StaticResource AccountTemplate}"/>
             </Border>
         </Grid>
     </Grid>

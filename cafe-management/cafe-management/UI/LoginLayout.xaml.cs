@@ -29,8 +29,8 @@ namespace cafe_management.UI
 
         private void buttonLogin_Click(object sender, RoutedEventArgs e)
         {
-            string user = "Staff";// txtUser.Text;
-            string pass = "1234"; // txtPassWord.Password;
+            string user = "Admin"; //txtUser.Text;
+            string pass = "1234";//txtPassWord.Password;
             Account account = AccountController.Instance.Login(user, pass);
             if (account != null)
             {

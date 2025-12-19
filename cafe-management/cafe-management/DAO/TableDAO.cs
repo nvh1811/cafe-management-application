@@ -30,7 +30,7 @@ namespace cafe_management.DAO
             string query = "INSERT INTO dbo.TableFood (name, status) VALUES ( @name , @status )";
 
             // Mảng tham số phải chứa các giá trị C# tương ứng với @name, @status.
-            SqlParameter[] parameter = new SqlParameter[]
+            SqlParameter[] parameter =
             {
                 new SqlParameter("@name", System.Data.SqlDbType.NVarChar) { Value = name },
                 new SqlParameter("@status", System.Data.SqlDbType.NVarChar) { Value = status }
@@ -68,7 +68,7 @@ namespace cafe_management.DAO
                 query = "DELETE FROM TableFood;\r\nDBCC CHECKIDENT ('TableFood', RESEED, 0);\r\n";
             }
             else query = "DELETE FROM dbo.TableFood WHERE id = @id";
-            SqlParameter[] parameter = new SqlParameter[] { new SqlParameter("@id", System.Data.SqlDbType.Int) { Value = id } };
+            SqlParameter[] parameter = { new SqlParameter("@id", System.Data.SqlDbType.Int) { Value = id } };
             return DataProvider.Instance.ExecuteNonQuery(query, parameter) > 0;
         }
         public int GetMaxTableID()
@@ -86,7 +86,7 @@ namespace cafe_management.DAO
         public bool UpdateTableStatus(int id, string status)
         {
             string query = "UPDATE dbo.TableFood SET status = @status WHERE id = @id ";
-            SqlParameter[] para = new SqlParameter[]
+            SqlParameter[] para =
             {
                 new SqlParameter("@status", System.Data.SqlDbType.NVarChar) { Value = status },
                 new SqlParameter("@id", System.Data.SqlDbType.Int) { Value = id }
@@ -101,7 +101,7 @@ namespace cafe_management.DAO
                 "\r\nJOIN dbo.BillInfo od ON f.id = od.idfood" +
                 "\r\nJOIN dbo.Bill o ON od.idbill = o.id" +
                 "\r\nWHERE o.idtable = @idtable AND o.status = 0"; // Chỉ lấy các đơn hàng chưa thanh toán
-            SqlParameter[] parameter = new SqlParameter[]
+            SqlParameter[] parameter =
             {
                 new SqlParameter("@idtable", System.Data.SqlDbType.Int) { Value = idtable }
             };

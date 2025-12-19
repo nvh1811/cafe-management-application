@@ -22,7 +22,7 @@ namespace cafe_management.DAO
             string query = @"
                     INSERT INTO dbo.BillInfo(idbill, idfood, count)
                     VALUES ( @billID , @foodID , @count )";
-            SqlParameter[] parameters = new SqlParameter[]
+            SqlParameter[] parameters =
             {
                 new SqlParameter("@billID", System.Data.SqlDbType.Int) { Value = billID },
                 new SqlParameter("@foodID", System.Data.SqlDbType.Int) { Value = foodID },

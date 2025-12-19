@@ -23,7 +23,7 @@ namespace cafe_management.DAO
         {
             string query = "INSERT INTO dbo.Bill(idtable, status) VALUES ( @tableID , @status )";
 
-            SqlParameter[] parameters = new SqlParameter[]
+            SqlParameter[] parameters =
             {
                 new SqlParameter("@tableID", SqlDbType.Int) { Value = tableID },
                 new SqlParameter("@status", SqlDbType.Int) { Value = status }
@@ -36,18 +36,26 @@ namespace cafe_management.DAO
         public int GetIdBillByTableID(int tableID, int status = 0)
         {
             string query = "select * from Bill where status = @status and idtable = @tableID ";
-            object[] para = new object[] { status, tableID };
-            object result = DataProvider.Instance.ExecuteScalar(query, para);
+            SqlParameter[] parameters = 
+            {
+                new SqlParameter("status", SqlDbType.Int) { Value = status },
+                new SqlParameter("idtable", SqlDbType.Int) {Value = tableID}
+            };
+            object result = DataProvider.Instance.ExecuteScalar(query, parameters);
             if (result == null)
             {
                 return -1; // Hoặc xử lý theo cách khác nếu không có giá trị
             }
             return (int)result;
         }
-        public DateTime GetTimeCheckin(int tableID) 
+        public DateTime GetTimeCheckin(int tableID)
         {
-            string query = "select datecheckin from Bill where idtable =" + tableID;
-            object result = DataProvider.Instance.ExecuteScalar(query);
+            string query = "select datecheckin from Bill where idtable = @tableID";
+            SqlParameter[] parameters = 
+            { 
+                new SqlParameter ("idtable", SqlDbType.DateTime) { Value = tableID },
+            };
+            object result = DataProvider.Instance.ExecuteScalar(query, parameters);
             if (result == null)
             {
                 return DateTime.MinValue; // Hoặc xử lý theo cách khác nếu không có giá trị
@@ -56,8 +64,12 @@ namespace cafe_management.DAO
         }
         public DateTime GetTimeCheckout(int tableID) 
         {
-            string query = "select datecheckout from Bill where idtable =" + tableID;
-            object result = DataProvider.Instance.ExecuteScalar(query);
+            string query = "select datecheckout from Bill where idtable = @tableID";
+            SqlParameter[] parameters =
+            {
+                new SqlParameter ("idtable", SqlDbType.DateTime) { Value = tableID },
+            };
+            object result = DataProvider.Instance.ExecuteScalar(query, parameters);
             if (result == null)
             {
                 return DateTime.MinValue; // Hoặc xử lý theo cách khác nếu không có giá trị
@@ -67,20 +79,9 @@ namespace cafe_management.DAO
         public void UpdateBill(int idTable, int status, DateTime checkoutTime)
         {
             string query = "UPDATE dbo.Bill SET datecheckout = @checkoutTime, status = @status WHERE idtable = @idTable ";
-            SqlParameter[] parameters = new SqlParameter[]
+            SqlParameter[] parameters =
             {
                 new SqlParameter("@checkoutTime", SqlDbType.DateTime) { Value = checkoutTime },
-                new SqlParameter("@status", SqlDbType.Int) { Value = status },
-                new SqlParameter("@idTable", SqlDbType.Int) { Value = idTable }
-            };
-            DataProvider.Instance.ExecuteNonQuery(query, parameters);
-        }
-        public void ChangeStatusBill(int idTable, int status)
-        {
-            string query = "UPDATE dbo.Bill SET status = @status WHERE idtable = @idTable ";
-
-            SqlParameter[] parameters = new SqlParameter[]
-            {
                 new SqlParameter("@status", SqlDbType.Int) { Value = status },
                 new SqlParameter("@idTable", SqlDbType.Int) { Value = idTable }
             };
@@ -89,8 +90,11 @@ namespace cafe_management.DAO
         public int GetStatusBillByIdTable(int idtable)
         {
             string query = "SELECT TOP 1 status FROM Bill WHERE idtable = @idtable ORDER BY id DESC";
-            object[] parameter = new object[] { idtable };
-            object result = DataProvider.Instance.ExecuteScalar(query, parameter);
+            SqlParameter[] parameters =
+            {
+                new SqlParameter ("idtable", SqlDbType.DateTime) { Value = idtable },
+            };
+            object result = DataProvider.Instance.ExecuteScalar(query, parameters);
 
             if (result == null )
             {

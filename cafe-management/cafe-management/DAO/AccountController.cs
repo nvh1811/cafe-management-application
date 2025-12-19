@@ -24,7 +24,7 @@ namespace cafe_management.DAO
         {
             string query = "SELECT * FROM dbo.Account WHERE username = @username AND password = @password";
 
-            SqlParameter[] parameters = new SqlParameter[]
+            SqlParameter[] parameters =
             {
                 new SqlParameter("@username", SqlDbType.NVarChar) {Value = username },
                 new SqlParameter("@password", SqlDbType.NVarChar) {Value = password }

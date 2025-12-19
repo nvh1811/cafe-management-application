@@ -74,7 +74,7 @@ namespace cafe_management.DAO
         /// <param name="query"></param>
         /// <param name="parameter"></param>
         /// <returns></returns>
-        public object ExecuteScalar(string query, object[]? parameter = null)
+        public object ExecuteScalar(string query, SqlParameter[]? parameter = null)
         {
             object data = 0;
             using (SqlConnection connection = new SqlConnection(connectionSTR))

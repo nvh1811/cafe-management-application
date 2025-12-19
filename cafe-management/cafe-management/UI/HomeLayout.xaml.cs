@@ -237,7 +237,7 @@ namespace cafe_management.UI
         {
             
             // Load danh sách món ăn vào DataGrid
-            var dataMenuGrid = FindVisualChild<DataGrid>(MainContent, "dgMenuItems");
+            var dataMenuGrid = FindVisualChild<ItemsControl>(MainContent, "dgMenuItems");
             if (dataMenuGrid != null)
             {
                 MenuItems = FoodDAO.Instance.GetListFood(); // Lấy danh sách món từ DAO
@@ -371,8 +371,9 @@ namespace cafe_management.UI
                         bool error_delete = FoodDAO.Instance.DeleteFood(itemId);
                         if(error_delete)
                         {
-                            MessageBox.Show("Đã xóa món thành công!");
                             LoadMenuTemplate();
+                            MessageBox.Show("Đã xóa món thành công!");
+                            
                         }
                     }
                 }
@@ -682,7 +683,6 @@ namespace cafe_management.UI
         #endregion
 
         #region Revenue Template Methods
-
         private void LoadRevenueTemplate()
         {
             var dgRevenue = FindVisualChild<DataGrid>(MainContent, "dgRevenueDetails");
@@ -725,20 +725,6 @@ namespace cafe_management.UI
         {
             GetReport();
             LoadRevenueTemplate();
-        }
-
-        private void UpdateRevenueSummary(ObservableCollection<RevenueReport> reports, string period)
-        {
-            
-        }
-
-        private void UpdateSummaryText(string controlName, string text)
-        {
-            var textBlock = FindVisualChild<TextBlock>(MainContent, controlName);
-            if (textBlock != null)
-            {
-                textBlock.Text = text;
-            }
         }
 
         private void BtnExportReport_Click(object sender, RoutedEventArgs e)
