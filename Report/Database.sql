@@ -1,11 +1,11 @@
 ﻿-- =============================
 -- TẠO DATABASE VÀ SỬ DỤNG
 -- =============================
-drop database Quanlycoffee
+drop database Quanlycoffe
 go
-CREATE DATABASE Quanlycoffee;
+CREATE DATABASE Quanlycoffe;
 GO
-USE Quanlycoffee;
+USE Quanlycoffe;
 GO
 
 -- =============================
