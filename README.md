@@ -1,7 +1,7 @@
 # Cafe Management Application
 
 ## Giới thiệu
-Cafe Management Application là hệ thống quản lý quán cafe được xây dựng nhằm hỗ trợ các nghiệp vụ cơ bản trong hoạt động kinh doanh quán cafe như: quản lý món, gọi món, lập hóa đơn, thanh toán và quản lý bàn.  
+Đây là hệ thống quản lý quán cafe được xây dựng nhằm hỗ trợ các nghiệp vụ cơ bản trong hoạt động kinh doanh quán cafe như: quản lý món, gọi món, lập hóa đơn, thanh toán và quản lý bàn.  
 Hệ thống được thực hiện trong khuôn khổ học phần **Kỹ thuật phần mềm ứng dụng**.
 ---
 ## Mục tiêu của hệ thống
