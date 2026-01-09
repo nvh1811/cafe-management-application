@@ -83,16 +83,7 @@ namespace cafe_management.DAO
                 SqlCommand command = new SqlCommand(query, connection); // truy van
                 if (parameter != null)
                 {
-                    string[] listPara = query.Split(' ');
-                    int i = 0;
-                    foreach (string item in listPara)
-                    {
-                        if (item.Contains('@'))
-                        {
-                            command.Parameters.AddWithValue(item, parameter[i]);
-                            i++;
-                        }
-                    }
+                    command.Parameters.AddRange(parameter);
                 }
                 data = command.ExecuteScalar();
                 connection.Close();

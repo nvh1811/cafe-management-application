@@ -721,10 +721,21 @@ namespace cafe_management.UI
 
             ListBillsReport = BillDAO.Instance.GetListBillRange(start, end);
         }
+        private void GetInfoSynthetic()
+        {
+            int totalRevenue = 0;
+            foreach (Bill bill in ListBillsReport)
+            {
+                totalRevenue += bill.TotalBill;
+            }
+            var totalRevenu = FindVisualChild<TextBlock>(MainContent, "txtTotalRevenue");
+            totalRevenu.Text = FoodDAO.Instance.FormatVND(totalRevenue);
+        }
         private void BtnViewReport_Click(object sender, RoutedEventArgs e)
         {
             GetReport();
             LoadRevenueTemplate();
+            GetInfoSynthetic(); 
         }
 
         private void BtnExportReport_Click(object sender, RoutedEventArgs e)

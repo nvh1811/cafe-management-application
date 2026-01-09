@@ -40,7 +40,7 @@ namespace cafe_management.DAO
             string query = "SELECT * FROM Food WHERE id = @id";
             SqlParameter[] parameters =
             {
-                new SqlParameter ("id", SqlDbType.DateTime) { Value = id },
+                new SqlParameter ("id", SqlDbType.Int) { Value = id },
             };
             DataTable dt = DataProvider.Instance.ExcuteQuery(query, parameters);
 

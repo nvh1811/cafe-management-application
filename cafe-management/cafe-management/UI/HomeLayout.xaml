@@ -921,7 +921,7 @@
             <Border Grid.Column="1" Background="White" Margin="10">
                 <!-- ContentControl để hiển thị nội dung -->
                 <ContentControl x:Name="MainContent" 
-                                ContentTemplate="{StaticResource AccountTemplate}"/>
+                                ContentTemplate="{StaticResource RevenueTemplate}"/>
             </Border>
         </Grid>
     </Grid>

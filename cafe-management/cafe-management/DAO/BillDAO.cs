@@ -39,7 +39,7 @@ namespace cafe_management.DAO
             SqlParameter[] parameters = 
             {
                 new SqlParameter("status", SqlDbType.Int) { Value = status },
-                new SqlParameter("idtable", SqlDbType.Int) {Value = tableID}
+                new SqlParameter("tableID", SqlDbType.Int) {Value = tableID}
             };
             object result = DataProvider.Instance.ExecuteScalar(query, parameters);
             if (result == null)
@@ -53,7 +53,7 @@ namespace cafe_management.DAO
             string query = "select datecheckin from Bill where idtable = @tableID";
             SqlParameter[] parameters = 
             { 
-                new SqlParameter ("idtable", SqlDbType.DateTime) { Value = tableID },
+                new SqlParameter ("tableID", SqlDbType.Int) { Value = tableID },
             };
             object result = DataProvider.Instance.ExecuteScalar(query, parameters);
             if (result == null)
@@ -67,7 +67,7 @@ namespace cafe_management.DAO
             string query = "select datecheckout from Bill where idtable = @tableID";
             SqlParameter[] parameters =
             {
-                new SqlParameter ("idtable", SqlDbType.DateTime) { Value = tableID },
+                new SqlParameter ("idtable", SqlDbType.Int) { Value = tableID },
             };
             object result = DataProvider.Instance.ExecuteScalar(query, parameters);
             if (result == null)
@@ -92,7 +92,7 @@ namespace cafe_management.DAO
             string query = "SELECT TOP 1 status FROM Bill WHERE idtable = @idtable ORDER BY id DESC";
             SqlParameter[] parameters =
             {
-                new SqlParameter ("idtable", SqlDbType.DateTime) { Value = idtable },
+                new SqlParameter ("idtable", SqlDbType.Int) { Value = idtable },
             };
             object result = DataProvider.Instance.ExecuteScalar(query, parameters);
 
