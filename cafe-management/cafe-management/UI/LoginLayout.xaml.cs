@@ -25,11 +25,12 @@ namespace cafe_management.UI
         public LoginLayout()
         {
             InitializeComponent();
+            LoadRoleToCmb();
         }
 
         private void buttonLogin_Click(object sender, RoutedEventArgs e)
         {
-            string user = "Admin"; //txtUser.Text;
+            string user = txtUser.Text;
             string pass = "1234";//txtPassWord.Password;
             Account account = AccountController.Instance.Login(user, pass);
             if (account != null)
@@ -46,7 +47,14 @@ namespace cafe_management.UI
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng.", "Lỗi đăng nhập", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
+        private void LoadRoleToCmb()
+        {
+            cbUser.ItemsSource = AccountController.Instance.GetUserRole();
+            if (cbUser.Items.Count > 0)
+            {
+                cbUser.SelectedIndex = 0;
+            }
+        }
         private void buttonForgotpassword_Click(object sender, RoutedEventArgs e)
         {
            

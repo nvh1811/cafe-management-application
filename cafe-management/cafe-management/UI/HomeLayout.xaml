@@ -735,8 +735,12 @@
                                     BorderBrush="#ffead8"
                                     Foreground="Black"
                                     HeadersVisibility="Column"
-                                    CanUserAddRows="False">
+                                    CanUserAddRows="False"
+                                    AlternationCount="100000">
                                 <DataGrid.Columns>
+                                    <DataGridTextColumn Header="STT"
+                                        Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow},
+                                        Path=AlternationIndex}" />
                                     <DataGridTextColumn Header="Mã HD" 
                                       Binding="{Binding BillId}" 
                                       Foreground="Black"/>
@@ -782,39 +786,6 @@
                                                        Foreground="#ffeda8" 
                                                        FontSize="14"
                                                        FontWeight="Bold"/>
-                                        </StackPanel>
-
-                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                            <TextBlock Text="Tổng số hóa đơn: " 
-                                                       Foreground="#ffead8" 
-                                                       FontSize="12"/>
-                                            <TextBlock x:Name="txtTotalBills" 
-                                                       Text="0" 
-                                                       Foreground="#ffeda8" 
-                                                       FontSize="12"
-                                                       FontWeight="SemiBold"/>
-                                        </StackPanel>
-
-                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                            <TextBlock Text="Doanh thu trung bình: " 
-                                                       Foreground="#ffead8" 
-                                                       FontSize="12"/>
-                                            <TextBlock x:Name="txtAverageRevenue" 
-                                                       Text="0đ" 
-                                                       Foreground="#ffeda8" 
-                                                       FontSize="12"
-                                                       FontWeight="SemiBold"/>
-                                        </StackPanel>
-
-                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                                            <TextBlock Text="Món bán chạy nhất: " 
-                                                       Foreground="#ffead8" 
-                                                       FontSize="12"/>
-                                            <TextBlock x:Name="txtTopItem" 
-                                                       Text="-" 
-                                                       Foreground="#ffeda8" 
-                                                       FontSize="12"
-                                                       FontWeight="SemiBold"/>
                                         </StackPanel>
                                     </StackPanel>
                                 </Border>
@@ -921,7 +892,7 @@
             <Border Grid.Column="1" Background="White" Margin="10">
                 <!-- ContentControl để hiển thị nội dung -->
                 <ContentControl x:Name="MainContent" 
-                                ContentTemplate="{StaticResource RevenueTemplate}"/>
+                                ContentTemplate="{StaticResource MenuTemplate}"/>
             </Border>
         </Grid>
     </Grid>

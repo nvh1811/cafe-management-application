@@ -45,6 +45,20 @@ namespace cafe_management.DAO
             UserSession.CurrentUser = acc; // ⭐ QUAN TRỌNG
             return acc;
         }
-
+        public List<Account> GetUserRole() 
+        {
+            List<Account> list = new List<Account>();
+            string query = "SELECT username, role FROM dbo.Account";
+            var data = DataProvider.Instance.ExcuteQuery(query);
+            foreach (DataRow row in data.Rows)
+            {
+                list.Add(new Account
+                {
+                    Username = row["username"].ToString(),
+                    Role = row["role"].ToString()
+                });
+            }
+            return list;
+        }
     }
 }

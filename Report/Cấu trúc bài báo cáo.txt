@@ -1,0 +1,34 @@
+use case => ai? làm gì?
+sequence
+activity
+class
+
+
+csdl cos 3 mức: logic, vật lý, view 
+
+bố cục báo cáo dự án KTPM
+1. Mở đầu
+	+ Mục đích
+	+ Nhiệm vụ
+	+ Cấu trúc đồ án( bao nhiêu trang, sơ lược các chương, số hình vẽ, bảng biểu
+2. Thân bài
++ Chương I: Tổng quan về.....
+	- Vài dòng giới thiệu chương 
+	1.1
+	1.2
+	...
+	1.n Kết luận (của chương 1)
+	Note: Pải có pha ptich yêu cầu
++ Chương II: Thiết kế hệ thống...
+	- Vài dòng giới thiệu chương 
+	2.1
+	2.2
+	...
+	2.n Kết luận (của chương 2)
++ Chương III: Triển khai và kiểm thử
+	- Vài dòng giới thiệu chương 
+	3.1
+	3.2
+	...
+	3.n Kết luận (của chương 3)
+Kết luận

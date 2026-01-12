@@ -11,8 +11,8 @@ namespace cafe_management.DAO
     public class DataProvider
     {
         private static DataProvider? instance; // ctrl + R + E
-        private string connectionSTR = @"Data Source=DESKTOP-NF928OQ\SQLEXPRESS01;Initial Catalog=Quanlycoffe;Integrated Security=True;TrustServerCertificate=True"; 
-        //private string connectionSTR = @"Data Source=localhost;Initial Catalog=Quanlycoffe;Integrated Security=True;TrustServerCertificate=True"; // chuoi xac dinh connect vs phan nao
+        //private string connectionSTR = @"Data Source=DESKTOP-NF928OQ\SQLEXPRESS01;Initial Catalog=Quanlycoffe;Integrated Security=True;TrustServerCertificate=True"; 
+        private string connectionSTR = @"Data Source=localhost;Initial Catalog=Quanlycoffe;Integrated Security=True;TrustServerCertificate=True"; // chuoi xac dinh connect vs phan nao
         private DataProvider() { }
         public static DataProvider Instance
         {
