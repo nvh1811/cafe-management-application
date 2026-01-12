@@ -892,7 +892,7 @@
             <Border Grid.Column="1" Background="White" Margin="10">
                 <!-- ContentControl để hiển thị nội dung -->
                 <ContentControl x:Name="MainContent" 
-                                ContentTemplate="{StaticResource MenuTemplate}"/>
+                                ContentTemplate="{StaticResource AccountTemplate}"/>
             </Border>
         </Grid>
     </Grid>
